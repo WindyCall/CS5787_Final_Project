@@ -1,0 +1,99 @@
+
+======== SOLUTION.PY CONTENT ========
+n, q = map(int, input().split())
+reindeer_requirements = list(map(int, input().split()))
+
+# Sort the requirements in ascending order
+reindeer_requirements.sort()
+
+# For each query, find the maximum number of sleighs that can be pulled
+for _ in range(q):
+    x = int(input())
+
+    count = 0
+    total = 0
+
+    for requirement in reindeer_requirements:
+        if total + requirement <= x:
+            total += requirement
+            count += 1
+        else:
+            break
+
+    print(count)
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: 4 3
+5 3 11 8
+16
+7
+1000
+
+(stdin test) PASSED public_test_1 (test time: 0.01s)
+Input: 6 6
+1 2 3 4 5 6
+1
+2
+3
+4
+5
+6
+
+(stdin test) PASSED public_test_2 (test time: 0.01s)
+Input: 2 2
+1000000000 1000000000
+200000000000000
+1
+
+(stdin test) PASSED public_test_3 (test time: 0.07s)
+Input: 180930 181865
+523640805 955898848 773077244 895738733 936968711 638390320 794301792 683821065 588123...
+(stdin test) PASSED private_test_1 (test time: 2.82s)
+Input: 200000 200000
+919775272 813073885 650913175 916957589 531505753 834574991 528649377 925633485 692329...
+(stdin test) PASSED private_test_2 (test time: 3.08s)
+Input: 188144 188144
+919866651 59980839 624690350 648562875 516724197 717895857 257304355 730410621 1583102...
+(stdin test) FAILED private_test_3: Subprocess timed out after 30 seconds
+Input: 193661 193661
+927356114 418240120 491810291 266276355 385029636 395508830 59739514 466006558 7035773...
+(stdin test) FAILED private_test_4: Subprocess timed out after 30 seconds
+Input: 194454 183648
+278478155 615069097 720097422 201483323 43654266 748123796 190014052 359648897 2784895...
+(stdin test) FAILED private_test_5: Subprocess timed out after 30 seconds
+Input: 187502 200000
+5409865 405090316 34770641 378217146 963949108 646857029 646751259 388455819 274473854...
+(stdin test) FAILED private_test_6: Subprocess timed out after 30 seconds
+Input: 194735 188204
+142317616 176653124 284585536 800002573 846098395 658356324 885764372 62251660 6877672...
+(stdin test) FAILED private_test_7: Subprocess timed out after 30 seconds
+Input: 192347 189690
+815056070 257743360 881905975 116815856 718311069 53514608 107481886 731319746 6456111...
+(stdin test) FAILED private_test_8: Subprocess timed out after 30 seconds
+Input: 200000 200000
+461052420 818031591 955952929 480160309 257473300 374847730 931011033 297963633 147875...
+(stdin test) FAILED private_test_9: Subprocess timed out after 30 seconds
+Input: 190722 199437
+542614718 378628528 951123949 122249361 309764018 648661086 664539306 325248008 383700...
+(stdin test) FAILED private_test_10: Subprocess timed out after 30 seconds
+Input: 200000 200000
+332866470 617003904 774582358 535083238 992276754 247912583 787961881 102347198 284766...
+(stdin test) FAILED private_test_11: Subprocess timed out after 30 seconds
+Input: 200000 200000
+174551955 594798597 509503595 955984762 389157857 448253531 562227467 779616576 692609...
+(stdin test) FAILED private_test_12: Subprocess timed out after 30 seconds
+=========================== short test summary info ============================
+FAILED private_test_3
+FAILED private_test_4
+FAILED private_test_5
+FAILED private_test_6
+FAILED private_test_7
+FAILED private_test_8
+FAILED private_test_9
+FAILED private_test_10
+FAILED private_test_11
+FAILED private_test_12
+========================= 10 failed, 5 passed in 0.01s =========================
+
+❌ TASK FAILED: 10 out of 15 tests failed!

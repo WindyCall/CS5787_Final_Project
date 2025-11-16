@@ -1,0 +1,84 @@
+
+======== SOLUTION.PY CONTENT ========
+n = int(input())
+s = input().strip()
+
+# Count unique substrings that are repetitions of one character
+unique_substrings = set()
+
+# For each position in the string, find all substrings starting at that position
+# that consist of a single repeated character
+i = 0
+while i < len(s):
+    char = s[i]
+    j = i
+    # Find the end of the consecutive run of this character
+    while j < len(s) and s[j] == char:
+        j += 1
+
+    # For this run of length (j - i), we can have substrings of lengths 1 to (j - i)
+    # Each of these will be unique (e.g., "a", "aa", "aaa", etc.)
+    run_length = j - i
+    for length in range(1, run_length + 1):
+        unique_substrings.add(char * length)
+
+    i = j
+
+print(len(unique_substrings))
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: 6
+aaabaa
+
+(stdin test) PASSED public_test_1 (test time: 0.01s)
+Input: 1
+x
+
+(stdin test) PASSED public_test_2 (test time: 0.01s)
+Input: 12
+ssskkyskkkky
+
+(stdin test) PASSED public_test_3 (test time: 0.02s)
+Input: 15485
+jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj...
+(stdin test) PASSED private_test_1 (test time: 0.07s)
+Input: 60522
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...
+(stdin test) PASSED private_test_2 (test time: 1.02s)
+Input: 130941
+ggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggggg...
+(stdin test) PASSED private_test_3 (test time: 0.09s)
+Input: 143170
+vvlqlfffvnlnvhflhfnqqniiinnuvvvhhlilnqqlluunhluivuufhhhnnnniiqnfuuuuqqnfhuuufvinhvuunnhhvvnnn...
+(stdin test) PASSED private_test_4 (test time: 0.12s)
+Input: 173740
+eeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeennnnnnnnnnnnnnnnnnnnnnnnnnnnnnuuuuuuuuuuuuuuuuuuuuuuuuuuuuuu...
+(stdin test) PASSED private_test_5 (test time: 0.09s)
+Input: 175763
+eqnokokvwhstuqkebkipwknebcmzaifsbkrvpsqvugorufpfenoqncfgyqemhasmpvbpzqwpgfifzmwztshebgxacnxzo...
+(stdin test) PASSED private_test_6 (test time: 0.17s)
+Input: 187627
+sssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssssss...
+(stdin test) PASSED private_test_7 (test time: 0.11s)
+Input: 199994
+vpacewvlzmguzfhvphnlbdlwycifvtwaxmvavfmpfgmgtiduqkbacvwedogpardyehvesovizyhgvkwsuvzyxuzwmhtnt...
+(stdin test) PASSED private_test_8 (test time: 0.18s)
+Input: 199999
+xxxxynvvvvghhphhxxplllbbbbyvdbbbffddmmmhzzwzvbssdttiiimmssvvwbfhiiijooeezddjjccssssyyccbbbttt...
+(stdin test) PASSED private_test_9 (test time: 0.14s)
+Input: 200000
+rrhugvbevqgnjjpsssuhuhpbnmuuvhjbfnjdpvgrpperrensmffxqnjmvmfegskjnkkmnhvixnmdinkpbxgibnmeeupjj...
+(stdin test) PASSED private_test_10 (test time: 0.17s)
+Input: 199999
+xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx...
+(stdin test) FAILED private_test_11: Solution crashed with error:  (test time: 3.80s)
+Input: 200000
+jjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjjj...
+(stdin test) FAILED private_test_12: Solution crashed with error:  (test time: 3.55s)
+=========================== short test summary info ============================
+FAILED private_test_11
+FAILED private_test_12
+========================= 2 failed, 13 passed in 0.01s =========================
+
+❌ TASK FAILED: 2 out of 15 tests failed!
