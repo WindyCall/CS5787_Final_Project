@@ -1,0 +1,264 @@
+
+======== SOLUTION.PY CONTENT ========
+MOD = 998244353
+
+def modinv(a, m=MOD):
+    """Compute modular inverse of a modulo m using Fermat's little theorem."""
+    return pow(a, m - 2, m)
+
+def solve():
+    N = int(input())
+    A = list(map(int, input().split()))
+
+    # Compute total number of outcomes
+    total_outcomes = 1
+    for a in A:
+        total_outcomes *= a
+        total_outcomes %= MOD
+
+    # Use DP to count outcomes where at least one subset sums to 10
+    # We'll iterate through each die and track possible sums
+    # valid_sums[d][s] = number of ways to get sum s using dice 0..d-1
+    # such that s itself is achievable OR we can make 10 from any subset
+
+    # Better approach: For each outcome combination, check if any subset sums to 10
+    # But this is exponential - instead use DP differently
+
+    # Key insight: We need to count outcomes where at least one subset sums to 10
+    # Use inclusion-exclusion or complementary counting
+
+    # Actually, let's use a different DP:
+    # For each possible outcome (a combination of values for each die),
+    # we need to know if any subset sums to 10
+
+    # Let's think of it as: for outcome o = (v1, v2, ..., vN) where vi in [1, Ai],
+    # can we choose some of these values to sum to 10?
+
+    # We can compute this by considering the generating function approach
+    # or by DP: possible[i][s] = number of outcomes of first i dice
+    # where we can make sum s from some subset
+
+    # DP state: dp[i][s] = number of outcome combinations of first i dice
+    # such that we can form sum s (or 10) from their values
+
+    # Actually, let me reconsider: we need outcomes where ANY subset sums to 10
+    # So for outcome (v1, v2, ..., vN), we need: exists subset I such that sum of vi for i in I equals 10
+
+    # Use DP where dp[i][can_make_10] = number of ways to set first i dice
+    # such that can_make_10 indicates if we can make 10 from some subset
+
+    # For tracking this, we need to know what sums are possible from each subset
+    # dp[i][s] = number of ways to assign first i dice such that
+    # the SET of possible subset sums is represented
+
+    # This is complex - let's use a different representation:
+    # possible_sums[i] = bitmask representing which sums are possible from any subset
+    # of the first i dice
+
+    # For each die i with value vi, we can:
+    # 1. Not include it: sums stay the same
+    # 2. Include it: add vi to all existing sums
+
+    # Let's enumerate outcomes and check if 10 is achievable
+
+    # Since A_i can be up to 10^6, we can't enumerate all outcomes
+    # But we can use DP more cleverly
+
+    # New approach using DP:
+    # dp[i][mask] = number of ways to set values of first i dice
+    # where mask represents which sums 0-10 are achievable from any subset
+
+    # Actually, simpler: for each possible assignment of die values,
+    # check if sum 10 is achievable using subset sum DP
+
+    # Given the constraints (N <= 100, A_i <= 10^6), we need efficiency
+
+    # Key observation: For each outcome, we do a subset sum check for value 10
+    # We can use DP to count: for each prefix of dice, and each possible
+    # "can make 10" status, how many outcomes lead to that status?
+
+    # Let me use a different formulation:
+    # dp[i][s] = number of outcomes of first i dice such that
+    # from any subset of these i dice, we can achieve sum s
+    # But actually we need a SET of achievable sums
+
+    # Better: dp[i][mask] where mask is a frozenset/bitmask of achievable sums
+    # This would be exponential in the number of achievable sums
+
+    # For this problem, achievable sums are at most 10 (since target is 10)
+    # So mask can represent sums 1-10
+
+    # Final approach:
+    # dp[i][mask] = number of outcomes of first i dice
+    # where mask (11-bit value) represents which sums 0-10 are achievable from ANY subset
+    # We want to count outcomes where bit 10 is set (sum of 10 is possible)
+
+    # Since A_i can be large but we only care about sums up to 10,
+    # we can group die values by their effect on achievable sums
+
+    # Actually, if A_i >= 10, values 10 and above are equivalent in terms of
+    # which sums <= 10 they can create
+
+    # Let me implement this approach:
+
+    # dp[i][mask] = number of ways to assign values to first i dice
+    # such that mask represents achievable sums from any subset
+    # Sums are in range [0, 10]
+
+    max_sum = 10
+    dp = [{} for _ in range(N + 1)]
+
+    # Base case: 0 dice, only empty sum (0) is achievable
+    dp[0][0] = 1  # mask with only bit 0 set
+
+    for i in range(N):
+        for current_mask, count in dp[i].items():
+            # Try all possible values for die i (from 1 to A[i])
+            # Group by equivalence class
+
+            # We care about which sums (0 to max_sum) can be made
+            # Value v contributes to making sums that include it
+
+            # For efficiency, we only care about distinct masks that can result
+            # From value 1 to max_sum, they're all distinct
+            # From value max_sum+1 onwards, they all create the same new achievable sums
+
+            # Process values 1 to min(A[i], max_sum) individually
+            for v in range(1, min(A[i], max_sum) + 1):
+                # Adding die with value v
+                new_mask = current_mask | (1 << 0)  # Can still make 0 with empty set
+
+                # Add v to all previously achievable sums
+                temp_mask = current_mask
+                for s in range(max_sum + 1):
+                    if current_mask & (1 << s):
+                        new_sum = s + v
+                        if new_sum <= max_sum:
+                            new_mask |= (1 << new_sum)
+
+                # Also include v itself
+                if v <= max_sum:
+                    new_mask |= (1 << v)
+
+                new_mask_key = new_mask
+                if new_mask_key not in dp[i + 1]:
+                    dp[i + 1][new_mask_key] = 0
+                dp[i + 1][new_mask_key] = (dp[i + 1][new_mask_key] + count) % MOD
+
+            # If A[i] > max_sum, handle values from max_sum+1 to A[i] as a group
+            if A[i] > max_sum:
+                # Values >= max_sum+1 can create any sum up to max_sum when combined
+                # Actually, they create the same set of new sums as value max_sum+1
+
+                # For a value v > max_sum, we can create v itself, but that's > max_sum
+                # So we only care about combinations with other sums
+
+                # Any value v > max_sum doesn't help us reach 10 if combined with sums
+                # unless we already have small sums
+
+                # Actually for v > 10: even v+0 > 10, so only combinations that were
+                # already at 0 matter
+
+                # Simpler: for v > max_sum, new_mask only changes if we can make 0
+                # (which we always can - the empty set)
+
+                # Actually let me reconsider: with value v >= 11:
+                # - Starting from sum 0 (empty set), we can reach sum v >= 11
+                # - Starting from other sums s <= 10, we reach s+v > 10
+                # So no new sums <= 10 are created except those already achievable
+
+                # So the new mask is the same as current mask
+                # Therefore: add (A[i] - max_sum) outcomes with same mask
+
+                num_large_values = A[i] - max_sum
+                if current_mask not in dp[i + 1]:
+                    dp[i + 1][current_mask] = 0
+                dp[i + 1][current_mask] = (dp[i + 1][current_mask] + count * num_large_values) % MOD
+
+    # Count outcomes where bit 10 is set (sum of 10 is achievable)
+    valid_outcomes = 0
+    target_mask = 1 << max_sum  # bit 10 set
+
+    for mask, count in dp[N].items():
+        if mask & target_mask:
+            valid_outcomes = (valid_outcomes + count) % MOD
+
+    # Probability = valid_outcomes / total_outcomes
+    # Return valid_outcomes * modinv(total_outcomes) mod MOD
+
+    result = (valid_outcomes * modinv(total_outcomes)) % MOD
+    print(result)
+
+solve()
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: 4
+1 7 2 9
+
+(stdin test) PASSED public_test_1 (test time: 0.01s)
+Input: 7
+1 10 100 1000 10000 100000 1000000
+
+(stdin test) PASSED public_test_2 (test time: 0.01s)
+Input: 1
+9
+
+(stdin test) PASSED private_test_1 (test time: 0.01s)
+Input: 1
+1
+
+(stdin test) PASSED private_test_2 (test time: 0.01s)
+Input: 1
+10
+
+(stdin test) PASSED private_test_3 (test time: 0.01s)
+Input: 1
+1000000
+
+(stdin test) PASSED private_test_4 (test time: 0.02s)
+Input: 4
+1 2 3 4
+
+(stdin test) PASSED private_test_5 (test time: 0.01s)
+Input: 9
+1 1 1 1 1 1 1 1 1
+
+(stdin test) PASSED private_test_6 (test time: 0.01s)
+Input: 10
+1 1 1 1 1 1 1 1 1 1
+
+(stdin test) PASSED private_test_7 (test time: 0.02s)
+Input: 100
+1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 1 ...
+(stdin test) PASSED private_test_8 (test time: 0.01s)
+Input: 100
+441826 290233 993166 118892 8180 761883 292451 236859 547443 791530 924892 710711 573477 957223 ...
+(stdin test) PASSED private_test_9 (test time: 0.37s)
+Input: 100
+842631 422853 159399 314194 367067 213008 924202 421564 606309 395206 520651 834452 42863 53452 ...
+(stdin test) PASSED private_test_10 (test time: 0.41s)
+Input: 100
+726117 125394 855682 559369 329079 57621 422421 27445 575401 305099 616093 887011 78750 306612 4...
+(stdin test) PASSED private_test_11 (test time: 0.38s)
+Input: 100
+1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 1000000 ...
+(stdin test) PASSED private_test_12 (test time: 0.39s)
+=========================== short test summary info ============================
+PASSED public_test_1
+PASSED public_test_2
+PASSED private_test_1
+PASSED private_test_2
+PASSED private_test_3
+PASSED private_test_4
+PASSED private_test_5
+PASSED private_test_6
+PASSED private_test_7
+PASSED private_test_8
+PASSED private_test_9
+PASSED private_test_10
+PASSED private_test_11
+PASSED private_test_12
+=========================== 14 passed in 0.01s ===========================
+
+🎉 TASK PASSED: All 14 tests passed!

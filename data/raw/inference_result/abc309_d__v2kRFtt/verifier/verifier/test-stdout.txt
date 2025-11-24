@@ -1,0 +1,182 @@
+
+======== SOLUTION.PY CONTENT ========
+from collections import deque, defaultdict
+
+def bfs_distances(graph, start, n):
+    """Compute distances from start vertex to all reachable vertices"""
+    distances = [-1] * (n + 1)
+    distances[start] = 0
+    queue = deque([start])
+
+    while queue:
+        u = queue.popleft()
+        for v in graph[u]:
+            if distances[v] == -1:
+                distances[v] = distances[u] + 1
+                queue.append(v)
+
+    return distances
+
+def solve():
+    N1, N2, M = map(int, input().split())
+
+    graph = defaultdict(list)
+
+    for _ in range(M):
+        a, b = map(int, input().split())
+        graph[a].append(b)
+        graph[b].append(a)
+
+    # BFS from vertex 1 to find distances to all vertices in component 1
+    dist_from_1 = bfs_distances(graph, 1, N1 + N2)
+
+    # BFS from vertex N1+N2 to find distances to all vertices in component 2
+    dist_from_last = bfs_distances(graph, N1 + N2, N1 + N2)
+
+    max_distance = 0
+
+    # Try all possible edges between component 1 and component 2
+    for u in range(1, N1 + 1):
+        for v in range(N1 + 1, N1 + N2 + 1):
+            # Distance from 1 to u
+            dist_1_to_u = dist_from_1[u]
+            # Distance from v to N1+N2
+            dist_v_to_last = dist_from_last[v]
+
+            if dist_1_to_u != -1 and dist_v_to_last != -1:
+                # Path: 1 -> ... -> u -> v -> ... -> N1+N2
+                # The edge u-v has length 1
+                path_length = dist_1_to_u + 1 + dist_v_to_last
+                max_distance = max(max_distance, path_length)
+
+    print(max_distance)
+
+solve()
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: 3 4 6
+1 2
+2 3
+4 5
+4 6
+1 3
+6 7
+
+(stdin test) PASSED public_test_1 (test time: 0.01s)
+Input: 7 5 20
+10 11
+4 5
+10 12
+1 2
+1 5
+5 6
+2 4
+3 5
+9 10
+2 5
+1 4
+11 12
+9 12
+8 9
+5 7
+3 7
+3 6
+3 4
+8 12
+9 11
+
+(stdin test) PASSED public_test_2 (test time: 0.02s)
+Input: 1 1 0
+
+(stdin test) PASSED private_test_1 (test time: 0.02s)
+Input: 1 2 1
+2 3
+
+(stdin test) PASSED private_test_2 (test time: 0.02s)
+Input: 2 2 2
+3 4
+1 2
+
+(stdin test) PASSED private_test_3 (test time: 0.02s)
+Input: 3 1 3
+2 3
+1 3
+1 2
+
+(stdin test) PASSED private_test_4 (test time: 0.02s)
+Input: 2 3 4
+4 5
+3 4
+1 2
+3 5
+
+(stdin test) PASSED private_test_5 (test time: 0.01s)
+Input: 3 3 5
+5 6
+4 5
+4 6
+1 3
+1 2
+
+(stdin test) PASSED private_test_6 (test time: 0.02s)
+Input: 1 4 6
+3 5
+2 5
+2 3
+2 4
+4 5
+3 4
+
+(stdin test) PASSED private_test_7 (test time: 0.02s)
+Input: 3 3 6
+5 6
+4 5
+4 6
+1 3
+1 2
+2 3
+
+(stdin test) PASSED private_test_8 (test time: 0.02s)
+Input: 122554 114556 284079
+174694 219321
+156563 186603
+3306 33021
+109197 122078
+151675 220464
+44689 87864
+...
+(stdin test) FAILED private_test_9: Subprocess timed out after 30 seconds
+Input: 149999 149999 299998
+58462 99910
+99737 105979
+53879 70647
+6423 125620
+215975 228740
+247862 284607
+10...
+(stdin test) FAILED private_test_10: Subprocess timed out after 30 seconds
+Input: 150000 150000 299998
+171482 187876
+206002 233493
+199811 281332
+175078 243617
+3277 28694
+154697 15601...
+(stdin test) FAILED private_test_11: Subprocess timed out after 30 seconds
+Input: 150000 150000 300000
+251480 270833
+85908 137008
+157736 252990
+156978 265697
+29810 92083
+11241 113680...
+(stdin test) FAILED private_test_12: Subprocess timed out after 30 seconds
+=========================== short test summary info ============================
+FAILED private_test_9
+FAILED private_test_10
+FAILED private_test_11
+FAILED private_test_12
+========================= 4 failed, 10 passed in 0.01s =========================
+
+❌ TASK FAILED: 4 out of 14 tests failed!

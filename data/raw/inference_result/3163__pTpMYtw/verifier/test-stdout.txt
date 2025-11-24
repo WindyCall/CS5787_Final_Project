@@ -1,0 +1,114 @@
+
+======== SOLUTION.PY CONTENT ========
+from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+from typing import List
+
+class Solution:
+    def sumCounts(self, nums: List[int]) -> int:
+        """
+        Calculate the sum of squares of distinct element counts for all subarrays.
+
+        Time Complexity: O(n^2) where n is the length of nums
+        Space Complexity: O(n) for the set storing distinct elements
+        """
+        total_sum = 0
+        n = len(nums)
+
+        # Iterate through all possible subarrays
+        for i in range(n):
+            distinct_elements = set()
+            for j in range(i, n):
+                # Add the current element to the set
+                distinct_elements.add(nums[j])
+
+                # Get the count of distinct elements in subarray nums[i:j+1]
+                distinct_count = len(distinct_elements)
+
+                # Add the square of the distinct count to the result
+                total_sum += distinct_count ** 2
+
+        return total_sum
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: [[1, 2, 1]]
+(functional test) PASSED public_test_1 (test time: 0.00s)
+Input: [[1, 1]]
+(functional test) PASSED public_test_2 (test time: 0.00s)
+Input: [[9]]
+(functional test) PASSED private_test_1 (test time: 0.00s)
+Input: [[3]]
+(functional test) PASSED private_test_2 (test time: 0.00s)
+Input: [[6]]
+(functional test) PASSED private_test_3 (test time: 0.00s)
+Input: [[1]]
+(functional test) PASSED private_test_4 (test time: 0.00s)
+Input: [[4]]
+(functional test) PASSED private_test_5 (test time: 0.00s)
+Input: [[92]]
+(functional test) PASSED private_test_6 (test time: 0.00s)
+Input: [[70]]
+(functional test) PASSED private_test_7 (test time: 0.00s)
+Input: [[24]]
+(functional test) PASSED private_test_8 (test time: 0.00s)
+Input: [[42, 17, 7, 3, 9, 40, 42, 45, 25, 42, 24, 24, 12, 41]]
+(functional test) PASSED private_test_9 (test time: 0.00s)
+Input: [[11, 90, 96, 40, 45, 15, 74, 44, 50, 51, 88, 49, 81, 62, 43, 60, 17, 46, 78, 77, 31, 32, 88, 49, 70, 55, 72, 38, 55, 83, 89, 85, 46, 76, 89, 39, 85, 66, 48, 94, 11, 30, 25, 72, 40, 79, 7, 50, 13, 78, 90, 91, 9, 92, 11, 32, 77, 48, 95, 49, 65, 34, 82, 15, 32, 33, 61, 45, 5, 30, 76, 96, 13, 53, 80, 16, 62, 26, 69, 51, 64, 30, 81, 49, 87, 94, 14, 3, 83, 27, 52, 80, 40, 98, 95, 5, 65, 82, 54, 91]]
+(functional test) PASSED private_test_10 (test time: 0.00s)
+Input: [[100, 89, 52, 89, 61, 56, 37, 45, 54, 44, 79, 96, 78, 69, 14, 17, 71, 54, 39, 6, 28, 88, 63, 65, 44, 40, 77, 84, 97, 4, 93, 36, 26, 57, 58, 57, 30, 3, 67, 40, 41, 90, 94, 87, 99, 24, 93, 72, 30, 75, 88, 78, 31, 53, 20, 46, 68, 43, 8, 54, 31, 38, 69, 38, 95, 65, 27, 29, 67, 82, 24, 25, 12, 68, 26, 61, 24, 23, 24, 80, 7, 37, 63, 78, 42, 95, 52, 46, 86, 14, 80, 80, 20, 38, 13, 44, 55, 39, 12, 50]]
+(functional test) PASSED private_test_11 (test time: 0.00s)
+Input: [[11, 36, 81, 58, 17, 41, 39, 24, 70, 34, 58, 25, 76, 44, 66, 60, 78, 80, 72, 93, 75, 70, 70, 62, 38, 70, 25, 74, 18, 96, 53, 41, 41, 27, 32, 23, 98, 57, 50, 59, 64, 47, 15, 64, 96, 34, 82, 2, 10, 19, 36, 16, 86, 61, 34, 87, 48, 80, 81, 40, 3, 81, 70, 36, 10, 78, 89, 70, 84, 54, 97, 47, 84, 79, 100, 98, 70, 79, 37, 30, 88, 67, 58, 56, 81, 10, 62, 36, 31, 32, 13, 83, 70, 97, 43, 67, 46, 53, 51, 13]]
+(functional test) PASSED private_test_12 (test time: 0.00s)
+=========================== short test summary info ============================
+PASSED public_test_1
+PASSED public_test_2
+PASSED private_test_1
+PASSED private_test_2
+PASSED private_test_3
+PASSED private_test_4
+PASSED private_test_5
+PASSED private_test_6
+PASSED private_test_7
+PASSED private_test_8
+PASSED private_test_9
+PASSED private_test_10
+PASSED private_test_11
+PASSED private_test_12
+=========================== 14 passed in 0.01s ===========================
+
+🎉 TASK PASSED: All 14 tests passed!

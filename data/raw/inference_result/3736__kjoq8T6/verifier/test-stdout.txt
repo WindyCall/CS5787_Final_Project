@@ -1,0 +1,170 @@
+
+======== SOLUTION.PY CONTENT ========
+from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def findValidPair(self, s: str) -> str:
+        # Count the frequency of each digit
+        digit_count = {}
+        for digit in s:
+            digit_count[digit] = digit_count.get(digit, 0) + 1
+
+        # Iterate through adjacent pairs
+        for i in range(len(s) - 1):
+            first_digit = s[i]
+            second_digit = s[i + 1]
+
+            # Check if it's a valid pair
+            if first_digit != second_digit:
+                first_value = int(first_digit)
+                second_value = int(second_digit)
+
+                # Check if each digit appears exactly as many times as its numeric value
+                if (digit_count.get(first_digit, 0) == first_value and
+                    digit_count.get(second_digit, 0) == second_value):
+                    return first_digit + second_digit
+
+        return ""
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: ['2523533']
+(functional test) PASSED public_test_1 (test time: 0.00s)
+Input: ['221']
+(functional test) PASSED public_test_2 (test time: 0.00s)
+Input: ['22']
+(functional test) PASSED public_test_3 (test time: 0.00s)
+Input: ['77']
+(functional test) PASSED private_test_1 (test time: 0.00s)
+Input: ['99']
+(functional test) PASSED private_test_2 (test time: 0.00s)
+Input: ['17']
+(functional test) PASSED private_test_3 (test time: 0.00s)
+Input: ['27']
+(functional test) PASSED private_test_4 (test time: 0.00s)
+Input: ['14']
+(functional test) PASSED private_test_5 (test time: 0.00s)
+Input: ['25']
+(functional test) PASSED private_test_6 (test time: 0.00s)
+Input: ['5178524216643232929544789696416729413951886458649432836465643537722232632489841764346742615645489328']
+(functional test) PASSED private_test_7 (test time: 0.00s)
+Input: ['1857875565119421797551684379145225682198943197392438433842462723472599314251845716521494943737767452']
+(functional test) PASSED private_test_8 (test time: 0.00s)
+Input: ['58']
+(functional test) PASSED private_test_9 (test time: 0.00s)
+Input: ['23']
+(functional test) PASSED private_test_10 (test time: 0.00s)
+Input: ['8133833975167288231228457611881979988683321713576842239638317479878212791896371117952819788485579313']
+(functional test) PASSED private_test_11 (test time: 0.00s)
+Input: ['69']
+(functional test) PASSED private_test_12 (test time: 0.00s)
+Input: ['33']
+(functional test) PASSED private_test_13 (test time: 0.00s)
+Input: ['38']
+(functional test) PASSED private_test_14 (test time: 0.00s)
+Input: ['8958781614777498988416882727751596688826312792811922797567979172871271469969369496727266699328895487']
+(functional test) PASSED private_test_15 (test time: 0.00s)
+Input: ['23']
+(functional test) PASSED private_test_16 (test time: 0.00s)
+Input: ['22']
+(functional test) PASSED private_test_17 (test time: 0.00s)
+Input: ['45']
+(functional test) PASSED private_test_18 (test time: 0.00s)
+Input: ['5584222438934867262794438269142969472134246897646888888743762466586599334626632226768216892516483166']
+(functional test) PASSED private_test_19 (test time: 0.00s)
+Input: ['7568439233784241115418749941113782484825135616221896912156884319465933856196549557525173326657612336']
+(functional test) PASSED private_test_20 (test time: 0.00s)
+Input: ['5466229879867875695338535922664946264687172264467928882778297848564229856248778944454775845848977285']
+(functional test) PASSED private_test_21 (test time: 0.00s)
+Input: ['4531475947966167548329457419467954364545795133294538618651661187894851997181397165145166973748653615']
+(functional test) PASSED private_test_22 (test time: 0.00s)
+Input: ['88']
+(functional test) PASSED private_test_23 (test time: 0.00s)
+Input: ['38']
+(functional test) PASSED private_test_24 (test time: 0.00s)
+Input: ['16']
+(functional test) PASSED private_test_25 (test time: 0.00s)
+Input: ['32']
+(functional test) PASSED private_test_26 (test time: 0.00s)
+Input: ['5827276768216126888153615862121458579259647669858971228371229872778688845261868187427638727156589921']
+(functional test) PASSED private_test_27 (test time: 0.00s)
+Input: ['56']
+(functional test) PASSED private_test_28 (test time: 0.00s)
+Input: ['11']
+(functional test) PASSED private_test_29 (test time: 0.00s)
+Input: ['31']
+(functional test) PASSED private_test_30 (test time: 0.00s)
+Input: ['3777579144617358851639139636186783717549572994861371991331737176938437467667982939989443749936711668']
+(functional test) PASSED private_test_31 (test time: 0.00s)
+=========================== short test summary info ============================
+PASSED public_test_1
+PASSED public_test_2
+PASSED public_test_3
+PASSED private_test_1
+PASSED private_test_2
+PASSED private_test_3
+PASSED private_test_4
+PASSED private_test_5
+PASSED private_test_6
+PASSED private_test_7
+PASSED private_test_8
+PASSED private_test_9
+PASSED private_test_10
+PASSED private_test_11
+PASSED private_test_12
+PASSED private_test_13
+PASSED private_test_14
+PASSED private_test_15
+PASSED private_test_16
+PASSED private_test_17
+PASSED private_test_18
+PASSED private_test_19
+PASSED private_test_20
+PASSED private_test_21
+PASSED private_test_22
+PASSED private_test_23
+PASSED private_test_24
+PASSED private_test_25
+PASSED private_test_26
+PASSED private_test_27
+PASSED private_test_28
+PASSED private_test_29
+PASSED private_test_30
+PASSED private_test_31
+=========================== 34 passed in 0.01s ===========================
+
+🎉 TASK PASSED: All 34 tests passed!

@@ -1,0 +1,139 @@
+
+======== SOLUTION.PY CONTENT ========
+from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def minimumOperations(self, num: str) -> int:
+        """
+        Find minimum deletions to make num divisible by 25.
+        A number is divisible by 25 if it ends in: 00, 25, 50, or 75, or is 0.
+        """
+        n = len(num)
+        min_ops = n  # worst case: delete everything and get 0
+
+        # Check if we can keep just a single '0' (which represents the number 0)
+        if '0' in num:
+            min_ops = n - 1  # keep one '0', delete everything else
+
+        # Valid endings for divisibility by 25
+        valid_endings = ["00", "25", "50", "75"]
+
+        for ending in valid_endings:
+            first_digit = ending[0]
+            second_digit = ending[1]
+
+            # Find the rightmost occurrence of second_digit
+            second_pos = -1
+            for i in range(n - 1, -1, -1):
+                if num[i] == second_digit:
+                    second_pos = i
+                    break
+
+            if second_pos == -1:
+                continue  # Can't find the second digit
+
+            # Find the rightmost occurrence of first_digit before second_pos
+            first_pos = -1
+            for i in range(second_pos - 1, -1, -1):
+                if num[i] == first_digit:
+                    first_pos = i
+                    break
+
+            if first_pos == -1:
+                continue  # Can't find the first digit before second digit
+
+            # We keep digits from 0 to first_pos, and digits at second_pos
+            # We delete: all digits between first_pos+1 and second_pos-1, and all digits after second_pos
+            # Number of deletions = (second_pos - first_pos - 1) + (n - second_pos - 1)
+            #                     = second_pos - first_pos - 1 + n - second_pos - 1
+            #                     = n - first_pos - 2
+            ops = n - first_pos - 2
+            min_ops = min(min_ops, ops)
+
+        return min_ops
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: ['2245047']
+(functional test) PASSED public_test_1 (test time: 0.00s)
+Input: ['2908305']
+(functional test) PASSED public_test_2 (test time: 0.00s)
+Input: ['10']
+(functional test) PASSED public_test_3 (test time: 0.00s)
+Input: ['7']
+(functional test) PASSED private_test_1 (test time: 0.00s)
+Input: ['3']
+(functional test) PASSED private_test_2 (test time: 0.00s)
+Input: ['2']
+(functional test) PASSED private_test_3 (test time: 0.00s)
+Input: ['1']
+(functional test) PASSED private_test_4 (test time: 0.00s)
+Input: ['8']
+(functional test) PASSED private_test_5 (test time: 0.00s)
+Input: ['9']
+(functional test) PASSED private_test_6 (test time: 0.00s)
+Input: ['79']
+(functional test) PASSED private_test_7 (test time: 0.00s)
+Input: ['88']
+(functional test) PASSED private_test_8 (test time: 0.00s)
+Input: ['77']
+(functional test) PASSED private_test_9 (test time: 0.00s)
+Input: ['7554470590556903051297132517035375502367663656796945212537429745343064380943553878266550484832142198']
+(functional test) PASSED private_test_10 (test time: 0.00s)
+Input: ['7875873129614258312273585770775876042480886223998504595302026701597763173145121202796783246955435513']
+(functional test) PASSED private_test_11 (test time: 0.00s)
+Input: ['10000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000025']
+(functional test) PASSED private_test_12 (test time: 0.00s)
+=========================== short test summary info ============================
+PASSED public_test_1
+PASSED public_test_2
+PASSED public_test_3
+PASSED private_test_1
+PASSED private_test_2
+PASSED private_test_3
+PASSED private_test_4
+PASSED private_test_5
+PASSED private_test_6
+PASSED private_test_7
+PASSED private_test_8
+PASSED private_test_9
+PASSED private_test_10
+PASSED private_test_11
+PASSED private_test_12
+=========================== 15 passed in 0.01s ===========================
+
+🎉 TASK PASSED: All 15 tests passed!

@@ -1,0 +1,98 @@
+
+======== SOLUTION.PY CONTENT ========
+def is_good_string(s):
+    """Check if a string is a good string (alternating 0s and 1s)"""
+    if len(s) <= 1:
+        return True
+    for i in range(len(s) - 1):
+        if s[i] == s[i + 1]:
+            return False
+    return True
+
+def main():
+    n, q = map(int, input().split())
+    s = list(input().strip())
+
+    for _ in range(q):
+        query = list(map(int, input().split()))
+
+        if query[0] == 1:
+            # Type 1: Flip characters from L to R (1-indexed)
+            l, r = query[1] - 1, query[2] - 1  # Convert to 0-indexed
+            for i in range(l, r + 1):
+                s[i] = '0' if s[i] == '1' else '1'
+        else:
+            # Type 2: Check if substring from L to R is a good string
+            l, r = query[1] - 1, query[2] - 1  # Convert to 0-indexed
+            substring = ''.join(s[l:r + 1])
+            if is_good_string(substring):
+                print("Yes")
+            else:
+                print("No")
+
+if __name__ == "__main__":
+    main()
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: 5 6
+10100
+2 1 3
+2 1 5
+1 1 4
+2 1 5
+1 3 3
+2 2 4
+
+(stdin test) PASSED public_test_1 (test time: 0.01s)
+Input: 1 2
+1
+1 1 1
+2 1 1
+
+(stdin test) PASSED public_test_2 (test time: 0.01s)
+Input: 499990 2
+0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010...
+(stdin test) PASSED private_test_1 (test time: 0.09s)
+Input: 499990 2
+0000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000...
+(stdin test) PASSED private_test_2 (test time: 0.02s)
+Input: 499991 2
+1010101010101010101011101010101010101010101010100101010010110101010101010101010101010101010...
+(stdin test) PASSED private_test_3 (test time: 0.03s)
+Input: 499992 2
+0101010101010101010100101001101010101010110100101010101010101010100010101101101010010010101...
+(stdin test) PASSED private_test_4 (test time: 0.05s)
+Input: 499993 2
+1010101010101010101010101010101010101010101010101010101010101010101010101010101010101010101...
+(stdin test) PASSED private_test_5 (test time: 0.03s)
+Input: 499997 2
+0101010101010101010101010101010101010101010101010101010101010101010101010101010101010101010...
+(stdin test) PASSED private_test_6 (test time: 0.03s)
+Input: 499999 2
+1010101010101001000101010101011010101010110101010100101010010101010101010101010101010111100...
+(stdin test) PASSED private_test_7 (test time: 0.03s)
+Input: 500000 500000
+01010101010101010101010101010101010101010101010101010101010101010101010101010101010101...
+(stdin test) FAILED private_test_8: Subprocess timed out after 30 seconds
+Input: 500000 500000
+01010101010101010101010101010101010101010101010101010101010101010101010101010101010101...
+(stdin test) FAILED private_test_9: Subprocess timed out after 30 seconds
+Input: 499995 499998
+11111111111111111111111111111111111111111111111111111111111111111111111111111111111111...
+(stdin test) FAILED private_test_10: Subprocess timed out after 30 seconds
+Input: 499995 499998
+11111111111111111111111111111111111111111111111111111111111111111111111111111111111111...
+(stdin test) FAILED private_test_11: Subprocess timed out after 30 seconds
+Input: 499995 499998
+10101010101010101010101010101010101010101010101010101010101010101010101010101010101010...
+(stdin test) FAILED private_test_12: Subprocess timed out after 30 seconds
+=========================== short test summary info ============================
+FAILED private_test_8
+FAILED private_test_9
+FAILED private_test_10
+FAILED private_test_11
+FAILED private_test_12
+========================= 5 failed, 9 passed in 0.01s =========================
+
+❌ TASK FAILED: 5 out of 14 tests failed!

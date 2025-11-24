@@ -1,0 +1,506 @@
+
+======== SOLUTION.PY CONTENT ========
+def solve():
+    from itertools import combinations
+
+    N, M = map(int, input().split())
+    testimonies = []
+    for _ in range(M):
+        a, b, c = map(int, input().split())
+        testimonies.append((a-1, b-1, c))  # 0-indexed
+
+    def is_consistent(confused_set):
+        """Check if a set of confused villagers leads to consistent assignments."""
+        # For a given confusion set, we need to check if there's a valid honest/liar assignment
+        # We'll use BFS/DFS with implications
+
+        # Build implication graph
+        # confused_set is a set of indices who are confused
+
+        # Try all 2^N possible assignments for honest/liar
+        for assignment in range(1 << N):
+            valid = True
+            for a, b, c in testimonies:
+                # a testifies about b
+                # c=0: a says b is honest, c=1: a says b is liar
+
+                a_honest = (assignment >> a) & 1
+                b_honest = (assignment >> b) & 1
+                a_confused = a in confused_set
+
+                # What should a's testimony be based on actual status and confusion?
+                if a_confused:
+                    # Confused: tells opposite
+                    # If a is honest+confused, tells lies
+                    # If a is liar+confused, tells truth
+                    if a_honest:
+                        # honest+confused tells lies, so testimony is opposite of truth
+                        a_says_honest = 1 - b_honest
+                    else:
+                        # liar+confused tells truth
+                        a_says_honest = b_honest
+                else:
+                    # Not confused
+                    if a_honest:
+                        # honest tells truth
+                        a_says_honest = b_honest
+                    else:
+                        # liar tells lies
+                        a_says_honest = 1 - b_honest
+
+                # Check if testimony matches
+                if c == 0:
+                    # a says b is honest
+                    if a_says_honest != 1:
+                        valid = False
+                        break
+                else:
+                    # a says b is liar
+                    if a_says_honest != 0:
+                        valid = False
+                        break
+
+            if valid:
+                return True
+
+        return False
+
+    # Try all possible confusion sets
+    # Start with smaller sets to find one quickly
+    for size in range(N + 1):
+        for confused_indices in combinations(range(N), size):
+            confused_set = set(confused_indices)
+            if is_consistent(confused_set):
+                result = ''.join('1' if i in confused_set else '0' for i in range(N))
+                print(result)
+                return
+
+    print(-1)
+
+solve()
+
+======== END OF SOLUTION.PY CONTENT ========
+
+Input: 3 3
+1 2 1
+1 3 0
+2 3 0
+(stdin test) PASSED public_test_1 (test time: 0.07s)
+Input: 3 6
+1 2 1
+1 3 0
+2 1 1
+2 3 0
+3 1 1
+3 2 0
+(stdin test) PASSED public_test_2 (test time: 0.01s)
+Input: 3 0
+(stdin test) PASSED public_test_3 (test time: 0.01s)
+Input: 9 19
+3 4 0
+5 1 0
+1 6 0
+2 5 0
+1 9 1
+6 2 1
+6 8 1
+4 2 0
+3 9 1
+4 8 0
+5 3 1
+9 7 1
+7 9 0
+4 7 1
+8 1 0
+5 8 0...
+(stdin test) PASSED private_test_1 (test time: 0.38s)
+Input: 4 9
+2 4 0
+2 1 1
+3 4 0
+4 3 1
+3 1 1
+1 4 1
+2 3 1
+3 2 1
+1 3 0
+(stdin test) PASSED private_test_2 (test time: 0.01s)
+Input: 5 5
+2 1 1
+1 5 1
+5 4 1
+4 3 1
+3 2 1
+(stdin test) FAILED private_test_3: Line 1 mismatch. Expected '00001', got '10000' (test time: 0.02s)
+Input: 5 11
+1 2 1
+2 1 0
+4 3 0
+3 1 0
+5 1 1
+5 3 1
+3 2 1
+2 5 1
+4 1 1
+3 5 0
+5 2 0
+(stdin test) PASSED private_test_4 (test time: 0.07s)
+Input: 55 1096
+49 23 0
+47 53 0
+15 39 1
+7 35 0
+42 2 0
+29 32 0
+18 44 1
+8 9 0
+48 45 0
+48 54 1
+8 18 0
+30 18 1
+6...
+(stdin test) FAILED private_test_5: Subprocess timed out after 30 seconds
+Input: 93 923
+79 24 1
+80 1 1
+59 55 1
+36 62 1
+7 26 1
+15 39 0
+47 62 0
+36 71 1
+71 47 1
+29 41 0
+71 56 0
+17 85 1...
+(stdin test) FAILED private_test_6: Subprocess timed out after 30 seconds
+Input: 3 0
+(stdin test) PASSED private_test_7 (test time: 0.01s)
+Input: 5 11
+3 4 1
+1 5 1
+3 1 1
+4 3 0
+4 1 0
+5 1 1
+1 4 1
+4 2 0
+5 3 0
+2 5 1
+1 3 1
+(stdin test) PASSED private_test_8 (test time: 0.01s)
+Input: 5848 187695
+2518 5817 1
+3702 1137 0
+651 4805 0
+4691 2405 0
+1518 4390 0
+3856 4987 1
+4970 285 0
+1673 4...
+(stdin test) FAILED private_test_9: Subprocess timed out after 30 seconds
+Input: 5955 185355
+1281 5201 1
+5173 2149 0
+1799 468 0
+4820 4505 0
+3760 4525 1
+3980 2579 1
+4978 1681 0
+2390 ...
+(stdin test) FAILED private_test_10: Subprocess timed out after 30 seconds
+Input: 9249 188341
+4511 3750 1
+1425 8363 0
+7968 6405 1
+8307 3619 1
+4291 4915 0
+2646 2030 0
+4693 1697 0
+2164...
+(stdin test) FAILED private_test_11: Subprocess timed out after 30 seconds
+Input: 7 7
+5 1 1
+1 3 1
+3 7 1
+7 6 1
+6 4 1
+4 2 1
+2 5 1
+(stdin test) FAILED private_test_12: Line 1 mismatch. Expected '0000001', got '1000000' (test time: 0.07s)
+Input: 7 7
+6 2 0
+2 7 0
+3 1 1
+6 1 0
+4 2 0
+5 3 1
+7 5 1
+(stdin test) FAILED private_test_13: Line 1 mismatch. Expected '0000001', got '0100000' (test time: 0.01s)
+Input: 10 17
+9 10 1
+4 10 0
+6 5 0
+5 8 0
+6 1 1
+1 9 0
+1 8 0
+6 7 0
+5 10 0
+9 8 1
+1 10 0
+10 3 0
+10 9 0
+5 6 1
+3 2 ...
+(stdin test) PASSED private_test_14 (test time: 0.19s)
+Input: 89 525
+49 23 0
+35 88 1
+59 55 1
+48 36 1
+42 2 0
+28 67 1
+47 80 0
+40 41 1
+71 56 1
+60 19 1
+82 65 1
+40 77 ...
+(stdin test) FAILED private_test_15: Subprocess timed out after 30 seconds
+Input: 5 0
+(stdin test) PASSED private_test_16 (test time: 0.01s)
+Input: 7 7
+6 1 1
+1 5 1
+5 7 1
+7 4 1
+4 3 1
+3 2 1
+2 6 1
+(stdin test) FAILED private_test_17: Line 1 mismatch. Expected '0000001', got '1000000' (test time: 0.06s)
+Input: 8 25
+5 7 0
+8 3 1
+2 5 0
+1 3 0
+2 8 0
+7 4 1
+7 1 1
+6 5 1
+4 2 0
+4 5 0
+5 6 1
+4 8 1
+5 3 0
+8 5 1
+2 7 0
+1 5 1...
+(stdin test) PASSED private_test_18 (test time: 0.11s)
+Input: 7 7
+6 4 1
+4 7 1
+7 5 1
+5 3 1
+3 1 1
+1 2 1
+2 6 1
+(stdin test) FAILED private_test_19: Line 1 mismatch. Expected '0000001', got '1000000' (test time: 0.01s)
+Input: 5365 198779
+3702 1137 0
+4882 1219 1
+1122 4390 0
+3804 4797 1
+4035 788 1
+4286 4571 0
+2887 5125 0
+335 3...
+(stdin test) FAILED private_test_20: Subprocess timed out after 30 seconds
+Input: 8 24
+3 4 0
+3 1 0
+3 7 1
+5 4 1
+8 3 1
+8 6 1
+1 3 1
+2 8 1
+7 4 0
+4 2 1
+4 5 0
+2 4 0
+2 1 0
+2 7 1
+1 5 0
+7 3 1...
+(stdin test) PASSED private_test_21 (test time: 0.09s)
+Input: 5 5
+3 1 1
+1 5 1
+5 4 1
+4 2 1
+2 3 1
+(stdin test) FAILED private_test_22: Line 1 mismatch. Expected '00001', got '10000' (test time: 0.01s)
+Input: 11 11
+3 6 1
+6 9 1
+9 4 1
+4 7 1
+7 11 1
+11 2 1
+2 8 1
+8 1 1
+1 5 1
+5 10 1
+10 3 1
+(stdin test) FAILED private_test_23: Line 1 mismatch. Expected '00000000001', got '10000000000' (test time: 0.07s)
+Input: 74 1086
+55 57 1
+38 23 0
+49 23 1
+15 21 1
+59 55 1
+27 4 1
+48 36 0
+29 32 0
+18 44 1
+48 45 1
+29 41 0
+9 72 ...
+(stdin test) FAILED private_test_24: Subprocess timed out after 30 seconds
+Input: 6 17
+6 2 0
+1 2 1
+2 1 1
+6 5 1
+1 5 1
+3 1 1
+4 1 0
+5 4 0
+6 4 0
+4 5 0
+2 5 1
+2 6 0
+3 6 0
+3 2 1
+6 3 0
+1 3 0...
+(stdin test) PASSED private_test_25 (test time: 0.07s)
+Input: 7 12
+6 5 0
+4 1 1
+5 1 0
+6 4 0
+1 4 0
+2 3 0
+6 7 1
+7 6 0
+2 6 1
+2 5 1
+1 3 1
+5 2 1
+(stdin test) PASSED private_test_26 (test time: 0.02s)
+Input: 7 7
+2 3 1
+3 7 1
+7 6 1
+6 5 1
+5 1 1
+1 4 1
+4 2 1
+(stdin test) FAILED private_test_27: Line 1 mismatch. Expected '0000001', got '1000000' (test time: 0.01s)
+Input: 4 11
+1 3 0
+2 4 1
+1 2 0
+3 4 1
+4 3 1
+3 1 0
+4 2 0
+1 4 1
+2 3 0
+3 2 0
+4 1 0
+(stdin test) PASSED private_test_28 (test time: 0.07s)
+Input: 5 5
+5 4 1
+4 2 1
+2 3 1
+3 1 1
+1 5 1
+(stdin test) FAILED private_test_29: Line 1 mismatch. Expected '00001', got '10000' (test time: 0.01s)
+Input: 57 1319
+50 6 1
+19 18 1
+11 14 0
+53 16 1
+44 47 0
+56 21 0
+2 50 1
+46 13 0
+38 9 1
+7 21 1
+47 57 0
+18 30 1
+...
+(stdin test) FAILED private_test_30: Subprocess timed out after 30 seconds
+Input: 2 2
+1 2 0
+2 1 1
+(stdin test) FAILED private_test_31: Line 1 mismatch. Expected '01', got '10' (test time: 0.01s)
+Input: 74 50
+7 17 1
+16 26 0
+63 19 0
+58 7 0
+24 45 0
+30 61 1
+14 74 0
+23 28 0
+27 10 1
+45 22 0
+12 25 0
+68 54 0
+...
+(stdin test) FAILED private_test_32: Subprocess timed out after 30 seconds
+Input: 5809 195771
+968 540 1
+2888 4596 1
+128 2778 1
+2497 4940 0
+1522 1880 1
+5138 3094 1
+4921 5311 1
+2770 37...
+(stdin test) FAILED private_test_33: Subprocess timed out after 30 seconds
+Input: 5 1
+1 3 1
+(stdin test) PASSED private_test_34 (test time: 0.01s)
+Input: 53 1220
+15 21 1
+7 17 0
+47 53 1
+15 30 0
+7 26 0
+18 26 0
+15 39 0
+50 6 1
+7 35 1
+18 35 0
+19 9 0
+30 9 1
+48...
+(stdin test) FAILED private_test_35: Subprocess timed out after 30 seconds
+Input: 77 1678
+67 59 0
+59 55 1
+70 64 1
+29 32 1
+8 9 0
+48 45 1
+60 19 1
+11 14 1
+52 15 0
+63 61 0
+21 64 1
+40 77 ...
