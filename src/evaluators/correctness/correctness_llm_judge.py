@@ -340,8 +340,8 @@ class CorrectnessLLMJudge:
 def main():
     """Main entry point for full evaluation."""
 
-    tasks_json = "./outputs/extracted/extracted_tasks_with_correctness_prompts.json"
-    output_file = "./outputs/results/correctness_llm_judge_results.json"
+    tasks_json = "./outputs/extracted/correctness/extracted_tasks_with_correctness_prompts.json"
+    output_file = "./outputs/results/correctness/correctness_llm_judge_results.json"
     model = "gpt-4o-mini"
 
     print("="*80)

@@ -166,7 +166,7 @@ def add_multi_aspect_prompts_to_tasks(input_file: str, output_file: str):
 def main():
     """Main entry point."""
     input_file = "./outputs/extracted/extracted_tasks.json"
-    output_file = "./outputs/extracted/extracted_tasks_with_multi_aspect_prompts.json"
+    output_file = "./outputs/extracted/multi_aspect/extracted_tasks_with_multi_aspect_prompts.json"
 
     print("="*80)
     print("ADDING MULTI-ASPECT EVALUATION PROMPTS TO EXTRACTED TASKS")

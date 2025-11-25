@@ -140,7 +140,7 @@ def add_correctness_prompts_to_tasks(input_file: str, output_file: str):
 def main():
     """Main entry point."""
     input_file = "./outputs/extracted/extracted_tasks.json"
-    output_file = "./outputs/extracted/extracted_tasks_with_correctness_prompts.json"
+    output_file = "./outputs/extracted/correctness/extracted_tasks_with_correctness_prompts.json"
 
     print("="*80)
     print("ADDING CORRECTNESS EVALUATION PROMPTS TO EXTRACTED TASKS")

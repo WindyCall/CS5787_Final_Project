@@ -391,8 +391,8 @@ class MultiAspectLLMJudge:
 def main():
     """Main entry point for full evaluation."""
 
-    tasks_json = "./outputs/extracted/extracted_tasks_with_multi_aspect_prompts.json"
-    output_file = "./outputs/results/multi_aspect_llm_judge_results.json"
+    tasks_json = "./outputs/extracted/multi_aspect/extracted_tasks_with_multi_aspect_prompts.json"
+    output_file = "./outputs/results/multi_aspect/multi_aspect_llm_judge_results.json"
     model = "gpt-4o-mini"
 
     print("="*80)
