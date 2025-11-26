@@ -1,0 +1,347 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analysis - abc310_b__z8gbe5f__6MebJsY</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; overflow: hidden; }
+        .layout { display: flex; flex: 1; overflow: hidden; position: relative; }
+        .sidebar { width: var(--sidebar-width, 400px); min-width: 280px; max-width: 760px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+        .resize-handle { width: 6px; cursor: col-resize; background: #e2e8f0; flex-shrink: 0; transition: background 0.2s ease; }
+        .resize-handle:hover, body.resizing .resize-handle { background: #cbd5e1; }
+        body.resizing { cursor: col-resize; user-select: none; }
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f1f5f9; }
+        .tab-nav { display: flex; background: white; border-bottom: 1px solid #e2e8f0; padding: 0 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); z-index: 10; }
+        .tab-btn { padding: 16px 12px; margin-right: 24px; font-weight: 600; font-size: 0.95rem; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #1e293b; background: #f8fafc; }
+        .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; background: transparent; }
+        .tab-content { display: none; height: 100%; overflow-y: auto; padding: 24px; padding-bottom: 100px; }
+        .tab-content.active { display: block; }
+        .trajectory-step { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step-header { padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; border-radius: 8px 8px 0 0; }
+        pre { margin: 0; }
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md z-20 flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold text-sm">&larr; Back to List</a>
+            <div class="h-6 w-px bg-slate-700 mx-2"></div>
+            <h1 class="font-bold text-lg truncate w-96">Task <span class="font-mono text-sm font-normal text-slate-400 ml-2">abc310_b__z8gbe5f__6MebJsY</span></h1>
+        </div>
+        <div class="flex gap-6 text-sm">
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-med text-lg">0.90</span></div>
+        </div>
+    </header>
+    <div class="layout" id="layout-shell">
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Problem Statement</h3>
+                <div id="problem-content" class="prose prose-sm prose-slate mb-8 max-w-none text-slate-700">AtCoder Shop has N products.
+The price of the i-th product (1≤ i≤ N) is P _ i.
+The i-th product (1≤ i≤ N) has C_i functions. The j-th function (1≤ j≤ C _ i) of the i-th product (1≤ i≤ N) is represented as an integer F _ {i,j} between 1 and M, inclusive.
+Takahashi wonders whether there is a product that is strictly superior to another.
+If there are i and j (1≤ i,j≤ N) such that the i-th and j-th products satisfy all of the following conditions, print Yes; otherwise, print No. - P _ i≥ P _ j.
+- The j-th product has all functions of the i-th product.
+- P _ i\gt P _ j, or the j-th product has one or more functions that the i-th product lacks. Input The input is given from Standard Input in the following format:
+N M
+P _ 1 C _ 1 F _ {1,1} F _ {1,2} … F _ {1,C _ 1}
+P _ 2 C _ 2 F _ {2,1} F _ {2,2} … F _ {2,C _ 2}
+\vdots
+P _ N C _ N F _ {N,1} F _ {N,2} … F _ {N,C _ N} Output Print the answer in a single line. Constraints - 2≤ N≤100
+- 1≤ M≤100
+- 1≤ P _ i≤$10^5$\ (1≤ i≤ N)
+- 1≤ C _ i≤ M\ (1≤ i≤ N)
+- 1≤ F _ {i,1}\lt F _ {i,2}\lt·s\lt F _ {i,C _ i}≤ M\ (1≤ i≤ N)
+- All input values are integers. Sample Input 1 5 6
+10000 2 1 3
+15000 3 1 2 4
+30000 3 1 3 5
+35000 2 1 5
+100000 6 1 2 3 4 5 6 Sample Output 1 Yes (i,j)=(4,3) satisfies all of the conditions.
+No other pair satisfies them. For instance, for (i,j)=(4,5), the j-th product has all functions of the i-th one, but P _ i\lt P _ j, so it is not strictly superior. Sample Input 2 4 4
+3 1 1
+3 1 2
+3 1 2
+4 2 2 3 Sample Output 2 No Multiple products may have the same price and functions. Sample Input 3 20 10
+72036 3 3 4 9
+7716 4 1 2 3 6
+54093 5 1 6 7 8 10
+25517 7 3 4 5 6 7 9 10
+96930 8 2 3 4 6 7 8 9 10
+47774 6 2 4 5 6 7 9
+36959 5 1 3 4 5 8
+46622 7 1 2 3 5 6 8 10
+34315 9 1 3 4 5 6 7 8 9 10
+54129 7 1 3 4 6 7 8 9
+4274 5 2 4 7 9 10
+16578 5 2 3 6 7 9
+61809 4 1 2 4 5
+1659 5 3 5 6 9 10
+59183 5 1 2 3 4 9
+22186 4 3 5 6 8
+98282 4 1 4 7 10
+72865 8 1 2 3 4 6 8 9 10
+33796 6 1 3 5 7 9 10
+74670 4 1 2 6 8 Sample Output 3 Yes</div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Model Solution</h3>
+                <div class="bg-slate-800 rounded-lg overflow-hidden text-xs shadow-inner"><pre><code class="language-python">n, m = map(int, input().split())
+
+products = []
+for i in range(n):
+    line = list(map(int, input().split()))
+    price = line[0]
+    count = line[1]
+    functions = set(line[2:2+count])
+    products.append((price, functions))
+
+# Check if there exists a pair (i, j) where i is strictly superior to j
+found = False
+
+for i in range(n):
+    if found:
+        break
+    for j in range(n):
+        if i == j:
+            continue
+
+        price_i, functions_i = products[i]
+        price_j, functions_j = products[j]
+
+        # Check condition 1: P_i &gt;= P_j
+        if price_i &lt; price_j:
+            continue
+
+        # Check condition 2: j-th product has all functions of i-th product
+        if not functions_i.issubset(functions_j):
+            continue
+
+        # Check condition 3: P_i &gt; P_j OR j-th product has functions i doesn&#x27;t have
+        if price_i &gt; price_j or len(functions_j - functions_i) &gt; 0:
+            found = True
+            break
+
+print(&quot;Yes&quot; if found else &quot;No&quot;)</code></pre></div>
+            </div>
+        </aside>
+        <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
+        <main class="main">
+            <div class="tab-nav">
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🕵️</span> Agent Judge <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full ml-2">Trajectory</span></button>
+                <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full ml-2">Reasoning</span></button>
+                <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Test <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Logs</span></button>
+            </div>
+            <div id="tab-agent" class="tab-content active">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
+                        <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: openhands</span></div>
+                        <p class="text-slate-700 leading-relaxed">The algorithm correctly implements the logic to determine if one product is strictly superior to another based on the given conditions. It efficiently checks all pairs of products and handles the constraints well, but it could be slightly optimized by breaking out of the loop earlier when a superior product is found.</p>
+                    </div>
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3></div>
+                    
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 1</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Write</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I'll start by understanding the problem and then create a solution.
+
+## Understanding the Problem
+
+We need to find if there exists a pair of products (i, j) where:
+1. Product i's price >= Product j's price
+2. Product j has all the functions that product i has
+3. Either:
+   - Product i's price > Product j's price, OR
+   - Product j has at least one function that product i doesn't have
+
+In other words, product i is "strictly superior" to product j if j has everything i has (and possibly more), but i is more expensive (or equally expensive but with fewer features).
+
+Let me create a solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/solution.py', 'content': 'n, m = map(int, input().split())\n\nproducts = []\nfor i in range(n):\n    line = list(map(int, input().split()))\n    price = line[0]\n    count = line[1]\n    functions = set(line[2:2+count])\n    products.append((price, functions))\n\n# Check if there exists a pair (i, j) where i is strictly superior to j\nfound = False\n\nfor i in range(n):\n    if found:\n        break\n    for j in range(n):\n        if i == j:\n            continue\n\n        price_i, functions_i = products[i]\n        price_j, functions_j = products[j]\n\n        # Check condition 1: P_i >= P_j\n        if price_i < price_j:\n            continue\n\n        # Check condition 2: j-th product has all functions of i-th product\n        if not functions_i.issubset(functions_j):\n            continue\n\n        # Check condition 3: P_i > P_j OR j-th product has functions i doesn\'t have\n        if price_i > price_j or len(functions_j - functions_i) > 0:\n            found = True\n            break\n\nprint("Yes" if found else "No")\n'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">File created successfully at: /app/solution.py</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 2</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me test it with the sample inputs:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'python check_solution.py', 'description': 'Run the check_solution script to test with sample cases'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">🧪 Running sample test cases to check your solution...
+
+Running 3 sample test case(s):
+
+✅ PASSED sample_test_1
+
+✅ PASSED sample_test_2
+
+✅ PASSED sample_test_3
+
+==================================================
+🎉 Great! All 3 sample test case(s) passed!
+Your solution looks good so far. The full test suite will run more comprehensive tests.
+==================================================</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 3</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! All sample test cases pass. Let me verify my understanding by walking through the logic with Sample 1:
+
+- Products in Sample 1:
+  1. Price: 10000, Functions: {1, 3}
+  2. Price: 15000, Functions: {1, 2, 4}
+  3. Price: 30000, Functions: {1, 3, 5}
+  4. Price: 35000, Functions: {1, 5}
+  5. Price: 100000, Functions: {1, 2, 3, 4, 5, 6}
+
+For pair (4, 3):
+- P_4 = 35000 >= P_3 = 30000 ✓
+- Product 3 has all functions of product 4: {1, 3, 5} ⊇ {1, 5} ✓
+- P_4 > P_3 (35000 > 30000) ✓
+
+So product 4 is strictly superior to product 3, and the answer is "Yes".
+
+The solution correctly:
+1. Parses the input to extract price and functions for each product
+2. Stores functions as sets for efficient subset checking
+3. Checks all pairs (i, j) to find if any pair satisfies all three conditions
+4. Returns "Yes" if found, "No" otherwise
+
+The time complexity is O(N²·M) which is acceptable given N ≤ 100 and M ≤ 100.
+</div></div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+            <div id="tab-llm" class="tab-content">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
+                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
+Reasoning: The algorithm correctly implements the logic to determine if one product is strictly superior to another based on the given conditions. It efficiently checks all pairs of products while handling the subset and price comparisons correctly. The solution adheres to the problem constraints and handles edge cases, such as products with the same price and functions, effectively.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-unit" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                         <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center"><h2 class="font-bold text-slate-700 flex items-center gap-2"><span>⚡</span> Unit Test Logs</h2><span class="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded text-sm font-bold shadow-sm">Score: 1.00</span></div>
+                        <div class="p-0"><pre class="bg-slate-900 text-green-400 p-6 font-mono text-sm overflow-x-auto min-h-[300px]">15/15 tests passed - PASSED</pre></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        hljs.highlightAll();
+        const probElem = document.getElementById('problem-content');
+        if(probElem) {
+            probElem.innerHTML = marked.parse(probElem.textContent);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([probElem]);
+            }
+        }
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        const layoutShell = document.getElementById('layout-shell');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const resizeHandle = document.getElementById('sidebar-resizer');
+        const storedSidebarWidth = sidebarPanel ? localStorage.getItem('harborSidebarWidth') : null;
+        if (storedSidebarWidth && sidebarPanel) {
+            sidebarPanel.style.width = storedSidebarWidth;
+        }
+
+        let isDraggingSidebar = false;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const applySidebarWidth = (clientX) => {
+            if (!layoutShell || !sidebarPanel) return;
+            const { left } = layoutShell.getBoundingClientRect();
+            const newWidth = clamp(clientX - left, 260, 760);
+            sidebarPanel.style.width = `${newWidth}px`;
+            localStorage.setItem('harborSidebarWidth', sidebarPanel.style.width);
+        };
+
+        const stopResizing = () => {
+            if (!isDraggingSidebar) return;
+            isDraggingSidebar = false;
+            document.body.classList.remove('resizing');
+        };
+
+        const startResize = (clientX) => {
+            if (!sidebarPanel) return;
+            isDraggingSidebar = true;
+            document.body.classList.add('resizing');
+            applySidebarWidth(clientX);
+        };
+
+        if (resizeHandle) {
+            resizeHandle.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                startResize(event.clientX);
+            });
+            resizeHandle.addEventListener('touchstart', (event) => {
+                if (event.touches.length === 1) {
+                    startResize(event.touches[0].clientX);
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDraggingSidebar) return;
+            applySidebarWidth(event.clientX);
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (!isDraggingSidebar || event.touches.length !== 1) return;
+            applySidebarWidth(event.touches[0].clientX);
+        }, { passive: false });
+        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener('touchend', stopResizing);
+    </script>
+</body>
+</html>

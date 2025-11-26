@@ -1,0 +1,354 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analysis - abc355_c__wpulxkk__hBRf6qh</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; overflow: hidden; }
+        .layout { display: flex; flex: 1; overflow: hidden; position: relative; }
+        .sidebar { width: var(--sidebar-width, 400px); min-width: 280px; max-width: 760px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+        .resize-handle { width: 6px; cursor: col-resize; background: #e2e8f0; flex-shrink: 0; transition: background 0.2s ease; }
+        .resize-handle:hover, body.resizing .resize-handle { background: #cbd5e1; }
+        body.resizing { cursor: col-resize; user-select: none; }
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f1f5f9; }
+        .tab-nav { display: flex; background: white; border-bottom: 1px solid #e2e8f0; padding: 0 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); z-index: 10; }
+        .tab-btn { padding: 16px 12px; margin-right: 24px; font-weight: 600; font-size: 0.95rem; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #1e293b; background: #f8fafc; }
+        .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; background: transparent; }
+        .tab-content { display: none; height: 100%; overflow-y: auto; padding: 24px; padding-bottom: 100px; }
+        .tab-content.active { display: block; }
+        .trajectory-step { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step-header { padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; border-radius: 8px 8px 0 0; }
+        pre { margin: 0; }
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md z-20 flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold text-sm">&larr; Back to List</a>
+            <div class="h-6 w-px bg-slate-700 mx-2"></div>
+            <h1 class="font-bold text-lg truncate w-96">Task <span class="font-mono text-sm font-normal text-slate-400 ml-2">abc355_c__wpulxkk__hBRf6qh</span></h1>
+        </div>
+        <div class="flex gap-6 text-sm">
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+        </div>
+    </header>
+    <div class="layout" id="layout-shell">
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Problem Statement</h3>
+                <div id="problem-content" class="prose prose-sm prose-slate mb-8 max-w-none text-slate-700">There is an N imes N grid, where the cell at the i-th row from the top and the j-th column from the left contains the integer N imes (i-1) + j.
+Over T turns, integers will be announced. On Turn i, the integer A_i is announced, and the cell containing A_i is marked. Determine the turn on which Bingo is achieved for the first time. If Bingo is not achieved within T turns, print -1.
+Here, achieving Bingo means satisfying at least one of the following conditions: - There exists a row in which all N cells are marked.
+- There exists a column in which all N cells are marked.
+- There exists a diagonal line (from top-left to bottom-right or from top-right to bottom-left) in which all N cells are marked. Input The input is given from Standard Input in the following format:
+N T
+A_1 A_2 … A_T Output If Bingo is achieved within T turns, print the turn number on which Bingo is achieved for the first time; otherwise, print -1. Constraints - 2 ≤ N ≤ 2 imes $10^3$
+- 1 ≤ T ≤ \min(N^2, 2 imes $10^5$)
+- 1 ≤ A_i ≤ N^2
+- A_i
+eq A_j if i
+eq j.
+- All input values are integers. Sample Input 1 3 5
+5 1 8 9 7 Sample Output 1 4 The state of the grid changes as follows. Bingo is achieved for the first time on Turn 4. Sample Input 2 3 5
+4 2 9 7 5 Sample Output 2 -1 Bingo is not achieved within five turns, so print -1. Sample Input 3 4 12
+13 9 6 5 2 7 16 14 8 3 10 11 Sample Output 3 9</div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Model Solution</h3>
+                <div class="bg-slate-800 rounded-lg overflow-hidden text-xs shadow-inner"><pre><code class="language-python">def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # Create a grid with marked cells
+    marked = [[False] * N for _ in range(N)]
+
+    # Track counts for rows, columns, and diagonals
+    row_count = [0] * N
+    col_count = [0] * N
+    diag1_count = 0  # top-left to bottom-right
+    diag2_count = 0  # top-right to bottom-left
+
+    # Process each announced number
+    for turn in range(1, T + 1):
+        num = A[turn - 1]
+
+        # Convert number to row and column (1-indexed to 0-indexed)
+        # Number is arranged as: 1 2 3 ... N, N+1 N+2 ... 2N, etc.
+        row = (num - 1) // N
+        col = (num - 1) % N
+
+        # Mark the cell
+        marked[row][col] = True
+        row_count[row] += 1
+        col_count[col] += 1
+
+        # Check diagonals
+        if row == col:
+            diag1_count += 1
+        if row + col == N - 1:
+            diag2_count += 1
+
+        # Check if Bingo is achieved
+        # Check row
+        if row_count[row] == N:
+            print(turn)
+            return
+
+        # Check column
+        if col_count[col] == N:
+            print(turn)
+            return
+
+        # Check diagonal 1 (top-left to bottom-right)
+        if diag1_count == N:
+            print(turn)
+            return
+
+        # Check diagonal 2 (top-right to bottom-left)
+        if diag2_count == N:
+            print(turn)
+            return
+
+    # No Bingo achieved
+    print(-1)
+
+solve()</code></pre></div>
+            </div>
+        </aside>
+        <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
+        <main class="main">
+            <div class="tab-nav">
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🕵️</span> Agent Judge <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full ml-2">Trajectory</span></button>
+                <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full ml-2">Reasoning</span></button>
+                <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Test <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Logs</span></button>
+            </div>
+            <div id="tab-agent" class="tab-content active">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
+                        <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: openhands</span></div>
+                        <p class="text-slate-700 leading-relaxed">The algorithm correctly implements the logic to track marked cells and checks for Bingo conditions efficiently. It handles all edge cases, including the maximum constraints, and operates within acceptable time and space complexity.</p>
+                    </div>
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3></div>
+                    
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 1</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I'll solve this Bingo problem step by step.
+
+Let me start by understanding the problem:
+1. We have an N×N grid with numbers 1 to N² arranged in row-major order
+2. Over T turns, numbers are announced and marked in the grid
+3. We need to find the first turn when Bingo is achieved (complete row, column, or diagonal)
+4. If no Bingo within T turns, return -1
+
+Let me create a plan and implement the solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and grid layout', 'status': 'completed', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with the bingo checker', 'status': 'in_progress', 'activeForm': 'Creating solution.py'}, {'content': 'Test with sample inputs using check_solution.py', 'status': 'pending', 'activeForm': 'Testing with check_solution.py'}, {'content': 'Fix any issues and iterate until all tests pass', 'status': 'pending', 'activeForm': 'Fixing and iterating'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 2</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Write</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me create the solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/solution.py', 'content': 'def solve():\n    N, T = map(int, input().split())\n    A = list(map(int, input().split()))\n\n    # Create a grid with marked cells\n    marked = [[False] * N for _ in range(N)]\n\n    # Track counts for rows, columns, and diagonals\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1_count = 0  # top-left to bottom-right\n    diag2_count = 0  # top-right to bottom-left\n\n    # Process each announced number\n    for turn in range(1, T + 1):\n        num = A[turn - 1]\n\n        # Convert number to row and column (1-indexed to 0-indexed)\n        # Number is arranged as: 1 2 3 ... N, N+1 N+2 ... 2N, etc.\n        row = (num - 1) // N\n        col = (num - 1) % N\n\n        # Mark the cell\n        marked[row][col] = True\n        row_count[row] += 1\n        col_count[col] += 1\n\n        # Check diagonals\n        if row == col:\n            diag1_count += 1\n        if row + col == N - 1:\n            diag2_count += 1\n\n        # Check if Bingo is achieved\n        # Check row\n        if row_count[row] == N:\n            print(turn)\n            return\n\n        # Check column\n        if col_count[col] == N:\n            print(turn)\n            return\n\n        # Check diagonal 1 (top-left to bottom-right)\n        if diag1_count == N:\n            print(turn)\n            return\n\n        # Check diagonal 2 (top-right to bottom-left)\n        if diag2_count == N:\n            print(turn)\n            return\n\n    # No Bingo achieved\n    print(-1)\n\nsolve()\n'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">File created successfully at: /app/solution.py</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 3</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me test it with the check_solution.py:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'python check_solution.py', 'description': 'Run tests with check_solution.py'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">🧪 Running sample test cases to check your solution...
+
+Running 3 sample test case(s):
+
+✅ PASSED sample_test_1
+
+✅ PASSED sample_test_2
+
+✅ PASSED sample_test_3
+
+==================================================
+🎉 Great! All 3 sample test case(s) passed!
+Your solution looks good so far. The full test suite will run more comprehensive tests.
+==================================================</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 4</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! Let me update the todo list:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and grid layout', 'status': 'completed', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with the bingo checker', 'status': 'completed', 'activeForm': 'Creating solution.py'}, {'content': 'Test with sample inputs using check_solution.py', 'status': 'completed', 'activeForm': 'Testing with check_solution.py'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 5</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Excellent! All sample test cases pass. Let me verify my solution logic:
+
+**Solution Overview:**
+
+1. **Grid Representation**: Numbers 1 to N² are placed in row-major order. For a number `num`, its position is:
+   - Row: `(num - 1) // N`
+   - Column: `(num - 1) % N`
+
+2. **Tracking Strategy**: Instead of storing the full grid, I use counters:
+   - `row_count[i]`: number of marked cells in row i
+   - `col_count[j]`: number of marked cells in column j
+   - `diag1_count`: marked cells on the main diagonal (top-left to bottom-right)
+   - `diag2_count`: marked cells on the anti-diagonal (top-right to bottom-left)
+
+3. **Bingo Detection**: After marking each cell, check if:
+   - Any row has all N cells marked
+   - Any column has all N cells marked
+   - Either diagonal has all N cells marked
+
+4. **Time Complexity**: O(T) with O(N) space - very efficient for the given constraints
+
+The solution correctly handles all three sample test cases:
+- **Sample 1**: Bingo on turn 4
+- **Sample 2**: No Bingo (returns -1)
+- **Sample 3**: Bingo on turn 9
+</div></div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+            <div id="tab-llm" class="tab-content">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
+                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
+Reasoning: The solution correctly implements the logic to track marked cells and counts for rows, columns, and diagonals, ensuring that it checks for Bingo conditions after each turn. It efficiently handles the constraints and edge cases, such as the maximum grid size and number of turns, without any logical flaws or bugs. The time complexity is O(T), which is optimal for the given problem constraints.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-unit" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                         <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center"><h2 class="font-bold text-slate-700 flex items-center gap-2"><span>⚡</span> Unit Test Logs</h2><span class="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded text-sm font-bold shadow-sm">Score: 1.00</span></div>
+                        <div class="p-0"><pre class="bg-slate-900 text-green-400 p-6 font-mono text-sm overflow-x-auto min-h-[300px]">28/28 tests passed - PASSED</pre></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        hljs.highlightAll();
+        const probElem = document.getElementById('problem-content');
+        if(probElem) {
+            probElem.innerHTML = marked.parse(probElem.textContent);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([probElem]);
+            }
+        }
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        const layoutShell = document.getElementById('layout-shell');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const resizeHandle = document.getElementById('sidebar-resizer');
+        const storedSidebarWidth = sidebarPanel ? localStorage.getItem('harborSidebarWidth') : null;
+        if (storedSidebarWidth && sidebarPanel) {
+            sidebarPanel.style.width = storedSidebarWidth;
+        }
+
+        let isDraggingSidebar = false;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const applySidebarWidth = (clientX) => {
+            if (!layoutShell || !sidebarPanel) return;
+            const { left } = layoutShell.getBoundingClientRect();
+            const newWidth = clamp(clientX - left, 260, 760);
+            sidebarPanel.style.width = `${newWidth}px`;
+            localStorage.setItem('harborSidebarWidth', sidebarPanel.style.width);
+        };
+
+        const stopResizing = () => {
+            if (!isDraggingSidebar) return;
+            isDraggingSidebar = false;
+            document.body.classList.remove('resizing');
+        };
+
+        const startResize = (clientX) => {
+            if (!sidebarPanel) return;
+            isDraggingSidebar = true;
+            document.body.classList.add('resizing');
+            applySidebarWidth(clientX);
+        };
+
+        if (resizeHandle) {
+            resizeHandle.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                startResize(event.clientX);
+            });
+            resizeHandle.addEventListener('touchstart', (event) => {
+                if (event.touches.length === 1) {
+                    startResize(event.touches[0].clientX);
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDraggingSidebar) return;
+            applySidebarWidth(event.clientX);
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (!isDraggingSidebar || event.touches.length !== 1) return;
+            applySidebarWidth(event.touches[0].clientX);
+        }, { passive: false });
+        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener('touchend', stopResizing);
+    </script>
+</body>
+</html>

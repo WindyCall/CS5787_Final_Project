@@ -1,0 +1,362 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analysis - 3811__qmabwyc__9QHc8mB</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; overflow: hidden; }
+        .layout { display: flex; flex: 1; overflow: hidden; position: relative; }
+        .sidebar { width: var(--sidebar-width, 400px); min-width: 280px; max-width: 760px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+        .resize-handle { width: 6px; cursor: col-resize; background: #e2e8f0; flex-shrink: 0; transition: background 0.2s ease; }
+        .resize-handle:hover, body.resizing .resize-handle { background: #cbd5e1; }
+        body.resizing { cursor: col-resize; user-select: none; }
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f1f5f9; }
+        .tab-nav { display: flex; background: white; border-bottom: 1px solid #e2e8f0; padding: 0 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); z-index: 10; }
+        .tab-btn { padding: 16px 12px; margin-right: 24px; font-weight: 600; font-size: 0.95rem; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #1e293b; background: #f8fafc; }
+        .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; background: transparent; }
+        .tab-content { display: none; height: 100%; overflow-y: auto; padding: 24px; padding-bottom: 100px; }
+        .tab-content.active { display: block; }
+        .trajectory-step { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step-header { padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; border-radius: 8px 8px 0 0; }
+        pre { margin: 0; }
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md z-20 flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold text-sm">&larr; Back to List</a>
+            <div class="h-6 w-px bg-slate-700 mx-2"></div>
+            <h1 class="font-bold text-lg truncate w-96">Task <span class="font-mono text-sm font-normal text-slate-400 ml-2">3811__qmabwyc__9QHc8mB</span></h1>
+        </div>
+        <div class="flex gap-6 text-sm">
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+        </div>
+    </header>
+    <div class="layout" id="layout-shell">
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Problem Statement</h3>
+                <div id="problem-content" class="prose prose-sm prose-slate mb-8 max-w-none text-slate-700">Given a string s, calculate its reverse degree.
+The reverse degree is calculated as follows: For each character, multiply its position in the reversed alphabet (&#x27;a&#x27; = 26, &#x27;b&#x27; = 25, ..., &#x27;z&#x27; = 1) with its position in the string (1-indexed).
+Sum these products for all characters in the string. Return the reverse degree of s. Example 1: Input: s = &quot;abc&quot;
+Output: 148
+Explanation: Letter
+Index in Reversed Alphabet
+Index in String
+Product &#x27;a&#x27;
+26
+1
+26 &#x27;b&#x27;
+25
+2
+50 &#x27;c&#x27;
+24
+3
+72 The reversed degree is 26 + 50 + 72 = 148. Example 2: Input: s = &quot;zaza&quot;
+Output: 160
+Explanation: Letter
+Index in Reversed Alphabet
+Index in String
+Product &#x27;z&#x27;
+1
+1
+1 &#x27;a&#x27;
+26
+2
+52 &#x27;z&#x27;
+1
+3
+3 &#x27;a&#x27;
+26
+4
+104 The reverse degree is 1 + 52 + 3 + 104 = 160. Constraints: 1 &lt;= s.length &lt;= 1000
+s contains only lowercase English letters.</div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Model Solution</h3>
+                <div class="bg-slate-800 rounded-lg overflow-hidden text-xs shadow-inner"><pre><code class="language-python">from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def reverseDegree(self, s: str) -&gt; int:
+        &quot;&quot;&quot;
+        Calculate the reverse degree of a string.
+
+        For each character:
+        - Get its position in reversed alphabet (a=26, b=25, ..., z=1)
+        - Multiply by its 1-indexed position in the string
+        - Sum all products
+        &quot;&quot;&quot;
+        total = 0
+        for i, char in enumerate(s):
+            # Position in string (1-indexed)
+            string_position = i + 1
+
+            # Position in reversed alphabet
+            # &#x27;a&#x27; has ASCII 97, so reversed position is 26 - (char_ascii - 97) = 123 - char_ascii
+            reversed_alphabet_position = ord(&#x27;z&#x27;) - ord(char) + 1
+
+            # Add product to total
+            total += string_position * reversed_alphabet_position
+
+        return total</code></pre></div>
+            </div>
+        </aside>
+        <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
+        <main class="main">
+            <div class="tab-nav">
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🕵️</span> Agent Judge <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full ml-2">Trajectory</span></button>
+                <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full ml-2">Reasoning</span></button>
+                <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Test <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Logs</span></button>
+            </div>
+            <div id="tab-agent" class="tab-content active">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
+                        <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: openhands</span></div>
+                        <p class="text-slate-700 leading-relaxed">The algorithm correctly implements the logic to calculate the reverse degree of a string by accurately determining the position of each character in the reversed alphabet and summing the products. It handles the constraints well, and the time complexity of O(n) is efficient for the input size.</p>
+                    </div>
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3></div>
+                    
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 1</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I'll help you solve this problem step by step. Let me start by understanding the requirements and then implement the solution.
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and create solution.py', 'status': 'in_progress', 'activeForm': 'Understanding the problem and creating solution.py'}, {'content': 'Test solution with check_solution.py', 'status': 'pending', 'activeForm': 'Testing solution with check_solution.py'}, {'content': 'Fix any failing test cases', 'status': 'pending', 'activeForm': 'Fixing failing test cases'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 2</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Write</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me create the solution.py file with the implementation:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/solution.py', 'content': 'class Solution:\n    def reverseDegree(self, s: str) -> int:\n        """\n        Calculate the reverse degree of a string.\n\n        For each character:\n        - Get its position in reversed alphabet (a=26, b=25, ..., z=1)\n        - Multiply by its 1-indexed position in the string\n        - Sum all products\n        """\n        total = 0\n        for i, char in enumerate(s):\n            # Position in string (1-indexed)\n            string_position = i + 1\n\n            # Position in reversed alphabet\n            # \'a\' has ASCII 97, so reversed position is 26 - (char_ascii - 97) = 123 - char_ascii\n            reversed_alphabet_position = ord(\'z\') - ord(char) + 1\n\n            # Add product to total\n            total += string_position * reversed_alphabet_position\n\n        return total\n'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">File created successfully at: /app/solution.py</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 3</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me test the solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'python check_solution.py', 'description': 'Test solution with check_solution.py'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">🧪 Running sample test cases to check your solution...
+
+Running 2 sample test case(s):
+
+✅ PASSED sample_test_1
+
+✅ PASSED sample_test_2
+
+==================================================
+🎉 Great! All 2 sample test case(s) passed!
+Your solution looks good so far. The full test suite will run more comprehensive tests.
+==================================================</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 4</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Excellent! All sample test cases passed! Let me update my todo list:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and create solution.py', 'status': 'completed', 'activeForm': 'Understanding the problem and creating solution.py'}, {'content': 'Test solution with check_solution.py', 'status': 'completed', 'activeForm': 'Testing solution with check_solution.py'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 5</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! Your solution is complete and all tests pass. Let me verify the logic one more time by checking the examples:
+
+**Example 1: s = "abc"**
+- 'a' (pos 1): reversed_alphabet = 26, product = 1 × 26 = 26
+- 'b' (pos 2): reversed_alphabet = 25, product = 2 × 25 = 50
+- 'c' (pos 3): reversed_alphabet = 24, product = 3 × 24 = 72
+- Total: 26 + 50 + 72 = 148 ✓
+
+**Example 2: s = "zaza"**
+- 'z' (pos 1): reversed_alphabet = 1, product = 1 × 1 = 1
+- 'a' (pos 2): reversed_alphabet = 26, product = 2 × 26 = 52
+- 'z' (pos 3): reversed_alphabet = 1, product = 3 × 1 = 3
+- 'a' (pos 4): reversed_alphabet = 26, product = 4 × 26 = 104
+- Total: 1 + 52 + 3 + 104 = 160 ✓
+
+**Solution Summary:**
+The solution uses a straightforward approach with O(n) time complexity:
+1. Iterate through each character in the string with its 1-indexed position
+2. Calculate the reversed alphabet position: `ord('z') - ord(char) + 1`
+3. Multiply the string position by the reversed alphabet position
+4. Sum all products and return the result
+
+This is efficient and handles all constraints (strings up to 1000 characters).
+</div></div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+            <div id="tab-llm" class="tab-content">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
+                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
+Reasoning: The algorithm correctly calculates the reverse degree by iterating through each character in the string, determining its position in the reversed alphabet, and summing the products of its string position and reversed alphabet position. It handles the constraints well, operates in linear time O(n), and does not have any logical errors or unhandled edge cases.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-unit" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                         <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center"><h2 class="font-bold text-slate-700 flex items-center gap-2"><span>⚡</span> Unit Test Logs</h2><span class="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded text-sm font-bold shadow-sm">Score: 1.00</span></div>
+                        <div class="p-0"><pre class="bg-slate-900 text-green-400 p-6 font-mono text-sm overflow-x-auto min-h-[300px]">33/33 tests passed - PASSED</pre></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        hljs.highlightAll();
+        const probElem = document.getElementById('problem-content');
+        if(probElem) {
+            probElem.innerHTML = marked.parse(probElem.textContent);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([probElem]);
+            }
+        }
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        const layoutShell = document.getElementById('layout-shell');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const resizeHandle = document.getElementById('sidebar-resizer');
+        const storedSidebarWidth = sidebarPanel ? localStorage.getItem('harborSidebarWidth') : null;
+        if (storedSidebarWidth && sidebarPanel) {
+            sidebarPanel.style.width = storedSidebarWidth;
+        }
+
+        let isDraggingSidebar = false;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const applySidebarWidth = (clientX) => {
+            if (!layoutShell || !sidebarPanel) return;
+            const { left } = layoutShell.getBoundingClientRect();
+            const newWidth = clamp(clientX - left, 260, 760);
+            sidebarPanel.style.width = `${newWidth}px`;
+            localStorage.setItem('harborSidebarWidth', sidebarPanel.style.width);
+        };
+
+        const stopResizing = () => {
+            if (!isDraggingSidebar) return;
+            isDraggingSidebar = false;
+            document.body.classList.remove('resizing');
+        };
+
+        const startResize = (clientX) => {
+            if (!sidebarPanel) return;
+            isDraggingSidebar = true;
+            document.body.classList.add('resizing');
+            applySidebarWidth(clientX);
+        };
+
+        if (resizeHandle) {
+            resizeHandle.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                startResize(event.clientX);
+            });
+            resizeHandle.addEventListener('touchstart', (event) => {
+                if (event.touches.length === 1) {
+                    startResize(event.touches[0].clientX);
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDraggingSidebar) return;
+            applySidebarWidth(event.clientX);
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (!isDraggingSidebar || event.touches.length !== 1) return;
+            applySidebarWidth(event.touches[0].clientX);
+        }, { passive: false });
+        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener('touchend', stopResizing);
+    </script>
+</body>
+</html>

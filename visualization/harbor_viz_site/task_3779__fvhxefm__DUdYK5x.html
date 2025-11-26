@@ -1,0 +1,398 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analysis - 3779__fvhxefm__DUdYK5x</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; overflow: hidden; }
+        .layout { display: flex; flex: 1; overflow: hidden; position: relative; }
+        .sidebar { width: var(--sidebar-width, 400px); min-width: 280px; max-width: 760px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+        .resize-handle { width: 6px; cursor: col-resize; background: #e2e8f0; flex-shrink: 0; transition: background 0.2s ease; }
+        .resize-handle:hover, body.resizing .resize-handle { background: #cbd5e1; }
+        body.resizing { cursor: col-resize; user-select: none; }
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f1f5f9; }
+        .tab-nav { display: flex; background: white; border-bottom: 1px solid #e2e8f0; padding: 0 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); z-index: 10; }
+        .tab-btn { padding: 16px 12px; margin-right: 24px; font-weight: 600; font-size: 0.95rem; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #1e293b; background: #f8fafc; }
+        .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; background: transparent; }
+        .tab-content { display: none; height: 100%; overflow-y: auto; padding: 24px; padding-bottom: 100px; }
+        .tab-content.active { display: block; }
+        .trajectory-step { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step-header { padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; border-radius: 8px 8px 0 0; }
+        pre { margin: 0; }
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md z-20 flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold text-sm">&larr; Back to List</a>
+            <div class="h-6 w-px bg-slate-700 mx-2"></div>
+            <h1 class="font-bold text-lg truncate w-96">Task <span class="font-mono text-sm font-normal text-slate-400 ml-2">3779__fvhxefm__DUdYK5x</span></h1>
+        </div>
+        <div class="flex gap-6 text-sm">
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-med text-lg">0.81</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-med text-lg">0.80</span></div>
+        </div>
+    </header>
+    <div class="layout" id="layout-shell">
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Problem Statement</h3>
+                <div id="problem-content" class="prose prose-sm prose-slate mb-8 max-w-none text-slate-700">You are given an integer array pizzas of size n, where pizzas[i] represents the weight of the i^th pizza. Every day, you eat exactly 4 pizzas. Due to your incredible metabolism, when you eat pizzas of weights W, X, Y, and Z, where W &lt;= X &lt;= Y &lt;= Z, you gain the weight of only 1 pizza! On odd-numbered days (1-indexed), you gain a weight of Z.
+On even-numbered days, you gain a weight of Y. Find the maximum total weight you can gain by eating all pizzas optimally.
+Note: It is guaranteed that n is a multiple of 4, and each pizza can be eaten only once. Example 1: Input: pizzas = [1,2,3,4,5,6,7,8]
+Output: 14
+Explanation: On day 1, you eat pizzas at indices [1, 2, 4, 7] = [2, 3, 5, 8]. You gain a weight of 8.
+On day 2, you eat pizzas at indices [0, 3, 5, 6] = [1, 4, 6, 7]. You gain a weight of 6. The total weight gained after eating all the pizzas is 8 + 6 = 14. Example 2: Input: pizzas = [2,1,1,1,1,1,1,1]
+Output: 3
+Explanation: On day 1, you eat pizzas at indices [4, 5, 6, 0] = [1, 1, 1, 2]. You gain a weight of 2.
+On day 2, you eat pizzas at indices [1, 2, 3, 7] = [1, 1, 1, 1]. You gain a weight of 1. The total weight gained after eating all the pizzas is 2 + 1 = 3. Constraints: 4 &lt;= n == pizzas.length &lt;= 2 * $10^5$
+1 &lt;= pizzas[i] &lt;= $10^5$
+n is a multiple of 4.</div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Model Solution</h3>
+                <div class="bg-slate-800 rounded-lg overflow-hidden text-xs shadow-inner"><pre><code class="language-python">from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+from typing import List
+
+class Solution:
+    def maxWeight(self, pizzas: List[int]) -&gt; int:
+        &quot;&quot;&quot;
+        Strategy:
+        - Sort pizzas in descending order
+        - On odd days: we want to maximize the heaviest pizza (Z)
+        - On even days: we want to maximize the second heaviest pizza (Y)
+
+        The key insight is that we want to use the largest pizzas for odd days (where we get their full weight)
+        and for even days, we want the second largest available to be as large as possible.
+
+        For each 4-pizza group:
+        - If it&#x27;s an odd day group, the largest pizza in the group contributes to the total
+        - If it&#x27;s an even day group, the second largest pizza in the group contributes to the total
+
+        Optimal strategy:
+        - Sort in descending order
+        - For odd day groups: pick the next largest pizza as Z, and 3 smallest pizzas to fill the slot
+        - For even day groups: pick the next two largest available pizzas (one will be Y), and 2 smallest to fill
+        &quot;&quot;&quot;
+        pizzas.sort(reverse=True)
+        n = len(pizzas)
+        num_days = n // 4
+
+        total_weight = 0
+        idx = 0
+
+        for day in range(1, num_days + 1):
+            if day % 2 == 1:  # Odd day - we gain Z (the maximum)
+                total_weight += pizzas[idx]
+                idx += 1
+            else:  # Even day - we gain Y (the second maximum)
+                idx += 1  # Skip the largest (not used)
+                total_weight += pizzas[idx]
+                idx += 1
+
+        return total_weight</code></pre></div>
+            </div>
+        </aside>
+        <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
+        <main class="main">
+            <div class="tab-nav">
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🕵️</span> Agent Judge <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full ml-2">Trajectory</span></button>
+                <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full ml-2">Reasoning</span></button>
+                <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Test <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Logs</span></button>
+            </div>
+            <div id="tab-agent" class="tab-content active">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
+                        <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: openhands</span></div>
+                        <p class="text-slate-700 leading-relaxed">The algorithm correctly implements the strategy of maximizing weight gain on odd and even days by sorting the pizzas in descending order. However, it does not explicitly handle edge cases such as the minimum input size or ensure that the selection of pizzas is optimal across all possible combinations, which could lead to suboptimal results in certain scenarios.</p>
+                    </div>
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3></div>
+                    
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 1</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I'll solve this step-by-step. Let me start by understanding the problem and then implement a solution.
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and develop a strategy', 'status': 'in_progress', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with the implementation', 'status': 'pending', 'activeForm': 'Creating solution.py'}, {'content': 'Test the solution with check_solution.py', 'status': 'pending', 'activeForm': 'Testing the solution'}, {'content': 'Fix any failing tests and iterate', 'status': 'pending', 'activeForm': 'Fixing failing tests'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 2</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Write</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Let me analyze the problem:
+
+**Problem Analysis:**
+- We have n pizzas (n is a multiple of 4)
+- Each day we eat exactly 4 pizzas
+- On odd days (1st, 3rd, 5th...), we gain the weight of the heaviest pizza (Z)
+- On even days (2nd, 4th, 6th...), we gain the weight of the second heaviest pizza (Y)
+- We need to maximize the total weight gained
+
+**Key Insight:**
+Since we only gain weight from one pizza per day:
+- On odd days: we get the maximum of 4 pizzas
+- On even days: we get the second maximum of 4 pizzas
+
+This is a dynamic programming problem. We need to optimally partition all pizzas into groups of 4 to maximize the gains.
+
+Let me think about the strategy:
+- Sort the pizzas in descending order
+- Use DP where `dp[i]` represents the maximum weight we can gain after eating the first `i` pizzas
+- For each state, we try all possible ways to select 4 pizzas from remaining pizzas
+
+Actually, a greedy approach might work better here:
+- Sort pizzas in descending order
+- On odd days, take the largest available pizza as Z, and fill in the 3 other slots with smaller pizzas
+- On even days, take the second-largest available pizza as Y
+
+Let me implement and test:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/solution.py', 'content': 'from typing import List\n\nclass Solution:\n    def maxWeight(self, pizzas: List[int]) -> int:\n        """\n        Strategy:\n        - Sort pizzas in descending order\n        - On odd days: we want to maximize the heaviest pizza (Z)\n        - On even days: we want to maximize the second heaviest pizza (Y)\n\n        The key insight is that we want to use the largest pizzas for odd days (where we get their full weight)\n        and for even days, we want the second largest available to be as large as possible.\n\n        For each 4-pizza group:\n        - If it\'s an odd day group, the largest pizza in the group contributes to the total\n        - If it\'s an even day group, the second largest pizza in the group contributes to the total\n\n        Optimal strategy:\n        - Sort in descending order\n        - For odd day groups: pick the next largest pizza as Z, and 3 smallest pizzas to fill the slot\n        - For even day groups: pick the next two largest available pizzas (one will be Y), and 2 smallest to fill\n        """\n        pizzas.sort(reverse=True)\n        n = len(pizzas)\n        num_days = n // 4\n\n        total_weight = 0\n        idx = 0\n\n        for day in range(1, num_days + 1):\n            if day % 2 == 1:  # Odd day - we gain Z (the maximum)\n                total_weight += pizzas[idx]\n                idx += 1\n            else:  # Even day - we gain Y (the second maximum)\n                idx += 1  # Skip the largest (not used)\n                total_weight += pizzas[idx]\n                idx += 1\n\n        return total_weight\n'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">File created successfully at: /app/solution.py</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 3</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and develop a strategy', 'status': 'completed', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with the implementation', 'status': 'completed', 'activeForm': 'Creating solution.py'}, {'content': 'Test the solution with check_solution.py', 'status': 'in_progress', 'activeForm': 'Testing the solution'}, {'content': 'Fix any failing tests and iterate', 'status': 'pending', 'activeForm': 'Fixing failing tests'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 4</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let's test the solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'python check_solution.py', 'description': 'Run test suite on solution.py'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">🧪 Running sample test cases to check your solution...
+
+Running 2 sample test case(s):
+
+✅ PASSED sample_test_1
+
+✅ PASSED sample_test_2
+
+==================================================
+🎉 Great! All 2 sample test case(s) passed!
+Your solution looks good so far. The full test suite will run more comprehensive tests.
+==================================================</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 5</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! Both sample tests passed. Let me verify my logic is correct by tracing through the examples:
+
+**Example 1: pizzas = [1,2,3,4,5,6,7,8]**
+- Sorted descending: [8,7,6,5,4,3,2,1]
+- Day 1 (odd): Take 8, gain 8. (idx moves from 0 to 1)
+- Day 2 (even): Skip 7 (idx=1→2), take 6, gain 6. (idx moves to 3)
+- Result: 8 + 6 = 14 ✓
+
+**Example 2: pizzas = [2,1,1,1,1,1,1,1]**
+- Sorted descending: [2,1,1,1,1,1,1,1]
+- Day 1 (odd): Take 2, gain 2. (idx moves from 0 to 1)
+- Day 2 (even): Skip 1 (idx=1→2), take 1, gain 1. (idx moves to 3)
+- Result: 2 + 1 = 3 ✓
+
+The solution uses a greedy approach:
+- Sort pizzas in descending order
+- For odd days: take the next largest pizza (this is Z, the max of the 4)
+- For even days: skip one pizza and take the next one (this is Y, the second max of the 4)
+- The 3 unused pizzas in each group are implicitly the smallest ones
+
+This is optimal because we're maximizing the contribution from the largest pizzas by assigning them to positions where they contribute to our weight gain.
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and develop a strategy', 'status': 'completed', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with the implementation', 'status': 'completed', 'activeForm': 'Creating solution.py'}, {'content': 'Test the solution with check_solution.py', 'status': 'completed', 'activeForm': 'Testing the solution'}, {'content': 'Fix any failing tests and iterate', 'status': 'completed', 'activeForm': 'Fixing failing tests'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">✅ **Solution Complete!**
+
+All sample tests passed! The solution uses a greedy approach:
+
+1. **Sort** pizzas in descending order
+2. **For odd days** (1, 3, 5...): Gain the largest remaining pizza (Z from the group of 4)
+3. **For even days** (2, 4, 6...): Skip one pizza, then gain the next one (Y from the group of 4)
+
+This is optimal because we're assigning the heaviest pizzas to count toward our weight gain. The smallest pizzas fill in the remaining slots of each 4-pizza group without contributing to the total.
+
+**Time Complexity:** O(n log n) for sorting
+**Space Complexity:** O(1) excluding the input
+</div></div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+            <div id="tab-llm" class="tab-content">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.60</span></div></div>
+                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.6  
+Reasoning: The solution correctly implements the logic for maximizing weight gain on odd and even days by sorting the pizzas and selecting the appropriate weights. However, it does not account for the requirement to fill each group of four pizzas optimally, which may lead to suboptimal selections when the largest pizzas are not grouped together. Additionally, the code does not handle edge cases explicitly, such as when all pizzas have the same weight, which could affect the outcome.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-unit" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                         <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center"><h2 class="font-bold text-slate-700 flex items-center gap-2"><span>⚡</span> Unit Test Logs</h2><span class="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded text-sm font-bold shadow-sm">Score: 0.81</span></div>
+                        <div class="p-0"><pre class="bg-slate-900 text-green-400 p-6 font-mono text-sm overflow-x-auto min-h-[300px]">34/42 tests passed - FAILED</pre></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        hljs.highlightAll();
+        const probElem = document.getElementById('problem-content');
+        if(probElem) {
+            probElem.innerHTML = marked.parse(probElem.textContent);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([probElem]);
+            }
+        }
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        const layoutShell = document.getElementById('layout-shell');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const resizeHandle = document.getElementById('sidebar-resizer');
+        const storedSidebarWidth = sidebarPanel ? localStorage.getItem('harborSidebarWidth') : null;
+        if (storedSidebarWidth && sidebarPanel) {
+            sidebarPanel.style.width = storedSidebarWidth;
+        }
+
+        let isDraggingSidebar = false;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const applySidebarWidth = (clientX) => {
+            if (!layoutShell || !sidebarPanel) return;
+            const { left } = layoutShell.getBoundingClientRect();
+            const newWidth = clamp(clientX - left, 260, 760);
+            sidebarPanel.style.width = `${newWidth}px`;
+            localStorage.setItem('harborSidebarWidth', sidebarPanel.style.width);
+        };
+
+        const stopResizing = () => {
+            if (!isDraggingSidebar) return;
+            isDraggingSidebar = false;
+            document.body.classList.remove('resizing');
+        };
+
+        const startResize = (clientX) => {
+            if (!sidebarPanel) return;
+            isDraggingSidebar = true;
+            document.body.classList.add('resizing');
+            applySidebarWidth(clientX);
+        };
+
+        if (resizeHandle) {
+            resizeHandle.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                startResize(event.clientX);
+            });
+            resizeHandle.addEventListener('touchstart', (event) => {
+                if (event.touches.length === 1) {
+                    startResize(event.touches[0].clientX);
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDraggingSidebar) return;
+            applySidebarWidth(event.clientX);
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (!isDraggingSidebar || event.touches.length !== 1) return;
+            applySidebarWidth(event.touches[0].clientX);
+        }, { passive: false });
+        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener('touchend', stopResizing);
+    </script>
+</body>
+</html>

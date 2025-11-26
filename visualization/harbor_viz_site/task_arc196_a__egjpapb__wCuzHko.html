@@ -1,0 +1,715 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analysis - arc196_a__egjpapb__wCuzHko</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; overflow: hidden; }
+        .layout { display: flex; flex: 1; overflow: hidden; position: relative; }
+        .sidebar { width: var(--sidebar-width, 400px); min-width: 280px; max-width: 760px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+        .resize-handle { width: 6px; cursor: col-resize; background: #e2e8f0; flex-shrink: 0; transition: background 0.2s ease; }
+        .resize-handle:hover, body.resizing .resize-handle { background: #cbd5e1; }
+        body.resizing { cursor: col-resize; user-select: none; }
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f1f5f9; }
+        .tab-nav { display: flex; background: white; border-bottom: 1px solid #e2e8f0; padding: 0 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); z-index: 10; }
+        .tab-btn { padding: 16px 12px; margin-right: 24px; font-weight: 600; font-size: 0.95rem; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #1e293b; background: #f8fafc; }
+        .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; background: transparent; }
+        .tab-content { display: none; height: 100%; overflow-y: auto; padding: 24px; padding-bottom: 100px; }
+        .tab-content.active { display: block; }
+        .trajectory-step { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step-header { padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; border-radius: 8px 8px 0 0; }
+        pre { margin: 0; }
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md z-20 flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold text-sm">&larr; Back to List</a>
+            <div class="h-6 w-px bg-slate-700 mx-2"></div>
+            <h1 class="font-bold text-lg truncate w-96">Task <span class="font-mono text-sm font-normal text-slate-400 ml-2">arc196_a__egjpapb__wCuzHko</span></h1>
+        </div>
+        <div class="flex gap-6 text-sm">
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-med text-lg">0.79</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.40</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-low text-lg">0.40</span></div>
+        </div>
+    </header>
+    <div class="layout" id="layout-shell">
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Problem Statement</h3>
+                <div id="problem-content" class="prose prose-sm prose-slate mb-8 max-w-none text-slate-700">You are given a length-N sequence A = (A_1, A_2, …, A_N).
+You will repeatedly perform the following operation until the sequence has length at most 1: choose two adjacent numbers and remove both from the sequence.
+The score obtained in one operation is the absolute difference of the two chosen numbers.
+Find the maximum possible total score obtained. Input The input is given from Standard Input in the following format:
+N
+A_1 A_2 … A_N Output Print the maximum possible total score obtained. Constraints - 2 ≤ N ≤ 3 imes $10^5$
+- 1 ≤ A_i ≤ $10^9$
+- All input values are integers. Sample Input 1 4
+1 2 5 3 Sample Output 1 5 First, remove A_2 and A_3. The score obtained is |A_2 - A_3| = 3.
+Next, remove A_1 and A_4. Note that, because of the previous operation, these two numbers are now adjacent. The score obtained is |A_1 - A_4| = 2.
+Hence, the total score obtained is 5.
+It is impossible to achieve a total score of 6 or greater, so print 5. Sample Input 2 7
+3 1 4 1 5 9 2 Sample Output 2 14 Sample Input 3 5
+1 1 1 1 1 Sample Output 3 0</div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Model Solution</h3>
+                <div class="bg-slate-800 rounded-lg overflow-hidden text-xs shadow-inner"><pre><code class="language-python">import sys
+
+def solve():
+    n = int(input())
+    arr = list(map(int, input().split()))
+
+    # Memoization cache
+    memo = {}
+
+    def dp(remaining):
+        &quot;&quot;&quot;
+        Calculate maximum score for a given sequence of remaining elements.
+        remaining is a tuple of indices that are still in the sequence.
+        &quot;&quot;&quot;
+        if len(remaining) &lt;= 1:
+            return 0
+
+        # Convert to tuple for hashing
+        key = tuple(remaining)
+        if key in memo:
+            return memo[key]
+
+        max_score = 0
+
+        # Try removing each adjacent pair
+        for i in range(len(remaining) - 1):
+            idx1 = remaining[i]
+            idx2 = remaining[i + 1]
+
+            # Score from removing this pair
+            score = abs(arr[idx1] - arr[idx2])
+
+            # New remaining sequence after removing this pair
+            new_remaining = remaining[:i] + remaining[i+2:]
+
+            # Recursively solve for the new sequence
+            total_score = score + dp(new_remaining)
+            max_score = max(max_score, total_score)
+
+        memo[key] = max_score
+        return max_score
+
+    # Start with all indices
+    initial = tuple(range(n))
+    result = dp(initial)
+    print(result)
+
+solve()</code></pre></div>
+            </div>
+        </aside>
+        <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
+        <main class="main">
+            <div class="tab-nav">
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🕵️</span> Agent Judge <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full ml-2">Trajectory</span></button>
+                <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full ml-2">Reasoning</span></button>
+                <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Test <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Logs</span></button>
+            </div>
+            <div id="tab-agent" class="tab-content active">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
+                        <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: openhands</span></div>
+                        <p class="text-slate-700 leading-relaxed">The algorithm uses a recursive approach with memoization, which is not efficient for the problem's constraints. The time complexity is exponential in the worst case due to the recursive nature of the solution, making it impractical for large inputs. Additionally, the solution does not handle edge cases effectively, such as when all elements are the same, leading to a score of zero.</p>
+                    </div>
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3></div>
+                    
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 1</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I'll solve this step by step. Let me start by understanding the problem and then implement a solution.
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and analyze approach', 'status': 'in_progress', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with initial implementation', 'status': 'pending', 'activeForm': 'Creating solution'}, {'content': 'Test solution with sample test cases', 'status': 'pending', 'activeForm': 'Testing solution'}, {'content': 'Debug and fix any issues', 'status': 'pending', 'activeForm': 'Debugging solution'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 2</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Let me first check what files are in the current directory:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'ls -la /app', 'description': 'List files in current directory'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">total 160
+drwxr-xr-x 1 root root   4096 Nov  4 23:19 .
+drwxr-xr-x 1 root root   4096 Nov  4 23:19 ..
+-rw-rw-r-- 1 root root  11244 Nov  3 19:03 check_solution.py
+-rw-rw-r-- 1 root root 140868 Nov  3 22:44 config.json</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 3</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Read</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Let me check the check_solution.py to understand the test format:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/check_solution.py'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">     1→#!/usr/bin/env python3
+     2→"""
+     3→Check solution script for iterative development.
+     4→This script runs on public test cases to help agents debug their solutions.
+     5→"""
+     6→
+     7→import json
+     8→import os
+     9→import sys
+    10→import subprocess
+    11→import importlib.util
+    12→
+    13→SOLUTION_PATH = "solution.py"
+    14→SUBPROCESS_TIMEOUT = 30
+    15→
+    16→def inject_imports_to_solution():
+    17→    """Add common imports to solution.py if not already present."""
+    18→    try:
+    19→        import_lines = [
+    20→            "from string import *",
+    21→            "from re import *", 
+    22→            "from datetime import *",
+    23→            "from collections import *",
+    24→            "from heapq import *",
+    25→            "from bisect import *",
+    26→            "from copy import *",
+    27→            "from math import *",
+    28→            "from random import *",
+    29→            "from statistics import *",
+    30→            "from itertools import *",
+    31→            "from functools import *",
+    32→            "from operator import *",
+    33→            "from io import *",
+    34→            "from sys import *",
+    35→            "from json import *",
+    36→            "from builtins import *",
+    37→            "from typing import List, Dict, Set, Tuple, Optional, Union, Any",
+    38→            "import string",
+    39→            "import re",
+    40→            "import datetime", 
+    41→            "import collections",
+    42→            "import heapq",
+    43→            "import bisect",
+    44→            "import copy",
+    45→            "import math",
+    46→            "import random",
+    47→            "import statistics",
+    48→            "import itertools",
+    49→            "import functools",
+    50→            "import operator",
+    51→            "import io",
+    52→            "import sys",
+    53→            "import json",
+    54→            "sys.setrecursionlimit(50000)",
+    55→            ""
+    56→        ]
+    57→        
+    58→        with open(SOLUTION_PATH, "r") as f:
+    59→            content = f.read()
+    60→        
+    61→        # Check if imports are already present
+    62→        if "from typing import List, Dict, Set, Tuple, Optional, Union, Any" in content:
+    63→            return
+    64→        
+    65→        # Prepend imports to the file
+    66→        new_content = "\n".join(import_lines) + "\n" + content
+    67→        with open(SOLUTION_PATH, "w") as f:
+    68→            f.write(new_content)
+    69→
+    70→    except Exception as e:
+    71→        print(f"Warning: Could not inject imports: {e}")
+    72→
+    73→def parse_functional_test_input(input_data):
+    74→    """Parse functional test input data."""
+    75→    try:
+    76→        # Split by newlines to separate different input parameters
+    77→        parts = input_data.split('\n')
+    78→        
+    79→        # Parse each part as JSON to get Python objects
+    80→        parsed_parts = []
+    81→        for part in parts:
+    82→            if part.strip():  # Skip empty parts
+    83→                try:
+    84→                    parsed_parts.append(json.loads(part))
+    85→                except json.JSONDecodeError:
+    86→                    # If JSON parsing fails, treat as string
+    87→                    parsed_parts.append(part)
+    88→        
+    89→        return parsed_parts
+    90→    except Exception as e:
+    91→        print(f"Warning: Could not parse functional test input: {e}")
+    92→        return [input_data]
+    93→
+    94→def run_functional_test_case(input_data, expected_output, test_name, func_name=None):
+    95→    """Run a functional test case (Solution class method)."""
+    96→    try:
+    97→        # Inject necessary imports into solution.py before importing
+    98→        inject_imports_to_solution()
+    99→        
+   100→        # Import the solution
+   101→        spec = importlib.util.spec_from_file_location("solution", SOLUTION_PATH)
+   102→        if spec is None or spec.loader is None:
+   103→            print(f"❌ FAILED {test_name}: Could not load solution.py")
+   104→            return False
+   105→        solution = importlib.util.module_from_spec(spec)
+   106→        sys.modules["solution"] = solution
+   107→        spec.loader.exec_module(solution)
+   108→        
+   109→        # Parse the input data
+   110→        parsed_input = parse_functional_test_input(input_data)
+   111→        
+   112→        # Find the Solution class
+   113→        if not hasattr(solution, 'Solution'):
+   114→            print(f"❌ FAILED {test_name}: No Solution class found in solution.py")
+   115→            return False
+   116→        
+   117→        # Create instance of Solution class
+   118→        solution_instance = solution.Solution()
+   119→        
+   120→        # Find the main method
+   121→        if func_name and hasattr(solution_instance, func_name):
+   122→            method_name = func_name
+   123→            method = getattr(solution_instance, method_name)
+   124→        else:
+   125→            # Fallback: use the first public method
+   126→            methods = [method for method in dir(solution_instance) if not method.startswith('_')]
+   127→            if not methods:
+   128→                print(f"❌ FAILED {test_name}: No public methods found in Solution class")
+   129→                return False
+   130→            method_name = methods[0]
+   131→            method = getattr(solution_instance, method_name)
+   132→        
+   133→        # Call the method with unpacked arguments
+   134→        try:
+   135→            result = method(*parsed_input)
+   136→        except TypeError as e:
+   137→            # If the method signature doesn't match, try with the parsed input as a single argument
+   138→            if "takes" in str(e) and "arguments" in str(e):
+   139→                result = method(parsed_input)
+   140→            else:
+   141→                raise e
+   142→        
+   143→        # Parse expected output as JSON to get Python object
+   144→        try:
+   145→            expected_obj = json.loads(expected_output)
+   146→        except json.JSONDecodeError:
+   147→            # If expected output is not valid JSON, fall back to string comparison
+   148→            expected_obj = expected_output
+   149→        
+   150→        # Handle tuple vs list conversion for comparison
+   151→        if isinstance(result, tuple):
+   152→            result = list(result)
+   153→        
+   154→        # Compare results
+   155→        if result == expected_obj:
+   156→            print(f"✅ PASSED {test_name}")
+   157→            return True
+   158→        else:
+   159→            print(f"❌ FAILED {test_name}: Expected {expected_obj}, got {result}")
+   160→            return False
+   161→            
+   162→    except Exception as e:
+   163→        print(f"❌ FAILED {test_name}: Test execution error: {e}")
+   164→        return False
+   165→
+   166→def run_stdin_test_case(input_data, expected_output, test_name):
+   167→    """Run a stdin/stdout test case."""
+   168→    try:
+   169→        # Parse the LiveCodeBench input format
+   170→        parsed_input = input_data.encode().decode('unicode_escape')
+   171→        
+   172→        # Run the solution with parsed input
+   173→        result = subprocess.run(
+   174→            ['python', SOLUTION_PATH],
+   175→            input=parsed_input,
+   176→            capture_output=True,
+   177→            text=True,
+   178→            timeout=SUBPROCESS_TIMEOUT
+   179→        )
+   180→        
+   181→        if result.returncode != 0:
+   182→            print(f"❌ FAILED {test_name}: Solution crashed with error: {result.stderr}")
+   183→            return False
+   184→        
+   185→        actual_output = result.stdout.strip()
+   186→        expected_output = expected_output.strip()
+   187→        
+   188→        # Compare outputs line by line
+   189→        actual_lines = [line.strip() for line in actual_output.splitlines() if line.strip()]
+   190→        expected_lines = [line.strip() for line in expected_output.splitlines() if line.strip()]
+   191→        
+   192→        if len(actual_lines) != len(expected_lines):
+   193→            print(f"❌ FAILED {test_name}: Wrong answer: mismatched output length. Expected {len(expected_lines)} lines, got {len(actual_lines)} lines")
+   194→            return False
+   195→        
+   196→        # Compare each line
+   197→        for i, (actual_line, expected_line) in enumerate(zip(actual_lines, expected_lines)):
+   198→            if actual_line == expected_line:
+   199→                continue
+   200→            
+   201→            # Try to parse as numbers for decimal comparison
+   202→            try:
+   203→                actual_num = float(actual_line)
+   204→                expected_num = float(expected_line)
+   205→                if abs(actual_num - expected_num) < 1e-9:
+   206→                    continue
+   207→            except ValueError:
+   208→                pass
+   209→            
+   210→            # If neither matches, it's wrong
+   211→            print(f"❌ FAILED {test_name}: Line {i+1} mismatch. Expected '{expected_line}', got '{actual_line}'")
+   212→            return False
+   213→        
+   214→        print(f"✅ PASSED {test_name}")
+   215→        return True
+   216→        
+   217→    except subprocess.TimeoutExpired:
+   218→        print(f"❌ FAILED {test_name}: Solution timed out after {SUBPROCESS_TIMEOUT} seconds")
+   219→        return False
+   220→    except Exception as e:
+   221→        print(f"❌ FAILED {test_name}: Test execution error: {e}")
+   222→        return False
+   223→
+   224→def decode_public_cases(value):
+   225→    """Decode public test cases from various formats."""
+   226→    if isinstance(value, list):
+   227→        return value
+   228→    if isinstance(value, str):
+   229→        try:
+   230→            parsed = json.loads(value)
+   231→            if isinstance(parsed, list):
+   232→                return parsed
+   233→        except Exception:
+   234→            pass
+   235→    return []
+   236→
+   237→def main():
+   238→    """Main function to run sample test cases."""
+   239→    print("🧪 Running sample test cases to check your solution...\n")
+   240→    
+   241→    # Check if solution.py exists
+   242→    if not os.path.exists(SOLUTION_PATH):
+   243→        print(f"❌ ERROR: {SOLUTION_PATH} not found. Please create your solution first.")
+   244→        sys.exit(1)
+   245→    
+   246→    # Load test configuration  
+   247→    config_paths = ["../tests/config.json", "tests/config.json", "/tests/config.json", "config.json"]
+   248→    config_path = None
+   249→    for path in config_paths:
+   250→        if os.path.exists(path):
+   251→            config_path = path
+   252→            break
+   253→    
+   254→    if config_path is None:
+   255→        print("❌ ERROR: No config.json found")
+   256→        sys.exit(1)
+   257→    
+   258→    with open(config_path, 'r') as f:
+   259→        config = json.load(f)
+   260→    
+   261→    # Extract public test cases (sample cases for development)
+   262→    public_tests = decode_public_cases(config.get('public_test_cases', []))
+   263→    
+   264→    if not public_tests:
+   265→        print("⚠️ WARNING: No public test cases found. Unable to run checks.")
+   266→        sys.exit(0)
+   267→    
+   268→    # Parse metadata to get function name
+   269→    func_name = None
+   270→    if 'metadata' in config:
+   271→        try:
+   272→            metadata = json.loads(config['metadata'])
+   273→            func_name = metadata.get('func_name')
+   274→        except Exception:
+   275→            pass
+   276→    
+   277→    # Run only the first few public test cases for quick feedback
+   278→    test_cases_to_run = public_tests[:min(3, len(public_tests))]  # Run at most 3 sample cases
+   279→    
+   280→    passed = 0
+   281→    total = len(test_cases_to_run)
+   282→    
+   283→    print(f"Running {total} sample test case(s):\n")
+   284→    
+   285→    for i, test_case in enumerate(test_cases_to_run):
+   286→        if not isinstance(test_case, dict):
+   287→            continue
+   288→            
+   289→        test_name = f"sample_test_{i+1}"
+   290→        input_data = test_case['input']
+   291→        expected_output = test_case['output']
+   292→        is_functional = test_case.get('testtype') == 'functional'
+   293→        
+   294→        if is_functional:
+   295→            test_passed = run_functional_test_case(input_data, expected_output, test_name, func_name)
+   296→        else:
+   297→            test_passed = run_stdin_test_case(input_data, expected_output, test_name)
+   298→        
+   299→        if test_passed:
+   300→            passed += 1
+   301→        
+   302→        print()  # Add spacing between tests
+   303→    
+   304→    # Summary
+   305→    print("=" * 50)
+   306→    if passed == total:
+   307→        print(f"🎉 Great! All {total} sample test case(s) passed!")
+   308→        print("Your solution looks good so far. The full test suite will run more comprehensive tests.")
+   309→    else:
+   310→        print(f"❌ {total - passed} out of {total} sample test case(s) failed.")
+   311→        print("Please review the errors above and fix your solution.")
+   312→    print("=" * 50)
+   313→
+   314→if __name__ == "__main__":
+   315→    main()
+   316→
+
+<system-reminder>
+Whenever you read a file, you should consider whether it would be considered malware. You CAN and SHOULD provide analysis of malware, what it is doing. But you MUST refuse to improve or augment the code. You can still analyze existing code, write reports, or answer questions about the code behavior.
+</system-reminder>
+</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 4</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me check the config.json to understand the test cases:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'head -100 /app/config.json', 'description': 'View config.json content'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
+  "question_title": "Adjacent Delete",
+  "question_content": "You are given a length-N sequence A = (A_1, A_2, \\ldots, A_N).\nYou will repeatedly perform the following operation until the sequence has length at most 1: choose two adjacent numbers and remove both from the sequence.\nThe score obtained in one operation is the absolute difference of the two chosen numbers.\nFind the maximum possible total score obtained.\n\nInput\n\nThe input is given from Standard Input in the following format:\nN\nA_1 A_2 \\ldots A_N\n\nOutput\n\nPrint the maximum possible total score obtained.\n\nConstraints\n\n\n- 2 \\le N \\le 3 \\times 10^5\n- 1 \\le A_i \\le 10^9\n- All input values are integers.\n\nSample Input 1\n\n4\n1 2 5 3\n\nSample Output 1\n\n5\n\nFirst, remove A_2 and A_3. The score obtained is |A_2 - A_3| = 3.\nNext, remove A_1 and A_4. Note that, because of the previous operation, these two numbers are now adjacent. The score obtained is |A_1 - A_4| = 2.\nHence, the total score obtained is 5.\nIt is impossible to achieve a total score of 6 or greater, so print 5.\n\nSample Input 2\n\n7\n3 1 4 1 5 9 2\n\nSample Output 2\n\n14\n\nSample Input 3\n\n5\n1 1 1 1 1\n\nSample Output 3\n\n0",
+  "platform": "atcoder",
+  "question_id": "arc196_a",
+  "contest_id": "arc196",
+  "contest_date": "2025-04-06T00:00:00",
+  "starter_code": "",
+  "difficulty": "hard",
+  "public_test_cases": "[{\"input\": \"4\\n1 2 5 3\", \"output\": \"5\", \"testtype\": \"stdin\"}, {\"input\": \"7\\n3 1 4 1 5 9 2\", \"output\": \"14\", \"testtype\": \"stdin\"}, {\"input\": \"5\\n1 1 1 1 1\", \"output\": \"0\", \"testtype\": \"stdin\"}]",
+  "private_test_cases": "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
+
+... [3 lines truncated] ...</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 5</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me understand the problem better. This is an "Adjacent Delete" problem. Let me analyze:
+
+1. We have a sequence of N numbers
+2. We repeatedly remove two adjacent numbers and get a score = |A[i] - A[i+1]|
+3. Continue until we have at most 1 number left
+4. Find the maximum total score
+
+This is a dynamic programming problem. Let me think through the approach:
+
+- When we remove two adjacent elements at positions i and i+1, the remaining elements shift
+- This creates a new adjacent pair
+- We need to consider all possible ways to remove pairs and find the maximum score
+
+Let me update my todo and write the solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and analyze approach', 'status': 'completed', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with initial implementation', 'status': 'in_progress', 'activeForm': 'Creating solution'}, {'content': 'Test solution with sample test cases', 'status': 'pending', 'activeForm': 'Testing solution'}, {'content': 'Debug and fix any issues', 'status': 'pending', 'activeForm': 'Debugging solution'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Write</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me create the solution using dynamic programming with memoization:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/solution.py', 'content': 'import sys\n\ndef solve():\n    n = int(input())\n    arr = list(map(int, input().split()))\n\n    # Memoization cache\n    memo = {}\n\n    def dp(remaining):\n        """\n        Calculate maximum score for a given sequence of remaining elements.\n        remaining is a tuple of indices that are still in the sequence.\n        """\n        if len(remaining) <= 1:\n            return 0\n\n        # Convert to tuple for hashing\n        key = tuple(remaining)\n        if key in memo:\n            return memo[key]\n\n        max_score = 0\n\n        # Try removing each adjacent pair\n        for i in range(len(remaining) - 1):\n            idx1 = remaining[i]\n            idx2 = remaining[i + 1]\n\n            # Score from removing this pair\n            score = abs(arr[idx1] - arr[idx2])\n\n            # New remaining sequence after removing this pair\n            new_remaining = remaining[:i] + remaining[i+2:]\n\n            # Recursively solve for the new sequence\n            total_score = score + dp(new_remaining)\n            max_score = max(max_score, total_score)\n\n        memo[key] = max_score\n        return max_score\n\n    # Start with all indices\n    initial = tuple(range(n))\n    result = dp(initial)\n    print(result)\n\nsolve()\n'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">File created successfully at: /app/solution.py</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me test this solution with the sample test cases:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'python check_solution.py', 'description': 'Run check_solution.py to test sample cases'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">🧪 Running sample test cases to check your solution...
+
+Running 3 sample test case(s):
+
+✅ PASSED sample_test_1
+
+✅ PASSED sample_test_2
+
+✅ PASSED sample_test_3
+
+==================================================
+🎉 Great! All 3 sample test case(s) passed!
+Your solution looks good so far. The full test suite will run more comprehensive tests.
+==================================================</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Excellent! All sample tests pass. Let me mark the remaining todos as completed:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and analyze approach', 'status': 'completed', 'activeForm': 'Understanding the problem'}, {'content': 'Create solution.py with initial implementation', 'status': 'completed', 'activeForm': 'Creating solution'}, {'content': 'Test solution with sample test cases', 'status': 'completed', 'activeForm': 'Testing solution'}, {'content': 'Debug and fix any issues', 'status': 'completed', 'activeForm': 'Debugging solution'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! Let me verify the solution works by manually tracing through one test case:
+
+For Sample Input 1: `[1, 2, 5, 3]`
+- We can remove positions (1,2) with score |2-5|=3, leaving [1,3]
+- Then remove (0,1) with score |1-3|=2, leaving []
+- Total: 3 + 2 = 5 ✓
+
+The solution uses dynamic programming with memoization:
+
+1. **State representation**: Each state is a tuple of remaining indices
+2. **Recursive function**: For each state, we try removing every adjacent pair and recursively solve for the remaining elements
+3. **Memoization**: We cache results to avoid recomputing the same states
+4. **Base case**: When 1 or fewer elements remain, the score is 0
+
+The algorithm efficiently explores all possible removal sequences and returns the maximum total score.
+
+All 3 sample test cases pass successfully!
+</div></div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+            <div id="tab-llm" class="tab-content">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.40</span></div></div>
+                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.4  
+Reasoning: The algorithm uses a recursive approach with memoization, which is not efficient for the problem's constraints (up to 300,000 elements). The time complexity is likely exponential due to the recursive nature of the solution, making it impractical for larger inputs. Additionally, it does not handle edge cases effectively, such as when all elements are the same, which should yield a score of 0. Overall, the solution is not optimal and has significant performance issues.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-unit" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                         <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center"><h2 class="font-bold text-slate-700 flex items-center gap-2"><span>⚡</span> Unit Test Logs</h2><span class="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded text-sm font-bold shadow-sm">Score: 0.79</span></div>
+                        <div class="p-0"><pre class="bg-slate-900 text-green-400 p-6 font-mono text-sm overflow-x-auto min-h-[300px]">34/43 tests passed - FAILED</pre></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        hljs.highlightAll();
+        const probElem = document.getElementById('problem-content');
+        if(probElem) {
+            probElem.innerHTML = marked.parse(probElem.textContent);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([probElem]);
+            }
+        }
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        const layoutShell = document.getElementById('layout-shell');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const resizeHandle = document.getElementById('sidebar-resizer');
+        const storedSidebarWidth = sidebarPanel ? localStorage.getItem('harborSidebarWidth') : null;
+        if (storedSidebarWidth && sidebarPanel) {
+            sidebarPanel.style.width = storedSidebarWidth;
+        }
+
+        let isDraggingSidebar = false;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const applySidebarWidth = (clientX) => {
+            if (!layoutShell || !sidebarPanel) return;
+            const { left } = layoutShell.getBoundingClientRect();
+            const newWidth = clamp(clientX - left, 260, 760);
+            sidebarPanel.style.width = `${newWidth}px`;
+            localStorage.setItem('harborSidebarWidth', sidebarPanel.style.width);
+        };
+
+        const stopResizing = () => {
+            if (!isDraggingSidebar) return;
+            isDraggingSidebar = false;
+            document.body.classList.remove('resizing');
+        };
+
+        const startResize = (clientX) => {
+            if (!sidebarPanel) return;
+            isDraggingSidebar = true;
+            document.body.classList.add('resizing');
+            applySidebarWidth(clientX);
+        };
+
+        if (resizeHandle) {
+            resizeHandle.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                startResize(event.clientX);
+            });
+            resizeHandle.addEventListener('touchstart', (event) => {
+                if (event.touches.length === 1) {
+                    startResize(event.touches[0].clientX);
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDraggingSidebar) return;
+            applySidebarWidth(event.clientX);
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (!isDraggingSidebar || event.touches.length !== 1) return;
+            applySidebarWidth(event.touches[0].clientX);
+        }, { passive: false });
+        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener('touchend', stopResizing);
+    </script>
+</body>
+</html>

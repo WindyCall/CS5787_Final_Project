@@ -1,0 +1,405 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Task Analysis - abc388_g__t7cvnkb__HAGe8Hu</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.0.2/marked.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github.min.css">
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { height: 100vh; display: flex; flex-direction: column; background: #f8fafc; overflow: hidden; }
+        .layout { display: flex; flex: 1; overflow: hidden; position: relative; }
+        .sidebar { width: var(--sidebar-width, 400px); min-width: 280px; max-width: 760px; background: white; border-right: 1px solid #e2e8f0; display: flex; flex-direction: column; flex-shrink: 0; }
+        .resize-handle { width: 6px; cursor: col-resize; background: #e2e8f0; flex-shrink: 0; transition: background 0.2s ease; }
+        .resize-handle:hover, body.resizing .resize-handle { background: #cbd5e1; }
+        body.resizing { cursor: col-resize; user-select: none; }
+        .main { flex: 1; display: flex; flex-direction: column; overflow: hidden; background: #f1f5f9; }
+        .tab-nav { display: flex; background: white; border-bottom: 1px solid #e2e8f0; padding: 0 24px; box-shadow: 0 1px 2px rgba(0,0,0,0.05); z-index: 10; }
+        .tab-btn { padding: 16px 12px; margin-right: 24px; font-weight: 600; font-size: 0.95rem; color: #64748b; border-bottom: 3px solid transparent; transition: all 0.2s; display: flex; align-items: center; gap: 8px; }
+        .tab-btn:hover { color: #1e293b; background: #f8fafc; }
+        .tab-btn.active { color: #2563eb; border-bottom-color: #2563eb; background: transparent; }
+        .tab-content { display: none; height: 100%; overflow-y: auto; padding: 24px; padding-bottom: 100px; }
+        .tab-content.active { display: block; }
+        .trajectory-step { background: white; border: 1px solid #e2e8f0; border-radius: 8px; margin-bottom: 16px; box-shadow: 0 1px 3px rgba(0,0,0,0.05); }
+        .step-header { padding: 10px 16px; background: #f8fafc; border-bottom: 1px solid #e2e8f0; display: flex; justify-content: space-between; align-items: center; border-radius: 8px 8px 0 0; }
+        pre { margin: 0; }
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body>
+    <header class="bg-slate-900 text-white px-6 py-3 flex justify-between items-center shadow-md z-20 flex-shrink-0">
+        <div class="flex items-center gap-4">
+            <a href="index.html" class="text-slate-400 hover:text-white transition flex items-center gap-1 font-semibold text-sm">&larr; Back to List</a>
+            <div class="h-6 w-px bg-slate-700 mx-2"></div>
+            <h1 class="font-bold text-lg truncate w-96">Task <span class="font-mono text-sm font-normal text-slate-400 ml-2">abc388_g__t7cvnkb__HAGe8Hu</span></h1>
+        </div>
+        <div class="flex gap-6 text-sm">
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
+        </div>
+    </header>
+    <div class="layout" id="layout-shell">
+        <aside class="sidebar" id="sidebar-panel">
+            <div class="flex-1 overflow-y-auto p-6 scrollbar-thin">
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Problem Statement</h3>
+                <div id="problem-content" class="prose prose-sm prose-slate mb-8 max-w-none text-slate-700">There are N mochi (rice cakes), arranged in ascending order of size.
+The size of the i-th mochi (1≤ i≤ N) is A_i.
+Given two mochi A and B, with sizes a and b respectively, you can make one kagamimochi (a stacked rice cake) by placing mochi A on top of mochi B if and only if a is at most half of b.
+You are given Q integer pairs. Let (L_i, R_i) be the i-th pair (1≤ i≤ Q), and solve the following problem for each i: Using only the R_i - L_i + 1 mochi from the L_i-th to the R_i-th, how many kagamimochi can you make simultaneously?
+More precisely, find the maximum non-negative integer K such that: - Out of the R_i - L_i + 1 mochi from the L_i-th to the R_i-th, choose 2K mochi and form K pairs. For each pair, place one mochi on top of the other, to make K kagamimochi. Input The input is given from Standard Input in the following format:
+N
+A_1 A_2 …c A_N
+Q
+L_1 R_1
+L_2 R_2
+\vdots
+L_Q R_Q Output Print Q lines. The i-th line (1≤ i≤ Q) should contain the answer to the i-th query. Constraints - 2 ≤ N ≤ 2 imes $10^5$
+- 1 ≤ A_i ≤ $10^9$ \ (1 ≤ i ≤ N)
+- A_i ≤ A_{i+1} \ (1 ≤ i &lt; N)
+- 1 ≤ Q ≤ 2 imes $10^5$
+- 1 ≤ L_i &lt; R_i ≤ N \ (1 ≤ i ≤ Q)
+- All input values are integers. Sample Input 1 11
+1 1 2 3 4 4 7 10 11 12 20
+5
+2 5
+3 8
+7 11
+1 2
+1 11 Sample Output 1 2
+3
+1
+0
+5 The answers to each query are as follows. One possible way to make the kagamimochi is given for each query. - The mochi sizes are (1, 2, 3, 4). You can make the two kagamimochi (1,3) and (2,4).
+- The mochi sizes are (2, 3, 4, 4, 7, 10). You can make the three kagamimochi (2,4), (3,7), and (4,10).
+- The mochi sizes are (7, 10, 11, 12, 20). You can make one kagamimochi (10,20).
+- The mochi sizes are (1, 1). You cannot make any kagamimochi.
+- The mochi sizes are (1, 1, 2, 3, 4, 4, 7, 10, 11, 12, 20). You can make five kagamimochi (1,2), (1,3), (4,10), (4,11), and (7,20). Hence, print 2, 3, 1, 0, 5 in this order. Sample Input 2 24
+127 148 170 174 258 311 331 414 416 436 517 523 532 587 591 638 660 748 760 776 837 857 972 984
+15
+7 11
+8 9
+8 13
+12 15
+9 23
+1 17
+8 12
+1 5
+6 17
+3 7
+12 19
+13 18
+7 22
+1 12
+14 15 Sample Output 2 0
+0
+0
+0
+2
+6
+0
+1
+1
+0
+0
+0
+3
+5
+0</div>
+                <h3 class="text-xs font-bold text-slate-400 uppercase tracking-wider mb-3 border-b pb-2">Model Solution</h3>
+                <div class="bg-slate-800 rounded-lg overflow-hidden text-xs shadow-inner"><pre><code class="language-python">def solve_query(mochi):
+    &quot;&quot;&quot;
+    Find the maximum number of kagamimochi pairs.
+
+    Greedy approach:
+    - Use two pointers: left (smallest) and right (second half)
+    - For each mochi on the left, try to pair it with a mochi from the right half
+    - If a pair can be made (left_mochi * 2 &lt;= right_mochi), count it
+    - This maximizes matches because pairing smallest with available creates room for others
+    &quot;&quot;&quot;
+    n = len(mochi)
+
+    # Split into two halves
+    left = 0
+    right = (n + 1) // 2
+
+    count = 0
+    while left &lt; (n + 1) // 2 and right &lt; n:
+        if mochi[left] * 2 &lt;= mochi[right]:
+            # Can make a pair
+            count += 1
+            left += 1
+            right += 1
+        else:
+            # Try next candidate from the larger mochi
+            right += 1
+
+    return count
+
+# Read input
+N = int(input())
+A = list(map(int, input().split()))
+Q = int(input())
+
+# Process each query
+for _ in range(Q):
+    L, R = map(int, input().split())
+    # Convert to 0-indexed
+    L -= 1
+    R -= 1
+
+    # Extract the subarray
+    subarray = A[L:R+1]
+
+    # Solve
+    result = solve_query(subarray)
+    print(result)</code></pre></div>
+            </div>
+        </aside>
+        <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
+        <main class="main">
+            <div class="tab-nav">
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🕵️</span> Agent Judge <span class="bg-purple-100 text-purple-700 text-xs px-2 py-0.5 rounded-full ml-2">Trajectory</span></button>
+                <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge <span class="bg-blue-100 text-blue-700 text-xs px-2 py-0.5 rounded-full ml-2">Reasoning</span></button>
+                <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Test <span class="bg-green-100 text-green-700 text-xs px-2 py-0.5 rounded-full ml-2">Logs</span></button>
+            </div>
+            <div id="tab-agent" class="tab-content active">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
+                        <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: openhands</span></div>
+                        <p class="text-slate-700 leading-relaxed">The algorithm logic has a fundamental flaw in how it pairs the mochi. It assumes that the first half of the mochi can always be paired with the second half, which is not guaranteed. Additionally, it does not handle cases where the range of mochi is less than two, which could lead to incorrect results.</p>
+                    </div>
+                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3></div>
+                    
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 1</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I'll analyze this problem step by step and develop a solution.
+
+## Understanding the Problem
+
+This is a matching problem where we need to find the maximum number of "kagamimochi" (pairs) that can be made from a range of mochi. A smaller mochi can be placed on a larger one only if the smaller size is at most half of the larger size.
+
+The key insight is that this is a **greedy matching problem**. For a range of mochi:
+1. Sort them (they're already sorted)
+2. Use a greedy approach: try to pair the smallest mochi with the smallest mochi that satisfies the condition
+
+Let me start by exploring the problem and creating a solution.
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and implement a solution', 'status': 'in_progress', 'activeForm': 'Understanding the problem and implementing a solution'}, {'content': 'Test solution with sample test cases', 'status': 'pending', 'activeForm': 'Testing solution with sample test cases'}, {'content': 'Debug and fix any issues', 'status': 'pending', 'activeForm': 'Debugging and fixing issues'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 2</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Write</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Let me create the solution:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'file_path': '/app/solution.py', 'content': 'def solve_query(mochi):\n    """\n    Find the maximum number of kagamimochi pairs.\n\n    Greedy approach:\n    - Use two pointers: left (smallest) and right (second half)\n    - For each mochi on the left, try to pair it with a mochi from the right half\n    - If a pair can be made (left_mochi * 2 <= right_mochi), count it\n    - This maximizes matches because pairing smallest with available creates room for others\n    """\n    n = len(mochi)\n\n    # Split into two halves\n    left = 0\n    right = (n + 1) // 2\n\n    count = 0\n    while left < (n + 1) // 2 and right < n:\n        if mochi[left] * 2 <= mochi[right]:\n            # Can make a pair\n            count += 1\n            left += 1\n            right += 1\n        else:\n            # Try next candidate from the larger mochi\n            right += 1\n\n    return count\n\n# Read input\nN = int(input())\nA = list(map(int, input().split()))\nQ = int(input())\n\n# Process each query\nfor _ in range(Q):\n    L, R = map(int, input().split())\n    # Convert to 0-indexed\n    L -= 1\n    R -= 1\n\n    # Extract the subarray\n    subarray = A[L:R+1]\n\n    # Solve\n    result = solve_query(subarray)\n    print(result)\n'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">File created successfully at: /app/solution.py</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 3</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Now let me test with the sample inputs:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'python check_solution.py', 'description': 'Test solution with sample test cases'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">🧪 Running sample test cases to check your solution...
+
+Running 2 sample test case(s):
+
+✅ PASSED sample_test_1
+
+✅ PASSED sample_test_2
+
+==================================================
+🎉 Great! All 2 sample test case(s) passed!
+Your solution looks good so far. The full test suite will run more comprehensive tests.
+==================================================</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 4</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">Bash</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Excellent! Let me verify my understanding of the algorithm by tracing through one example:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'command': 'cat > /tmp/trace.py << \'EOF\'\n# Trace through an example\nmochi = [1, 2, 3, 4]  # Query 1 (indices 2-5, 1-indexed)\n\nn = len(mochi)\nleft = 0\nright = (n + 1) // 2\n\nprint(f"Mochi: {mochi}")\nprint(f"n = {n}, split at {right}")\nprint(f"Left half: {mochi[:right]}, Right half: {mochi[right:]}")\nprint()\n\ncount = 0\nstep = 1\nwhile left < (n + 1) // 2 and right < n:\n    print(f"Step {step}: left={left} (value={mochi[left]}), right={right} (value={mochi[right]})")\n    if mochi[left] * 2 <= mochi[right]:\n        print(f"  ✓ Can pair: {mochi[left]} * 2 = {mochi[left]*2} <= {mochi[right]}")\n        count += 1\n        left += 1\n        right += 1\n    else:\n        print(f"  ✗ Cannot pair: {mochi[left]} * 2 = {mochi[left]*2} > {mochi[right]}")\n        right += 1\n    step += 1\n\nprint(f"\\nResult: {count} pairs")\nEOF\npython /tmp/trace.py\n', 'description': 'Trace through example to verify algorithm'}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Mochi: [1, 2, 3, 4]
+n = 4, split at 2
+Left half: [1, 2], Right half: [3, 4]
+
+Step 1: left=0 (value=1), right=2 (value=3)
+  ✓ Can pair: 1 * 2 = 2 <= 3
+Step 2: left=1 (value=2), right=3 (value=4)
+  ✓ Can pair: 2 * 2 = 4 <= 4
+
+Result: 2 pairs</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 5</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">TodoWrite</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! The algorithm works correctly. Let me update the todo list:
+</div></div>
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{'todos': [{'content': 'Understand the problem and implement a solution', 'status': 'completed', 'activeForm': 'Understanding the problem and implementing a solution'}, {'content': 'Test solution with sample test cases', 'status': 'completed', 'activeForm': 'Testing solution with sample test cases'}]}</code></pre></div>
+                                <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">Todos have been modified successfully. Ensure that you continue to use the todo list to track your progress. Please proceed with the current tasks if applicable</pre></div>
+                            </div>
+                        </div>
+                        
+                        <div class="trajectory-step">
+                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span></div>
+                            <div class="p-4">
+                                <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Perfect! Your solution is complete and passes all sample test cases. Here's a summary of the approach:
+
+## Solution Summary
+
+**Algorithm: Greedy Two-Pointer Matching**
+
+The key insight is that for a sorted array of mochi sizes, we can maximize the number of pairs by:
+
+1. **Split the mochi into two halves**: The smaller half contains candidates for the top of kagamimochi, and the larger half contains candidates for the base.
+
+2. **Greedy matching**: Use two pointers to iterate through both halves:
+   - Start with the smallest mochi in the left half and the first mochi in the right half
+   - If a pair can be formed (left_mochi × 2 ≤ right_mochi), make the pair and move both pointers forward
+   - If not, move the right pointer forward to try a larger mochi as the base
+   - Continue until we run out of candidates in either half
+
+3. **Why this works**: By pairing the smallest available mochi with the smallest possible base that works, we maximize remaining options for subsequent pairings.
+
+**Complexity**: O(n) per query, where n is the range size.
+
+✅ All sample test cases passed successfully!
+</div></div>
+                                
+                                
+                            </div>
+                        </div>
+                        
+                    
+                </div>
+            </div>
+            <div id="tab-llm" class="tab-content">
+                <div class="max-w-3xl mx-auto">
+                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.60</span></div></div>
+                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.6  
+Reasoning: The algorithm attempts to use a greedy approach with two pointers, but it incorrectly splits the input into two halves without ensuring that both halves are valid for pairing. This can lead to incorrect results, especially when the size of the mochi is not evenly distributed. Additionally, the algorithm does not handle edge cases where the number of mochi in the specified range is less than two, which is necessary to form any pairs.</p></div>
+                    </div>
+                </div>
+            </div>
+            <div id="tab-unit" class="tab-content">
+                <div class="max-w-4xl mx-auto">
+                    <div class="bg-white rounded-lg border border-slate-200 shadow-sm overflow-hidden">
+                         <div class="bg-slate-50 px-6 py-4 border-b border-slate-200 flex justify-between items-center"><h2 class="font-bold text-slate-700 flex items-center gap-2"><span>⚡</span> Unit Test Logs</h2><span class="bg-white border border-slate-300 text-slate-700 px-3 py-1 rounded text-sm font-bold shadow-sm">Score: 1.00</span></div>
+                        <div class="p-0"><pre class="bg-slate-900 text-green-400 p-6 font-mono text-sm overflow-x-auto min-h-[300px]">42/42 tests passed - PASSED</pre></div>
+                    </div>
+                </div>
+            </div>
+        </main>
+    </div>
+    <script>
+        hljs.highlightAll();
+        const probElem = document.getElementById('problem-content');
+        if(probElem) {
+            probElem.innerHTML = marked.parse(probElem.textContent);
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise([probElem]);
+            }
+        }
+        function switchTab(tabId) {
+            document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+            document.querySelectorAll('.tab-btn').forEach(el => el.classList.remove('active'));
+            document.getElementById('tab-' + tabId).classList.add('active');
+            document.getElementById('btn-' + tabId).classList.add('active');
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        }
+
+        const layoutShell = document.getElementById('layout-shell');
+        const sidebarPanel = document.getElementById('sidebar-panel');
+        const resizeHandle = document.getElementById('sidebar-resizer');
+        const storedSidebarWidth = sidebarPanel ? localStorage.getItem('harborSidebarWidth') : null;
+        if (storedSidebarWidth && sidebarPanel) {
+            sidebarPanel.style.width = storedSidebarWidth;
+        }
+
+        let isDraggingSidebar = false;
+        const clamp = (value, min, max) => Math.min(max, Math.max(min, value));
+
+        const applySidebarWidth = (clientX) => {
+            if (!layoutShell || !sidebarPanel) return;
+            const { left } = layoutShell.getBoundingClientRect();
+            const newWidth = clamp(clientX - left, 260, 760);
+            sidebarPanel.style.width = `${newWidth}px`;
+            localStorage.setItem('harborSidebarWidth', sidebarPanel.style.width);
+        };
+
+        const stopResizing = () => {
+            if (!isDraggingSidebar) return;
+            isDraggingSidebar = false;
+            document.body.classList.remove('resizing');
+        };
+
+        const startResize = (clientX) => {
+            if (!sidebarPanel) return;
+            isDraggingSidebar = true;
+            document.body.classList.add('resizing');
+            applySidebarWidth(clientX);
+        };
+
+        if (resizeHandle) {
+            resizeHandle.addEventListener('mousedown', (event) => {
+                event.preventDefault();
+                startResize(event.clientX);
+            });
+            resizeHandle.addEventListener('touchstart', (event) => {
+                if (event.touches.length === 1) {
+                    startResize(event.touches[0].clientX);
+                    event.preventDefault();
+                }
+            }, { passive: false });
+        }
+
+        window.addEventListener('mousemove', (event) => {
+            if (!isDraggingSidebar) return;
+            applySidebarWidth(event.clientX);
+        });
+        window.addEventListener('touchmove', (event) => {
+            if (!isDraggingSidebar || event.touches.length !== 1) return;
+            applySidebarWidth(event.touches[0].clientX);
+        }, { passive: false });
+        window.addEventListener('mouseup', stopResizing);
+        window.addEventListener('touchend', stopResizing);
+    </script>
+</body>
+</html>

@@ -1,0 +1,2503 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Harbor Evaluation Benchmark</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+        window.MathJax = {
+            tex: {
+                inlineMath: [['$', '$'], ['\(', '\)']],
+                displayMath: [['$$', '$$'], ['\[', '\]']]
+            },
+            options: {
+                skipHtmlTags: ['script', 'noscript', 'style', 'textarea', 'pre', 'code']
+            }
+        };
+    </script>
+    <script id="MathJax-script" async src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <style>
+        body { background: #f1f5f9; color: #334155; font-family: 'Inter', sans-serif; }
+        
+        /* Card Hover Effects */
+        .task-card { 
+            transition: all 0.2s ease-in-out; 
+            border: 1px solid #e2e8f0;
+        }
+        .task-card:hover { 
+            transform: translateY(-4px); 
+            box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.1), 0 4px 6px -2px rgba(0, 0, 0, 0.05); 
+            border-color: #cbd5e1;
+            cursor: pointer;
+        }
+
+        /* Score Pills */
+        .score-pill { 
+            display: flex; 
+            flex-direction: column; 
+            align-items: center; 
+            justify-content: center;
+            padding: 8px 0;
+            border-radius: 8px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            background: #f8fafc;
+        }
+        .score-val { font-size: 1.1rem; font-weight: 800; line-height: 1; margin-bottom: 2px; }
+        .score-label { font-size: 0.65rem; text-transform: uppercase; color: #94a3b8; letter-spacing: 0.05em; }
+        
+        /* Color Utilities */
+        .text-high { color: #16a34a; }
+        .text-med { color: #ca8a04; }
+        .text-low { color: #dc2626; }
+        .bg-high { background-color: #f0fdf4; }
+
+        mjx-container[jax="CHTML"][display="true"] {
+            display: inline !important;
+            margin: 0 0.15em !important;
+        }
+    </style>
+</head>
+<body class="min-h-screen p-8">
+    
+    <header class="max-w-7xl mx-auto mb-10 flex flex-col md:flex-row md:items-end justify-between gap-4">
+        <div>
+            <h1 class="text-3xl font-extrabold text-slate-800 tracking-tight">CS5787 Final Project</h1>
+            <p class="text-slate-500 mt-2 text-lg">Comparing <span class="text-blue-600 font-semibold">LLM Judge</span> vs <span class="text-purple-600 font-semibold">Agent Judge</span> vs <span class="text-green-600 font-semibold">Unit Tests</span></p>
+        </div>
+        <div class="bg-white px-4 py-2 rounded-lg shadow-sm border border-slate-200 text-sm font-medium text-slate-500">
+            Total Tasks: <span class="text-slate-900 font-bold">69</span>
+        </div>
+    </header>
+
+    <main class="max-w-7xl mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            
+            <div onclick="window.location.href='task_1873_d__ewd5mxi__x9Nv7BA.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="1873_d__ewd5mxi__x9Nv7BA">
+                            1873_d__ewd5mxi__x9Nv7BA
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="D. 1D Eraser">
+                        D. 1D Eraser
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a strip of paper $s$ that is $n$ cells long. Each cell is either black or white. In an operation you can take any $k$ consecutive cells ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_2808__j8qegjl__ChgukeA.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="2808__j8qegjl__ChgukeA">
+                            2808__j8qegjl__ChgukeA
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="painting-the-walls">
+                        painting-the-walls
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two 0-indexed integer arrays, cost and time, of size n representing the costs and the time taken to paint n different walls respectively...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_2848__8ofyxkj__3hXEi4v.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="2848__8ofyxkj__3hXEi4v">
+                            2848__8ofyxkj__3hXEi4v
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="special-permutations">
+                        special-permutations
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 0-indexed integer array nums containing n distinct positive integers. A permutation of nums is called special if: For all indexes 0 <=...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_2850__qap9g7a__mFMciSk.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="2850__qap9g7a__mFMciSk">
+                            2850__qap9g7a__mFMciSk
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="construct-the-longest-new-string">
+                        construct-the-longest-new-string
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given three integers x, y, and z. You have x strings equal to "AA", y strings equal to "BB", and z strings equal to "AB". You want to choose s...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.64</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_2857__t4yeank__NWNjMdB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="2857__t4yeank__NWNjMdB">
+                            2857__t4yeank__NWNjMdB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="total-distance-traveled">
+                        total-distance-traveled
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        A truck has two fuel tanks. You are given two integers, mainTank representing the fuel present in the main tank in liters and additionalTank represent...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_2954__6ary926__JvXrJKN.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="2954__6ary926__JvXrJKN">
+                            2954__6ary926__JvXrJKN
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="maximum-sum-of-almost-unique-subarray">
+                        maximum-sum-of-almost-unique-subarray
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer array nums and two positive integers m and k. Return the maximum sum out of all almost unique subarrays of length k of nums. ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_2955__jzk6brf__LJUAFWR.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="2955__jzk6brf__LJUAFWR">
+                            2955__jzk6brf__LJUAFWR
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="account-balance-after-rounded-purchase">
+                        account-balance-after-rounded-purchase
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Initially, you have a bank account balance of 100 dollars. You are given an integer purchaseAmount representing the amount you will spend on a purchas...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3034__vwyjl7t__5tEhgNf.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3034__vwyjl7t__5tEhgNf">
+                            3034__vwyjl7t__5tEhgNf
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="points-that-intersect-with-cars">
+                        points-that-intersect-with-cars
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 0-indexed 2D integer array nums representing the coordinates of the cars parking on a number line. For any index i, nums[i] = [start_i...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3046__yzlidf9__3gffzPS.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3046__yzlidf9__3gffzPS">
+                            3046__yzlidf9__3gffzPS
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="minimum-operations-to-make-a-special-number">
+                        minimum-operations-to-make-a-special-number
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 0-indexed string num representing a non-negative integer. In one operation, you can pick any digit of num and delete it. Note that if ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3163__ptpmytw__saM6YkA.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3163__ptpmytw__saM6YkA">
+                            3163__ptpmytw__saM6YkA
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="subarrays-distinct-element-sum-of-squares-i">
+                        subarrays-distinct-element-sum-of-squares-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 0-indexed integer array nums. The distinct count of a subarray of nums is defined as: Let nums[i..j] be a subarray of nums consisting ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3193__og74rb4__DyDE8mx.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3193__og74rb4__DyDE8mx">
+                            3193__og74rb4__DyDE8mx
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="maximum-strong-pair-xor-i">
+                        maximum-strong-pair-xor-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 0-indexed integer array nums. A pair of integers x and y is called a strong pair if it satisfies the condition: |x - y| <= min(x, y) Y...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3194__xqwbn3k__SSRJCHv.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3194__xqwbn3k__SSRJCHv">
+                            3194__xqwbn3k__SSRJCHv
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-words-containing-character">
+                        find-words-containing-character
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 0-indexed array of strings words and a character x. Return an array of indices representing the words that contain the character x. No...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3195__w7qjk22__ekERcye.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3195__w7qjk22__ekERcye">
+                            3195__w7qjk22__ekERcye
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="separate-black-and-white-balls">
+                        separate-black-and-white-balls
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There are n balls on a table, each ball has a color black or white. You are given a 0-indexed binary string s of length n, where 1 and 0 represent bla...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3199__cnxo4t4__cakpvHE.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3199__cnxo4t4__cakpvHE">
+                            3199__cnxo4t4__cakpvHE
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="distribute-candies-among-children-i">
+                        distribute-candies-among-children-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two positive integers n and limit. Return the total number of ways to distribute n candies among 3 children such that no child gets more...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3206__hjxvuxd__puit3EX.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3206__hjxvuxd__puit3EX">
+                            3206__hjxvuxd__puit3EX
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-common-elements-between-two-arrays">
+                        find-common-elements-between-two-arrays
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two 0-indexed integer arrays nums1 and nums2 of sizes n and m, respectively. Consider calculating the following values: The number of in...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3299__whbcvwf__24VNiVK.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3299__whbcvwf__24VNiVK">
+                            3299__whbcvwf__24VNiVK
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-the-maximum-number-of-elements-in-subset">
+                        find-the-maximum-number-of-elements-in-subset
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an array of positive integers nums. You need to select a subset of nums which satisfies the following condition: You can place the selec...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.70</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3308__j6wwyfj__UTdBfKt.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3308__j6wwyfj__UTdBfKt">
+                            3308__j6wwyfj__UTdBfKt
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="apply-operations-to-make-string-empty">
+                        apply-operations-to-make-string-empty
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string s. Consider performing the following operation until s becomes empty: For every alphabet character from 'a' to 'z', remove the ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.93</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3320__2z2rahq__DkgWxN7.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3320__2z2rahq__DkgWxN7">
+                            3320__2z2rahq__DkgWxN7
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="maximum-number-of-operations-with-the-same-score-i">
+                        maximum-number-of-operations-with-the-same-score-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Given an array of integers called nums, you can perform the following operation while nums contains at least 2 elements: Choose the first two elements...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3353__gcsjomw__K4tfKkt.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3353__gcsjomw__K4tfKkt">
+                            3353__gcsjomw__K4tfKkt
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="existence-of-a-substring-in-a-string-and-its-reverse">
+                        existence-of-a-substring-in-a-string-and-its-reverse
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Given a string s, find any substring of length 2 which is also present in the reverse of s. Return true if such a substring exists, and false otherwis...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3360__vvhzmv2__cmy87kL.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3360__vvhzmv2__cmy87kL">
+                            3360__vvhzmv2__cmy87kL
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="minimum-deletions-to-make-string-k-special">
+                        minimum-deletions-to-make-string-k-special
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string word and an integer k. We consider word to be k-special if |freq(word[i]) - freq(word[j])| <= k for all indices i and j in the ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3387__f5y3sww__bbpuc2H.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3387__f5y3sww__bbpuc2H">
+                            3387__f5y3sww__bbpuc2H
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="minimum-operations-to-make-median-of-array-equal-to-k">
+                        minimum-operations-to-make-median-of-array-equal-to-k
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer array nums and a non-negative integer k. In one operation, you can increase or decrease any element by 1. Return the minimum ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3450__qpo95xs__MuPNdPn.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3450__qpo95xs__MuPNdPn">
+                            3450__qpo95xs__MuPNdPn
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-the-child-who-has-the-ball-after-k-seconds">
+                        find-the-child-who-has-the-ball-after-k-seconds
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two positive integers n and k. There are n children numbered from 0 to n - 1 standing in a queue in order from left to right. Initially,...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3455__hpappqp__i9WqTTB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3455__hpappqp__i9WqTTB">
+                            3455__hpappqp__i9WqTTB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="minimum-length-of-string-after-operations">
+                        minimum-length-of-string-after-operations
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string s. You can perform the following process on s any number of times: Choose an index i in the string such that there is at least ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.40</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3468__p4iegw2__3Wsg62S.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3468__p4iegw2__3Wsg62S">
+                            3468__p4iegw2__3Wsg62S
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-the-encrypted-string">
+                        find-the-encrypted-string
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string s and an integer k. Encrypt the string using the following algorithm: For each character c in s, replace c with the k^th charac...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3508__rnlxtkw__3HGCAbi.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3508__rnlxtkw__3HGCAbi">
+                            3508__rnlxtkw__3HGCAbi
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="number-of-bit-changes-to-make-two-integers-equal">
+                        number-of-bit-changes-to-make-two-integers-equal
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two positive integers n and k. You can choose any bit in the binary representation of n that is equal to 1 and change it to 0. Return th...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3518__cpu6dzc__ZPESCRb.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3518__cpu6dzc__ZPESCRb">
+                            3518__cpu6dzc__ZPESCRb
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="maximum-multiplication-score">
+                        maximum-multiplication-score
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer array a of size 4 and another integer array b of size at least 4. You need to choose 4 indices i_0, i_1, i_2, and i_3 from th...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3535__zzcrfau__AqCpf3K.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3535__zzcrfau__AqCpf3K">
+                            3535__zzcrfau__AqCpf3K
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-the-count-of-monotonic-pairs-i">
+                        find-the-count-of-monotonic-pairs-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an array of positive integers nums of length n. We call a pair of non-negative integer arrays (arr1, arr2) monotonic if: The lengths of ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3553__dydgs7s__wt2RfEL.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3553__dydgs7s__wt2RfEL">
+                            3553__dydgs7s__wt2RfEL
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="check-if-two-chessboard-squares-have-the-same-color">
+                        check-if-two-chessboard-squares-have-the-same-color
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two strings, coordinate1 and coordinate2, representing the coordinates of a square on an 8 x 8 chessboard. Below is the chessboard for r...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3608__sywfwab__4QQjp8T.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3608__sywfwab__4QQjp8T">
+                            3608__sywfwab__4QQjp8T
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-the-number-of-subsequences-with-equal-gcd">
+                        find-the-number-of-subsequences-with-equal-gcd
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer array nums. Your task is to find the number of pairs of non-empty subsequences (seq1, seq2) of nums that satisfy the followin...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3655__eu8nftq__t8GcZSZ.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3655__eu8nftq__t8GcZSZ">
+                            3655__eu8nftq__t8GcZSZ
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="digit-operations-to-make-two-integers-equal">
+                        digit-operations-to-make-two-integers-equal
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two integers n and m that consist of the same number of digits. You can perform the following operations any number of times: Choose any...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.67</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3656__pewotxp__Pg6EYWB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3656__pewotxp__Pg6EYWB">
+                            3656__pewotxp__Pg6EYWB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="minimum-number-of-operations-to-make-elements-in-array-distinct">
+                        minimum-number-of-operations-to-make-elements-in-array-disti
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer array nums. You need to ensure that the elements in the array are distinct. To achieve this, you can perform the following op...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3676__s8cb3xn__QumB7ck.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3676__s8cb3xn__QumB7ck">
+                            3676__s8cb3xn__QumB7ck
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="smallest-number-with-all-set-bits">
+                        smallest-number-with-all-set-bits
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a positive number n. Return the smallest number x greater than or equal to n, such that the binary representation of x contains only set...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3736__kjoq8t6__Ernndvd.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3736__kjoq8t6__Ernndvd">
+                            3736__kjoq8t6__Ernndvd
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="find-valid-pair-of-adjacent-digits-in-string">
+                        find-valid-pair-of-adjacent-digits-in-string
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string s consisting only of digits. A valid pair is defined as two adjacent digits in s such that: The first digit is not equal to the...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3763__twbmeda__W8vzr9K.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3763__twbmeda__W8vzr9K">
+                            3763__twbmeda__W8vzr9K
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="separate-squares-i">
+                        separate-squares-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a 2D integer array squares. Each squares[i] = [x_i, y_i, l_i] represents the coordinates of the bottom-left point and the side length of...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.45</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3768__xt79fud__dxp8NeA.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3768__xt79fud__dxp8NeA">
+                            3768__xt79fud__dxp8NeA
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="check-if-digits-are-equal-in-string-after-operations-i">
+                        check-if-digits-are-equal-in-string-after-operations-i
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string s consisting of digits. Perform the following operation repeatedly until the string has exactly two digits: For each pair of co...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3779__fvhxefm__DUdYK5x.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3779__fvhxefm__DUdYK5x">
+                            3779__fvhxefm__DUdYK5x
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="eat-pizzas">
+                        eat-pizzas
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer array pizzas of size n, where pizzas[i] represents the weight of the i^th pizza. Every day, you eat exactly 4 pizzas. Due to ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.81</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_3811__qmabwyc__9QHc8mB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="3811__qmabwyc__9QHc8mB">
+                            3811__qmabwyc__9QHc8mB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="reverse-degree-of-a-string">
+                        reverse-degree-of-a-string
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Given a string s, calculate its reverse degree. The reverse degree is calculated as follows: For each character, multiply its position in the reversed...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc306_d__yarqkdx__vd2rc3R.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc306_d__yarqkdx__vd2rc3R">
+                            abc306_d__yarqkdx__vd2rc3R
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Poisonous Full">
+                        Poisonous Full
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Takahashi has decided to enjoy a wired full-course meal consisting of N courses in a restaurant. The i-th course is: - if X_i=0, an antidotal course w...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc307_a__47sdoia__8JxusYE.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc307_a__47sdoia__8JxusYE">
+                            abc307_a__47sdoia__8JxusYE
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Weekly Records">
+                        Weekly Records
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Takahashi has recorded the number of steps he walked for N weeks. He walked A_i steps on the i-th day. Find the total number of steps Takahashi walked...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc309_d__v2krftt__Jj8Fzkk.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc309_d__v2krftt__Jj8Fzkk">
+                            abc309_d__v2krftt__Jj8Fzkk
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Add One Edge">
+                        Add One Edge
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        We have an undirected graph with (N_1+N_2) vertices and M edges. For i=1,2,…,M, the i-th edge connects vertex a_i and vertex b_i. The following proper...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.71</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc310_b__z8gbe5f__6MebJsY.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc310_b__z8gbe5f__6MebJsY">
+                            abc310_b__z8gbe5f__6MebJsY
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Strictly Superior">
+                        Strictly Superior
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        AtCoder Shop has N products. The price of the i-th product (1≤ i≤ N) is P _ i. The i-th product (1≤ i≤ N) has C_i functions. The j-th function (1≤ j≤ ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc312_d__qe6grrc__EjN7MmB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc312_d__qe6grrc__EjN7MmB">
+                            abc312_d__qe6grrc__EjN7MmB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Count Bracket Sequences">
+                        Count Bracket Sequences
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a non-empty string S consisting of (, ), and ?. There are 2^x ways to obtain a new string by replacing each ? in S with ( and ), where x...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc320_c__nterkva__k74sGp2.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc320_c__nterkva__k74sGp2">
+                            abc320_c__nterkva__k74sGp2
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Slot Strategy 2 (Easy)">
+                        Slot Strategy 2 (Easy)
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        This problem is an easier version of Problem G. There is a slot machine with three reels. The arrangement of symbols on the i-th reel is represented b...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.93</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc325_c__ejruqp8__bUTtMWD.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc325_c__ejruqp8__bUTtMWD">
+                            abc325_c__ejruqp8__bUTtMWD
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Sensors">
+                        Sensors
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There are zero or more sensors placed on a grid of H rows and W columns. Let (i, j) denote the square in the i-th row from the top and the j-th column...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.56</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc328_d__phkhhz8__c2UPmVz.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc328_d__phkhhz8__c2UPmVz">
+                            abc328_d__phkhhz8__c2UPmVz
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Take ABC">
+                        Take ABC
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string S consisting of three different characters: A, B, and C. As long as S contains the string ABC as a consecutive substring, repea...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc329_c__pauh3zz__vsHmaLe.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc329_c__pauh3zz__vsHmaLe">
+                            abc329_c__pauh3zz__vsHmaLe
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Count xxx">
+                        Count xxx
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a string S of length N consisting of lowercase English letters. Find the number of non-empty substrings of S that are repetitions of one...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.87</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc329_f__nczyfux__J6KBf6n.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc329_f__nczyfux__J6KBf6n">
+                            abc329_f__nczyfux__J6KBf6n
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Colored Ball">
+                        Colored Ball
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There are N boxes numbered 1, 2, …, N. Initially, box i contains one ball of color C_i. You are given Q queries, which you should process in order. Ea...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.79</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc330_c__vzsqbdi__bg8J3YL.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc330_c__vzsqbdi__bg8J3YL">
+                            abc330_c__vzsqbdi__bg8J3YL
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Minimize Abs 2">
+                        Minimize Abs 2
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a positive integer D. Find the minimum value of |x^2+y^2-D| for non-negative integers x and y. Input The input is given from Standard In...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc333_a__2hkhkhp__7x3ZUjB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc333_a__2hkhkhp__7x3ZUjB">
+                            abc333_a__2hkhkhp__7x3ZUjB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Three Threes">
+                        Three Threes
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer N between 1 and 9, inclusive, as input. Concatenate N copies of the digit N and print the resulting string. Input The input i...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc334_b__azcvhdu__XLJf4Bu.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc334_b__azcvhdu__XLJf4Bu">
+                            abc334_b__azcvhdu__XLJf4Bu
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Christmas Trees">
+                        Christmas Trees
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There is a road that stretches infinitely to the east and west, and the coordinate of a point located x meters to the east from a certain reference po...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc341_e__dcoavdt__ESU7Pwi.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc341_e__dcoavdt__ESU7Pwi">
+                            abc341_e__dcoavdt__ESU7Pwi
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Alternating String">
+                        Alternating String
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        A string consisting of 0 and 1 is called a good string if two consecutive characters in the string are always different. You are given a string S of l...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.64</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc343_a__jgfl92c__xJJe2bT.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc343_a__jgfl92c__xJJe2bT">
+                            abc343_a__jgfl92c__xJJe2bT
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Wrong Answer">
+                        Wrong Answer
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two integers A and B, each between 0 and 9, inclusive. Print any integer between 0 and 9, inclusive, that is not equal to A + B. Input T...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.08</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc348_d__arj6gvb__vzkwHAe.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc348_d__arj6gvb__vzkwHAe">
+                            abc348_d__arj6gvb__vzkwHAe
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Medicines on Grid">
+                        Medicines on Grid
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There is a grid with H rows and W columns. Let (i, j) denote the cell at the i-th row from the top and the j-th column from the left. The state of eac...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc354_b__rsntskw__sKXroSi.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc354_b__rsntskw__sKXroSi">
+                            abc354_b__rsntskw__sKXroSi
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="AtCoder Janken 2">
+                        AtCoder Janken 2
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        N AtCoder users have gathered to play AtCoder RPS 2. The i-th user's name is S_i and their rating is C_i. AtCoder RPS 2 is played as follows: - Assign...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc355_c__wpulxkk__hBRf6qh.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc355_c__wpulxkk__hBRf6qh">
+                            abc355_c__wpulxkk__hBRf6qh
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Bingo 2">
+                        Bingo 2
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There is an N imes N grid, where the cell at the i-th row from the top and the j-th column from the left contains the integer N imes (i-1) + j. Over T...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc363_a__xkei9vp__fR9C8ik.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc363_a__xkei9vp__fR9C8ik">
+                            abc363_a__xkei9vp__fR9C8ik
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Piling Up">
+                        Piling Up
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        In AtCoder, a user's rating is given as a positive integer, and based on this value, a certain number of ^ is displayed. Specifically, when the rating...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc363_f__rexfg6a__hMUcYq5.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc363_f__rexfg6a__hMUcYq5">
+                            abc363_f__rexfg6a__hMUcYq5
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Palindromic Expression">
+                        Palindromic Expression
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given an integer N. Print a string S that satisfies all of the following conditions. If no such string exists, print -1. - S is a string of le...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.16</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc364_c__qajqe63__KkJd2Gp.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc364_c__qajqe63__KkJd2Gp">
+                            abc364_c__qajqe63__KkJd2Gp
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Minimum Glutton">
+                        Minimum Glutton
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There are N dishes, and the i-th dish has a sweetness of A_i and a saltiness of B_i. Takahashi plans to arrange these N dishes in any order he likes a...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc369_a__ggyqdg4__G9R3EZQ.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc369_a__ggyqdg4__G9R3EZQ">
+                            abc369_a__ggyqdg4__G9R3EZQ
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="369">
+                        369
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given two integers A and B. How many integers x satisfy the following condition? - Condition: It is possible to arrange the three integers A, ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc382_c__hjphqkx__6pvDwk7.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc382_c__hjphqkx__6pvDwk7">
+                            abc382_c__hjphqkx__6pvDwk7
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Kaiten Sushi">
+                        Kaiten Sushi
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There are N people numbered from 1 to N visiting a conveyor belt sushi restaurant. The gourmet level of person i is A_i. Now, M pieces of sushi will b...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc383_d__3tdle4r__TR4F3ud.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc383_d__3tdle4r__TR4F3ud">
+                            abc383_d__3tdle4r__TR4F3ud
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="9 Divisors">
+                        9 Divisors
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Find the number of positive integers not greater than N that have exactly 9 positive divisors. Input The input is given from Standard Input in the fol...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc384_b__blhbwu4__tuqgCqW.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc384_b__blhbwu4__tuqgCqW">
+                            abc384_b__blhbwu4__tuqgCqW
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="ARC Division">
+                        ARC Division
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        AtCoder Regular Contest (ARC) is divided into two divisions. - In ARC Div. 1, participants whose rating at the start of the contest is between 1600 an...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.90</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc384_f__tgm2ijg__JLLBMa8.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc384_f__tgm2ijg__JLLBMa8">
+                            abc384_f__tgm2ijg__JLLBMa8
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Double Sum 2">
+                        Double Sum 2
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        For a positive integer x, define f(x) as follows: "While x is even, keep dividing it by 2. The final value of x after these divisions is f(x)." For ex...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.40</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.40</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc388_g__t7cvnkb__HAGe8Hu.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc388_g__t7cvnkb__HAGe8Hu">
+                            abc388_g__t7cvnkb__HAGe8Hu
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Simultaneous Kagamimochi 2">
+                        Simultaneous Kagamimochi 2
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        There are N mochi (rice cakes), arranged in ascending order of size. The size of the i-th mochi (1≤ i≤ N) is A_i. Given two mochi A and B, with sizes ...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc395_a__yyzhzs8__QA3cf4p.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc395_a__yyzhzs8__QA3cf4p">
+                            abc395_a__yyzhzs8__QA3cf4p
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Strictly Increasing?">
+                        Strictly Increasing?
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a positive integer N and a sequence of positive integers A = (A_1,A_2,…,A_N) of length N. Determine whether A is strictly increasing, th...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill bg-green-50">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-high">1.00</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_abc399_d__7fqgcix__wWyomNG.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="abc399_d__7fqgcix__wWyomNG">
+                            abc399_d__7fqgcix__wWyomNG
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Switch Seats">
+                        Switch Seats
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        N couples are seated in a line. Count the number of pairs of couples such that neither couple was originally sitting next to each other, and both coup...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.50</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_arc186_d__jte9ftk__zAtYgc6.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="arc186_d__jte9ftk__zAtYgc6">
+                            arc186_d__jte9ftk__zAtYgc6
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Polish Mania">
+                        Polish Mania
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Whether a non-empty sequence of non-negative integers (V_1, V_2, …, V_M) is Polish or not is recursively defined as follows: - We say (V_1, V_2, …, V_...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.93</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-med">0.80</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_arc192_b__biwb2ys__xuQLgmB.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="arc192_b__biwb2ys__xuQLgmB">
+                            arc192_b__biwb2ys__xuQLgmB
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Fennec VS. Snuke 2">
+                        Fennec VS. Snuke 2
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        Fennec and Snuke are playing a board game. You are given a positive integer N and a sequence A=(A_1,A_2,…,A_N) of positive integers of length N. Also,...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-low">0.60</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.40</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.20</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+            <div onclick="window.location.href='task_arc196_a__egjpapb__wCuzHko.html'" class="task-card bg-white rounded-xl overflow-hidden flex flex-col h-full">
+                
+                <div class="p-5 flex-1">
+                    <div class="flex justify-between items-start mb-3">
+                        <span class="font-mono text-[10px] text-slate-400 bg-slate-100 px-2 py-1 rounded truncate max-w-[150px]" title="arc196_a__egjpapb__wCuzHko">
+                            arc196_a__egjpapb__wCuzHko
+                        </span>
+                    </div>
+                    <h3 class="font-bold text-lg text-slate-800 leading-snug mb-2 line-clamp-2" title="Adjacent Delete">
+                        Adjacent Delete
+                    </h3>
+                    <p class="text-sm text-slate-500 line-clamp-3">
+                        You are given a length-N sequence A = (A_1, A_2, …, A_N). You will repeatedly perform the following operation until the sequence has length at most 1:...
+                    </p>
+                </div>
+
+                <div class="p-4 bg-slate-50 border-t border-slate-100 grid grid-cols-3 gap-2">
+                    <div class="score-pill ">
+                        <span class="score-val text-med">0.79</span>
+                        <span class="score-label">Unit Test</span>
+                    </div>
+                    
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.40</span>
+                        <span class="score-label">LLM Judge</span>
+                    </div>
+
+                    <div class="score-pill">
+                        <span class="score-val text-low">0.40</span>
+                        <span class="score-label">Agent Judge</span>
+                    </div>
+                </div>
+
+            </div>
+            
+        </div>
+    </main>
+    <script>
+        document.addEventListener('DOMContentLoaded', () => {
+            if (window.MathJax && window.MathJax.typesetPromise) {
+                MathJax.typesetPromise();
+            }
+        });
+    </script>
+</body>
+</html>
