@@ -8,14 +8,12 @@ from pathlib import Path
 import jinja2
 import pandas as pd
 
-# ==========================================
-# 1. 配置与数据加载
-# ==========================================
 BASE_DIR = Path(__file__).resolve().parent.parent
 CSV_FILE = BASE_DIR / "outputs" / "results" / "trivial" / "trivial_combined_results_summary.csv"
 JSON_DETAILS_FILE = BASE_DIR / "outputs" / "results" / "trivial" / "trivial_combined_results_summary.json"
-AGENT_MULTI_ROOT = BASE_DIR / "agent_multi_spec_vanilla"
-AGENT_UNIT_PROMPT_ROOT = BASE_DIR / "agent_unit_test_judge_result"
+AGENT_MULTI_ROOT = BASE_DIR / "agent_judge_tasks_results" / "agent_multi_spec_results"
+AGENT_UNIT_PROMPT_ROOT = BASE_DIR / "agent_judge_tasks_results" / "agent_unit_test_judge_result"
+AGENT_CORRECTNESS_ROOT = BASE_DIR / "agent_judge_tasks" / "correctness_judge" / "correctness_judge_tasks"
 OUTPUT_DIR = Path(__file__).resolve().parent / "harbor_viz_site"
 LOG_FILE_CANDIDATES = [
     "claude-code.txt",
@@ -76,7 +74,6 @@ def load_detail_index(path: Path):
 
 DETAIL_LOOKUP = load_detail_index(JSON_DETAILS_FILE)
 
-# 解析日志 (复用逻辑)
 def parse_logs(log_path: Path):
     if not log_path or not log_path.exists():
         return []
@@ -263,10 +260,6 @@ def escape_text(text: str) -> str:
         return ""
     return html.escape(str(text))
 
-# ==========================================
-# 2. 定义模板 (重点修改了 INDEX_TEMPLATE)
-# ==========================================
-
 INDEX_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
@@ -392,7 +385,7 @@ INDEX_TEMPLATE = """
 </html>
 """
 
-# 详情页模板 (保持不变，功能已完善)
+
 DETAIL_TEMPLATE = """
 <!DOCTYPE html>
 <html lang="en">
@@ -594,11 +587,6 @@ DETAIL_TEMPLATE = """
 </html>
 """
 
-# ==========================================
-# 3. 网站生成逻辑
-# ==========================================
-
-# 辅助函数: 颜色映射
 def normalize_score(value):
     if value in (None, "", "-", "--"):
         return None
@@ -665,7 +653,7 @@ for _, row in df.iterrows():
     tasks_data.append({
         "id": task_id,
         "safe_id": safe_id,
-        "title": title_line.replace('Title: ', '')[:60], # 优化标题提取
+        "title": title_line.replace('Title: ', '')[:60],
         "full_title": title_line,
         "description": (desc_clean[:150] + "...") if desc_clean else "",
         "score_unit_display": format_score(unit_score),
@@ -679,7 +667,6 @@ for _, row in df.iterrows():
         "color_agent": get_score_text_color(agent_score),
     })
 
-# 生成 index.html
 template_index = jinja2.Template(INDEX_TEMPLATE)
 index_path = OUTPUT_DIR / "index.html"
 with index_path.open("w", encoding='utf-8') as f:
