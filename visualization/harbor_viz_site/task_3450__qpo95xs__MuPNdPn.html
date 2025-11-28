@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-med text-lg">0.95</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
         </div>
     </header>
@@ -679,17 +679,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.3\nSimplicity_Score: 0.5\nRobustness_Score: 0.7\nReasoning: The algorithm is functionally correct for all valid inputs: it uses k mod 2*(n-1) and the reflection formula to determine position, so correctness = 1.0. The code style is poor because of numerous unnecessary and wildcard imports and general clutter despite a short docstring, hence style = 0.3. The core logic is simple and O(1), but the many unused imports and redundancy reduce conciseness, so simplicity = 0.5. The solution handles edge cases within the given constraints and is efficient, but maintainability is hurt by noisy imports and could be cleaner, so robustness = 0.7.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.3
+Simplicity_Score: 0.5
+Robustness_Score: 0.7
+Reasoning: The algorithm is functionally correct for all valid inputs: it uses k mod 2*(n-1) and the reflection formula to determine position, so correctness = 1.0. The code style is poor because of numerous unnecessary and wildcard imports and general clutter despite a short docstring, hence style = 0.3. The core logic is simple and O(1), but the many unused imports and redundancy reduce conciseness, so simplicity = 0.5. The solution handles edge cases within the given constraints and is efficient, but maintainability is hurt by noisy imports and could be cleaner, so robustness = 0.7.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -698,17 +731,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.3\nSimplicity_Score: 0.5\nRobustness_Score: 0.7\nReasoning: The algorithm is functionally correct for all valid inputs: it uses k mod 2*(n-1) and the reflection formula to determine position, so correctness = 1.0. The code style is poor because of numerous unnecessary and wildcard imports and general clutter despite a short docstring, hence style = 0.3. The core logic is simple and O(1), but the many unused imports and redundancy reduce conciseness, so simplicity = 0.5. The solution handles edge cases within the given constraints and is efficient, but maintainability is hurt by noisy imports and could be cleaner, so robustness = 0.7.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.3
+Simplicity_Score: 0.5
+Robustness_Score: 0.7
+Reasoning: The algorithm is functionally correct for all valid inputs: it uses k mod 2*(n-1) and the reflection formula to determine position, so correctness = 1.0. The code style is poor because of numerous unnecessary and wildcard imports and general clutter despite a short docstring, hence style = 0.3. The core logic is simple and O(1), but the many unused imports and redundancy reduce conciseness, so simplicity = 0.5. The solution handles edge cases within the given constraints and is efficient, but maintainability is hurt by noisy imports and could be cleaner, so robustness = 0.7.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -724,14 +790,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with the requested scores and reasoning. If you want changes to the scores or reasoning, tell me and I will update the file."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with the requested scores and reasoning. If you want changes to the scores or reasoning, tell me and I will update the file."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -761,10 +835,57 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
-Reasoning: The solution correctly implements the logic to determine which child has the ball after `k` seconds by utilizing the concept of cycles in the ball-passing process. It efficiently calculates the position using modular arithmetic and handles all edge cases, including the transitions at the ends of the queue. The time complexity is O(1), which is optimal given the constraints.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Avg: 0.95</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">1.00</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.90</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">1.00</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.90</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to determine which child has the ball after k seconds, handling all edge cases effectively, such as when k is less than or greater than the cycle length. The comments are clear and provide a good understanding of the algorithm, though a bit more detail could enhance clarity. The code is concise and efficient, with no unnecessary operations. It handles edge cases well, but could benefit from additional comments on the logic for clarity and maintainability.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Score: 0.95</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly calculates the position of the child holding the ball after k seconds by leveraging the cyclical nature of the ball passing. It accurately handles the direction changes at the ends of the queue and correctly computes the position using modular arithmetic. All edge cases, including the minimum and maximum values for n and k, are properly addressed.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -802,6 +923,14 @@ Reasoning: The solution correctly implements the logic to determine which child 
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

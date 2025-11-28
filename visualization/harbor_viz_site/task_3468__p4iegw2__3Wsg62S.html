@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-med text-lg">0.85</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-med text-lg">0.80</span></div>
         </div>
     </header>
@@ -570,17 +570,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.5\nSimplicity_Score: 0.6\nRobustness_Score: 0.7\nReasoning: The implementation is functionally correct and matches the problem examples and constraints, so it will pass all test cases. Style is poor because of the huge number of unnecessary and wildcard imports and minimal comments, though the function itself has a docstring and a brief inline comment. The solution logic is simple and efficient but could be more concise (e.g., using string slicing) and remove redundant imports. Robustness is good\u2014edge cases like large k and small n are handled via modulo\u2014but maintainability is reduced by cluttered imports.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.5
+Simplicity_Score: 0.6
+Robustness_Score: 0.7
+Reasoning: The implementation is functionally correct and matches the problem examples and constraints, so it will pass all test cases. Style is poor because of the huge number of unnecessary and wildcard imports and minimal comments, though the function itself has a docstring and a brief inline comment. The solution logic is simple and efficient but could be more concise (e.g., using string slicing) and remove redundant imports. Robustness is good—edge cases like large k and small n are handled via modulo—but maintainability is reduced by cluttered imports.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -589,17 +622,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.5\nSimplicity_Score: 0.6\nRobustness_Score: 0.7\nReasoning: The implementation is functionally correct and matches the problem examples and constraints, so it will pass all test cases. Style is poor because of the huge number of unnecessary and wildcard imports and minimal comments, though the function itself has a docstring and a brief inline comment. The solution logic is simple and efficient but could be more concise (e.g., using string slicing) and remove redundant imports. Robustness is good\u2014edge cases like large k and small n are handled via modulo\u2014but maintainability is reduced by cluttered imports.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.5
+Simplicity_Score: 0.6
+Robustness_Score: 0.7
+Reasoning: The implementation is functionally correct and matches the problem examples and constraints, so it will pass all test cases. Style is poor because of the huge number of unnecessary and wildcard imports and minimal comments, though the function itself has a docstring and a brief inline comment. The solution logic is simple and efficient but could be more concise (e.g., using string slicing) and remove redundant imports. Robustness is good—edge cases like large k and small n are handled via modulo—but maintainability is reduced by cluttered imports.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -615,14 +681,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with the requested scores and brief reasoning."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with the requested scores and brief reasoning."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1033,17 +1107,102 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nclass Solution:\n    def getEncryptedString(self, s: str, k: int) -\u003e str:\n        \"\"\"\n        Encrypt the string by replacing each character with the k-th character after it (cyclically).\n\n        Args:\n            s: The input string\n            k: The position shift\n\n        Returns:\n            The encrypted string\n        \"\"\"\n        n = len(s)\n        encrypted = []\n\n        for i in range(n):\n            # Find the character k positions ahead (cyclically)\n            new_index = (i + k) % n\n            encrypted.append(s[new_index])\n\n        return \u0027\u0027.join(encrypted)\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def getEncryptedString(self, s: str, k: int) -> str:
+        """
+        Encrypt the string by replacing each character with the k-th character after it (cyclically).
+
+        Args:
+            s: The input string
+            k: The position shift
+
+        Returns:
+            The encrypted string
+        """
+        n = len(s)
+        encrypted = []
+
+        for i in range(n):
+            # Find the character k positions ahead (cyclically)
+            new_index = (i + k) % n
+            encrypted.append(s[new_index])
+
+        return ''.join(encrypted)
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1052,17 +1211,102 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nclass Solution:\n    def getEncryptedString(self, s: str, k: int) -\u003e str:\n        \"\"\"\n        Encrypt the string by replacing each character with the k-th character after it (cyclically).\n\n        Args:\n            s: The input string\n            k: The position shift\n\n        Returns:\n            The encrypted string\n        \"\"\"\n        n = len(s)\n        encrypted = []\n\n        for i in range(n):\n            # Find the character k positions ahead (cyclically)\n            new_index = (i + k) % n\n            encrypted.append(s[new_index])\n\n        return \u0027\u0027.join(encrypted)\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def getEncryptedString(self, s: str, k: int) -> str:
+        """
+        Encrypt the string by replacing each character with the k-th character after it (cyclically).
+
+        Args:
+            s: The input string
+            k: The position shift
+
+        Returns:
+            The encrypted string
+        """
+        n = len(s)
+        encrypted = []
+
+        for i in range(n):
+            # Find the character k positions ahead (cyclically)
+            new_index = (i + k) % n
+            encrypted.append(s[new_index])
+
+        return ''.join(encrypted)
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1078,16 +1322,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: ls -la</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1096,16 +1348,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `ls -la` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1153,16 +1413,24 @@ class TestEncryption(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 PY</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport unittest\nfrom solution import Solution\n\nclass TestEncryption(unittest.TestCase):\n    def setUp(self):\n        self.sol = Solution()\n\n    def test_examples(self):\n        self.assertEqual(self.sol.getEncryptedString(\"dart\", 3), \"tdar\")\n        self.assertEqual(self.sol.getEncryptedString(\"aaa\", 1), \"aaa\")\n\n    def test_single_char(self):\n        self.assertEqual(self.sol.getEncryptedString(\"a\", 5), \"a\")\n\n    def test_full_rotation(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcd\", 4), \"abcd\")\n\n    def test_large_k(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcdef\", 10), \"efabcd\")\n\n    def test_random(self):\n        s = \"abcdefghijklmnopqrstuvwxyz\"\n        self.assertEqual(self.sol.getEncryptedString(s, 1), s[1:]+s[:1])\n        self.assertEqual(self.sol.getEncryptedString(s, 25), s[-25:]+s[:-25])\n\n    def test_not_letter(self):\n        # Problem constraints say only lowercase, but test behavior\n        self.assertEqual(self.sol.getEncryptedString(\"ab-cd\", 2), \"-cdab\")\n\nif __name__ == \u0027__main__\u0027:\n    unittest.main()\nPY",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport unittest\nfrom solution import Solution\n\nclass TestEncryption(unittest.TestCase):\n    def setUp(self):\n        self.sol = Solution()\n\n    def test_examples(self):\n        self.assertEqual(self.sol.getEncryptedString(\"dart\", 3), \"tdar\")\n        self.assertEqual(self.sol.getEncryptedString(\"aaa\", 1), \"aaa\")\n\n    def test_single_char(self):\n        self.assertEqual(self.sol.getEncryptedString(\"a\", 5), \"a\")\n\n    def test_full_rotation(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcd\", 4), \"abcd\")\n\n    def test_large_k(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcdef\", 10), \"efabcd\")\n\n    def test_random(self):\n        s = \"abcdefghijklmnopqrstuvwxyz\"\n        self.assertEqual(self.sol.getEncryptedString(s, 1), s[1:]+s[:1])\n        self.assertEqual(self.sol.getEncryptedString(s, 25), s[-25:]+s[:-25])\n\n    def test_not_letter(self):\n        # Problem constraints say only lowercase, but test behavior\n        self.assertEqual(self.sol.getEncryptedString(\"ab-cd\", 2), \"-cdab\")\n\nif __name__ == \u0027__main__\u0027:\n    unittest.main()\nPY",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1203,16 +1471,24 @@ class TestEncryption(unittest.TestCase):
 if __name__ == '__main__':
     unittest.main()
 PY` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport unittest\nfrom solution import Solution\n\nclass TestEncryption(unittest.TestCase):\n    def setUp(self):\n        self.sol = Solution()\n\n    def test_examples(self):\n        self.assertEqual(self.sol.getEncryptedString(\"dart\", 3), \"tdar\")\n        self.assertEqual(self.sol.getEncryptedString(\"aaa\", 1), \"aaa\")\n\n    def test_single_char(self):\n        self.assertEqual(self.sol.getEncryptedString(\"a\", 5), \"a\")\n\n    def test_full_rotation(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcd\", 4), \"abcd\")\n\n    def test_large_k(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcdef\", 10), \"efabcd\")\n\n    def test_random(self):\n        s = \"abcdefghijklmnopqrstuvwxyz\"\n        self.assertEqual(self.sol.getEncryptedString(s, 1), s[1:]+s[:1])\n        self.assertEqual(self.sol.getEncryptedString(s, 25), s[-25:]+s[:-25])\n\n    def test_not_letter(self):\n        # Problem constraints say only lowercase, but test behavior\n        self.assertEqual(self.sol.getEncryptedString(\"ab-cd\", 2), \"-cdab\")\n\nif __name__ == \u0027__main__\u0027:\n    unittest.main()\nPY",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport unittest\nfrom solution import Solution\n\nclass TestEncryption(unittest.TestCase):\n    def setUp(self):\n        self.sol = Solution()\n\n    def test_examples(self):\n        self.assertEqual(self.sol.getEncryptedString(\"dart\", 3), \"tdar\")\n        self.assertEqual(self.sol.getEncryptedString(\"aaa\", 1), \"aaa\")\n\n    def test_single_char(self):\n        self.assertEqual(self.sol.getEncryptedString(\"a\", 5), \"a\")\n\n    def test_full_rotation(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcd\", 4), \"abcd\")\n\n    def test_large_k(self):\n        self.assertEqual(self.sol.getEncryptedString(\"abcdef\", 10), \"efabcd\")\n\n    def test_random(self):\n        s = \"abcdefghijklmnopqrstuvwxyz\"\n        self.assertEqual(self.sol.getEncryptedString(s, 1), s[1:]+s[:1])\n        self.assertEqual(self.sol.getEncryptedString(s, 25), s[-25:]+s[:-25])\n\n    def test_not_letter(self):\n        # Problem constraints say only lowercase, but test behavior\n        self.assertEqual(self.sol.getEncryptedString(\"ab-cd\", 2), \"-cdab\")\n\nif __name__ == \u0027__main__\u0027:\n    unittest.main()\nPY",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1228,16 +1504,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 check_solution.py -q</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py -q",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py -q",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1246,16 +1530,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 check_solution.py -q` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py -q",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py -q",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1271,16 +1563,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python check_solution.py -q</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py -q",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py -q",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1289,16 +1589,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python check_solution.py -q` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py -q",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py -q",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1314,17 +1622,50 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 16</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.3\nSimplicity_Score: 0.6\nRobustness_Score: 0.8\nReasoning: I attempted to run unit tests (created check_solution.py) but the execution environment lacked a Python interpreter so tests could not be executed; however, I covered sample cases, single-char, full rotations, large k, and random cases in the test suite. By static inspection the implementation maps each character to s[(i + k) % n], which matches the problem specification and examples, so correctness is 1.0. Style is poor due to excessive unused wildcard and redundant imports despite having a clear docstring, so I rated it 0.3. Simplicity is acceptable algorithmically (O(n)) but cluttered by unnecessary imports, so 0.6; robustness is good since it handles k \u003e n via modulo and typical edge cases, so 0.8.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.3
+Simplicity_Score: 0.6
+Robustness_Score: 0.8
+Reasoning: I attempted to run unit tests (created check_solution.py) but the execution environment lacked a Python interpreter so tests could not be executed; however, I covered sample cases, single-char, full rotations, large k, and random cases in the test suite. By static inspection the implementation maps each character to s[(i + k) % n], which matches the problem specification and examples, so correctness is 1.0. Style is poor due to excessive unused wildcard and redundant imports despite having a clear docstring, so I rated it 0.3. Simplicity is acceptable algorithmically (O(n)) but cluttered by unnecessary imports, so 0.6; robustness is good since it handles k > n via modulo and typical edge cases, so 0.8.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1333,17 +1674,50 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 17</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.3\nSimplicity_Score: 0.6\nRobustness_Score: 0.8\nReasoning: I attempted to run unit tests (created check_solution.py) but the execution environment lacked a Python interpreter so tests could not be executed; however, I covered sample cases, single-char, full rotations, large k, and random cases in the test suite. By static inspection the implementation maps each character to s[(i + k) % n], which matches the problem specification and examples, so correctness is 1.0. Style is poor due to excessive unused wildcard and redundant imports despite having a clear docstring, so I rated it 0.3. Simplicity is acceptable algorithmically (O(n)) but cluttered by unnecessary imports, so 0.6; robustness is good since it handles k \u003e n via modulo and typical edge cases, so 0.8.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.3
+Simplicity_Score: 0.6
+Robustness_Score: 0.8
+Reasoning: I attempted to run unit tests (created check_solution.py) but the execution environment lacked a Python interpreter so tests could not be executed; however, I covered sample cases, single-char, full rotations, large k, and random cases in the test suite. By static inspection the implementation maps each character to s[(i + k) % n], which matches the problem specification and examples, so correctness is 1.0. Style is poor due to excessive unused wildcard and redundant imports despite having a clear docstring, so I rated it 0.3. Simplicity is acceptable algorithmically (O(n)) but cluttered by unnecessary imports, so 0.6; robustness is good since it handles k > n via modulo and typical edge cases, so 0.8.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1359,16 +1733,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 18</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: cat evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1377,16 +1759,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 19</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `cat evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1402,14 +1792,22 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 20</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created solution.py and evaluation.txt. Ran tests attempt but python was unavailable; static analysis used for scoring. evaluation.txt contains the requested scores and reasoning."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created solution.py and evaluation.txt. Ran tests attempt but python was unavailable; static analysis used for scoring. evaluation.txt contains the requested scores and reasoning."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1429,10 +1827,57 @@ PY` executed with exit code 0.</div></div>
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.60</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.6  
-Reasoning: The algorithm logic is mostly correct, but it fails to account for the cyclic nature of the alphabet when shifting characters. The current implementation shifts the index based on the position in the string rather than the position in the alphabet, which leads to incorrect results for characters near the end of the alphabet. Additionally, it does not handle cases where `k` is larger than 26, which could lead to incorrect indexing.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Avg: 0.8500000000000001</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">0.90</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.80</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.90</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.80</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution is mostly correct, as it successfully encrypts the string based on the provided algorithm, but it does not account for the case where k is larger than the length of the string, which could lead to incorrect results. The code is well-documented with a clear docstring, but additional comments could enhance understanding of the logic. The implementation is concise and efficient, with no unnecessary operations, although the use of multiple imports could be simplified. The code handles most edge cases but could be improved by explicitly checking for cases where k exceeds the string length.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Score: 0.85</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The algorithm correctly shifts characters by k positions cyclically, but it does not account for the fact that k can be larger than the length of the string. This can lead to incorrect indexing when k is greater than n, as the modulo operation is not effectively reducing k to a valid range. Additionally, the problem statement specifies that the k-th character after c should be considered, which is not accurately reflected in the implementation. Therefore, it would fail for cases where k is larger than the length of the string.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1470,6 +1915,14 @@ Reasoning: The algorithm logic is mostly correct, but it fails to account for th
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

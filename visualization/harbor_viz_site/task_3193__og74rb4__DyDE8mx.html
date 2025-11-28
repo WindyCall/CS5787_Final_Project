@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-med text-lg">0.88</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
         </div>
     </header>
@@ -583,17 +583,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.4\nSimplicity_Score: 0.6\nRobustness_Score: 0.8\nReasoning: The solution is functionally correct: it checks all unordered pairs (including pairing an element with itself) and uses the exact strong-pair condition, so it will pass all valid inputs under the problem constraints. Style is weak because the file contains many redundant and wildcard imports and general module clutter; there is only a brief docstring and little other documentation. Simplicity is reasonable since the core function is short and uses an O(n^2) brute-force approach appropriate for n\u003c=50, but the extraneous imports and duplicates reduce conciseness. Robustness is good: edge cases (self-pairs, duplicates, small arrays) are handled and the algorithm is easy to reason about, though maintainability is slightly harmed by the noisy imports.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.4
+Simplicity_Score: 0.6
+Robustness_Score: 0.8
+Reasoning: The solution is functionally correct: it checks all unordered pairs (including pairing an element with itself) and uses the exact strong-pair condition, so it will pass all valid inputs under the problem constraints. Style is weak because the file contains many redundant and wildcard imports and general module clutter; there is only a brief docstring and little other documentation. Simplicity is reasonable since the core function is short and uses an O(n^2) brute-force approach appropriate for n<=50, but the extraneous imports and duplicates reduce conciseness. Robustness is good: edge cases (self-pairs, duplicates, small arrays) are handled and the algorithm is easy to reason about, though maintainability is slightly harmed by the noisy imports.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -602,17 +635,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.4\nSimplicity_Score: 0.6\nRobustness_Score: 0.8\nReasoning: The solution is functionally correct: it checks all unordered pairs (including pairing an element with itself) and uses the exact strong-pair condition, so it will pass all valid inputs under the problem constraints. Style is weak because the file contains many redundant and wildcard imports and general module clutter; there is only a brief docstring and little other documentation. Simplicity is reasonable since the core function is short and uses an O(n^2) brute-force approach appropriate for n\u003c=50, but the extraneous imports and duplicates reduce conciseness. Robustness is good: edge cases (self-pairs, duplicates, small arrays) are handled and the algorithm is easy to reason about, though maintainability is slightly harmed by the noisy imports.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.4
+Simplicity_Score: 0.6
+Robustness_Score: 0.8
+Reasoning: The solution is functionally correct: it checks all unordered pairs (including pairing an element with itself) and uses the exact strong-pair condition, so it will pass all valid inputs under the problem constraints. Style is weak because the file contains many redundant and wildcard imports and general module clutter; there is only a brief docstring and little other documentation. Simplicity is reasonable since the core function is short and uses an O(n^2) brute-force approach appropriate for n<=50, but the extraneous imports and duplicates reduce conciseness. Robustness is good: edge cases (self-pairs, duplicates, small arrays) are handled and the algorithm is easy to reason about, though maintainability is slightly harmed by the noisy imports.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -628,14 +694,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with the requested scores and reasoning."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with the requested scores and reasoning."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1052,16 +1126,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: ls -la</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1070,16 +1152,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `ls -la` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1095,17 +1185,107 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nfrom typing import List\n\nclass Solution:\n    def maximumStrongPairXor(self, nums: List[int]) -\u003e int:\n        \"\"\"\n        Find the maximum XOR value among all strong pairs.\n\n        A strong pair (x, y) satisfies: |x - y| \u003c= min(x, y)\n\n        Approach: Since constraints are small (n \u003c= 50, values \u003c= 100),\n        we can check all pairs and compute XOR for valid strong pairs.\n        \"\"\"\n        max_xor = 0\n\n        # Check all pairs (including same element twice)\n        for i in range(len(nums)):\n            for j in range(i, len(nums)):\n                x, y = nums[i], nums[j]\n\n                # Check if (x, y) is a strong pair\n                if abs(x - y) \u003c= min(x, y):\n                    # Compute XOR\n                    current_xor = x ^ y\n                    max_xor = max(max_xor, current_xor)\n\n        return max_xor\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+from typing import List
+
+class Solution:
+    def maximumStrongPairXor(self, nums: List[int]) -> int:
+        """
+        Find the maximum XOR value among all strong pairs.
+
+        A strong pair (x, y) satisfies: |x - y| <= min(x, y)
+
+        Approach: Since constraints are small (n <= 50, values <= 100),
+        we can check all pairs and compute XOR for valid strong pairs.
+        """
+        max_xor = 0
+
+        # Check all pairs (including same element twice)
+        for i in range(len(nums)):
+            for j in range(i, len(nums)):
+                x, y = nums[i], nums[j]
+
+                # Check if (x, y) is a strong pair
+                if abs(x - y) <= min(x, y):
+                    # Compute XOR
+                    current_xor = x ^ y
+                    max_xor = max(max_xor, current_xor)
+
+        return max_xor
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1114,17 +1294,107 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nfrom typing import List\n\nclass Solution:\n    def maximumStrongPairXor(self, nums: List[int]) -\u003e int:\n        \"\"\"\n        Find the maximum XOR value among all strong pairs.\n\n        A strong pair (x, y) satisfies: |x - y| \u003c= min(x, y)\n\n        Approach: Since constraints are small (n \u003c= 50, values \u003c= 100),\n        we can check all pairs and compute XOR for valid strong pairs.\n        \"\"\"\n        max_xor = 0\n\n        # Check all pairs (including same element twice)\n        for i in range(len(nums)):\n            for j in range(i, len(nums)):\n                x, y = nums[i], nums[j]\n\n                # Check if (x, y) is a strong pair\n                if abs(x - y) \u003c= min(x, y):\n                    # Compute XOR\n                    current_xor = x ^ y\n                    max_xor = max(max_xor, current_xor)\n\n        return max_xor\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+from typing import List
+
+class Solution:
+    def maximumStrongPairXor(self, nums: List[int]) -> int:
+        """
+        Find the maximum XOR value among all strong pairs.
+
+        A strong pair (x, y) satisfies: |x - y| <= min(x, y)
+
+        Approach: Since constraints are small (n <= 50, values <= 100),
+        we can check all pairs and compute XOR for valid strong pairs.
+        """
+        max_xor = 0
+
+        # Check all pairs (including same element twice)
+        for i in range(len(nums)):
+            for j in range(i, len(nums)):
+                x, y = nums[i], nums[j]
+
+                # Check if (x, y) is a strong pair
+                if abs(x - y) <= min(x, y):
+                    # Compute XOR
+                    current_xor = x ^ y
+                    max_xor = max(max_xor, current_xor)
+
+        return max_xor
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1180,16 +1450,24 @@ for _ in range(20):
 else:
     print("Random tests passed")
 PY</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)  # only (1,1)\nrun_test([2,3], 1) # pairs: (2,2)=0, (3,3)=0, (2,3) valid? |1| \u003c= 2 -\u003e yes. 2^3=1\nrun_test([8,4,12], 12^8) # check various\nrun_test([7,7,7], 0)\nrun_test([1,100,50,51], 99) # maybe 50^  51 = 1, 100^100=0, 1^100? |99| \u003c=1 false, 1^50 false, 50^51 =1; But maybe 1^1=0 so expected 1? Let\u0027s compute by brute force below\n\n# brute force generator test random\nimport random\nrandom.seed(0)\nfor _ in range(20):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\nPY",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)  # only (1,1)\nrun_test([2,3], 1) # pairs: (2,2)=0, (3,3)=0, (2,3) valid? |1| \u003c= 2 -\u003e yes. 2^3=1\nrun_test([8,4,12], 12^8) # check various\nrun_test([7,7,7], 0)\nrun_test([1,100,50,51], 99) # maybe 50^  51 = 1, 100^100=0, 1^100? |99| \u003c=1 false, 1^50 false, 50^51 =1; But maybe 1^1=0 so expected 1? Let\u0027s compute by brute force below\n\n# brute force generator test random\nimport random\nrandom.seed(0)\nfor _ in range(20):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\nPY",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1238,16 +1516,24 @@ for _ in range(20):
 else:
     print("Random tests passed")
 PY` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)  # only (1,1)\nrun_test([2,3], 1) # pairs: (2,2)=0, (3,3)=0, (2,3) valid? |1| \u003c= 2 -\u003e yes. 2^3=1\nrun_test([8,4,12], 12^8) # check various\nrun_test([7,7,7], 0)\nrun_test([1,100,50,51], 99) # maybe 50^  51 = 1, 100^100=0, 1^100? |99| \u003c=1 false, 1^50 false, 50^51 =1; But maybe 1^1=0 so expected 1? Let\u0027s compute by brute force below\n\n# brute force generator test random\nimport random\nrandom.seed(0)\nfor _ in range(20):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\nPY",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)  # only (1,1)\nrun_test([2,3], 1) # pairs: (2,2)=0, (3,3)=0, (2,3) valid? |1| \u003c= 2 -\u003e yes. 2^3=1\nrun_test([8,4,12], 12^8) # check various\nrun_test([7,7,7], 0)\nrun_test([1,100,50,51], 99) # maybe 50^  51 = 1, 100^100=0, 1^100? |99| \u003c=1 false, 1^50 false, 50^51 =1; But maybe 1^1=0 so expected 1? Let\u0027s compute by brute force below\n\n# brute force generator test random\nimport random\nrandom.seed(0)\nfor _ in range(20):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\nPY",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1263,16 +1549,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1281,16 +1575,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1306,16 +1608,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1324,16 +1634,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "MEDIUM",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "MEDIUM",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1387,15 +1705,23 @@ for _ in range(100):
         break
 else:
     print("Random tests passed")</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "# Running unit tests inside IPython environment\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)\nrun_test([2,3], 1)\nrun_test([8,4,12], 12^8)\nrun_test([7,7,7], 0)\n\n# random tests with brute force validator\nimport random\nrandom.seed(0)\nfor _ in range(100):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\n",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "# Running unit tests inside IPython environment\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)\nrun_test([2,3], 1)\nrun_test([8,4,12], 12^8)\nrun_test([7,7,7], 0)\n\n# random tests with brute force validator\nimport random\nrandom.seed(0)\nfor _ in range(100):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\n",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1404,15 +1730,23 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 17</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Code executed in IPython cell.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "# Running unit tests inside IPython environment\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)\nrun_test([2,3], 1)\nrun_test([8,4,12], 12^8)\nrun_test([7,7,7], 0)\n\n# random tests with brute force validator\nimport random\nrandom.seed(0)\nfor _ in range(100):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\n",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "# Running unit tests inside IPython environment\nfrom solution import Solution\n\ndef run_test(nums, expected):\n    sol = Solution()\n    out = sol.maximumStrongPairXor(nums)\n    res = \"PASS\" if out == expected else f\"FAIL (got {out})\"\n    print(f\"nums={nums}, expected={expected} =\u003e {res}\")\n\n# Provided examples\nrun_test([1,2,3,4,5], 7)\nrun_test([10,100], 0)\nrun_test([5,6,25,30], 7)\n\n# Additional tests\nrun_test([1], 0)\nrun_test([2,3], 1)\nrun_test([8,4,12], 12^8)\nrun_test([7,7,7], 0)\n\n# random tests with brute force validator\nimport random\nrandom.seed(0)\nfor _ in range(100):\n    n = random.randint(1, 10)\n    nums = [random.randint(1,100) for _ in range(n)]\n    # brute force compute\n    best = 0\n    for i in range(len(nums)):\n        for j in range(len(nums)):\n            x,y = nums[i], nums[j]\n            if abs(x-y) \u003c= min(x,y):\n                best = max(best, x^y)\n    out = Solution().maximumStrongPairXor(nums)\n    if out != best:\n        print(\"Mismatch\", nums, out, best)\n        break\nelse:\n    print(\"Random tests passed\")\n",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1428,17 +1762,50 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 18</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.5\nSimplicity_Score: 0.8\nRobustness_Score: 0.8\nReasoning: I ran the provided examples and 100 randomized brute-force comparisons (validating against an exhaustive check) and the implementation produced the correct outputs; one apparent failure in an early ad-hoc test was due to an incorrect expected value in the test harness, not the solution. The implementation is functionally correct and efficient for the problem constraints (n \u003c= 50) using a straightforward O(n^2) brute-force check. Style suffers because the file contains a large number of unused and redundant imports and some non-idiomatic elements, which reduces readability and maintainability. Robustness is good \u2014 the code correctly handles single-element arrays, duplicates and the \"same element twice\" case \u2014 but maintainability could be improved by removing dead imports and simplifying the module.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.5
+Simplicity_Score: 0.8
+Robustness_Score: 0.8
+Reasoning: I ran the provided examples and 100 randomized brute-force comparisons (validating against an exhaustive check) and the implementation produced the correct outputs; one apparent failure in an early ad-hoc test was due to an incorrect expected value in the test harness, not the solution. The implementation is functionally correct and efficient for the problem constraints (n <= 50) using a straightforward O(n^2) brute-force check. Style suffers because the file contains a large number of unused and redundant imports and some non-idiomatic elements, which reduces readability and maintainability. Robustness is good — the code correctly handles single-element arrays, duplicates and the "same element twice" case — but maintainability could be improved by removing dead imports and simplifying the module.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1447,17 +1814,50 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 19</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.5\nSimplicity_Score: 0.8\nRobustness_Score: 0.8\nReasoning: I ran the provided examples and 100 randomized brute-force comparisons (validating against an exhaustive check) and the implementation produced the correct outputs; one apparent failure in an early ad-hoc test was due to an incorrect expected value in the test harness, not the solution. The implementation is functionally correct and efficient for the problem constraints (n \u003c= 50) using a straightforward O(n^2) brute-force check. Style suffers because the file contains a large number of unused and redundant imports and some non-idiomatic elements, which reduces readability and maintainability. Robustness is good \u2014 the code correctly handles single-element arrays, duplicates and the \"same element twice\" case \u2014 but maintainability could be improved by removing dead imports and simplifying the module.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.5
+Simplicity_Score: 0.8
+Robustness_Score: 0.8
+Reasoning: I ran the provided examples and 100 randomized brute-force comparisons (validating against an exhaustive check) and the implementation produced the correct outputs; one apparent failure in an early ad-hoc test was due to an incorrect expected value in the test harness, not the solution. The implementation is functionally correct and efficient for the problem constraints (n <= 50) using a straightforward O(n^2) brute-force check. Style suffers because the file contains a large number of unused and redundant imports and some non-idiomatic elements, which reduces readability and maintainability. Robustness is good — the code correctly handles single-element arrays, duplicates and the "same element twice" case — but maintainability could be improved by removing dead imports and simplifying the module.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1473,16 +1873,24 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 20</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: sed -n '1,200p' evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "sed -n \u00271,200p\u0027 evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "sed -n \u00271,200p\u0027 evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1491,16 +1899,24 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 21</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `sed -n '1,200p' evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "sed -n \u00271,200p\u0027 evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "sed -n \u00271,200p\u0027 evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1516,14 +1932,22 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 22</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with scores and reasoning. Ran unit tests including examples and randomized brute-force checks to validate correctness. One initial ad-hoc test had a wrong expected value; the solution passed exhaustive randomized tests. Next steps: I can clean up the solution.py imports and improve style if you want."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with scores and reasoning. Ran unit tests including examples and randomized brute-force checks to validate correctness. One initial ad-hoc test had a wrong expected value; the solution passed exhaustive randomized tests. Next steps: I can clean up the solution.py imports and improve style if you want."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1543,10 +1967,57 @@ else:
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
-Reasoning: The algorithm correctly identifies strong pairs based on the given condition and computes the maximum XOR value among them. It efficiently handles all pairs within the constraints, ensuring that edge cases are covered, such as pairs consisting of the same element. The time complexity is acceptable given the constraints, making this a robust solution.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Avg: 0.875</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">1.00</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.90</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.80</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.80</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to find the maximum XOR of strong pairs, passing all provided test cases and handling edge cases effectively. The comments are clear and provide a good understanding of the approach, though some additional comments could enhance clarity further. The code is mostly concise, but the inclusion of multiple unused imports slightly detracts from its simplicity. It handles edge cases well, but there could be minor improvements for maintainability and future extensibility.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Score: 0.88</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to find the maximum XOR value among all strong pairs as defined in the problem statement. It checks all pairs, including the same element twice, and accurately applies the condition for strong pairs. Given the constraints, the algorithm will handle all edge cases and produce the correct output for all possible inputs.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1584,6 +2055,14 @@ Reasoning: The algorithm correctly identifies strong pairs based on the given co
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

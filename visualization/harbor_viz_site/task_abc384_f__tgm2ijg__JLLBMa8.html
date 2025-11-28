@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.40</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.62</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-low text-lg">0.40</span></div>
         </div>
     </header>
@@ -503,17 +503,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.2\nStyle_Score: 0.5\nSimplicity_Score: 0.3\nRobustness_Score: 0.3\nReasoning: The provided code is functionally correct but uses an O(N^2) double loop which will time out on large inputs (hence low correctness). Style is minimal but clear: a small docstring and reasonable variable names, but lacks explanatory comments. The solution is concise but inefficient and recomputes f(...) repeatedly instead of using frequency counting or optimizations. Robustness is limited because it will not scale to the input constraints and is not easily extendable.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.2
+Style_Score: 0.5
+Simplicity_Score: 0.3
+Robustness_Score: 0.3
+Reasoning: The provided code is functionally correct but uses an O(N^2) double loop which will time out on large inputs (hence low correctness). Style is minimal but clear: a small docstring and reasonable variable names, but lacks explanatory comments. The solution is concise but inefficient and recomputes f(...) repeatedly instead of using frequency counting or optimizations. Robustness is limited because it will not scale to the input constraints and is not easily extendable.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -522,17 +555,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.2\nStyle_Score: 0.5\nSimplicity_Score: 0.3\nRobustness_Score: 0.3\nReasoning: The provided code is functionally correct but uses an O(N^2) double loop which will time out on large inputs (hence low correctness). Style is minimal but clear: a small docstring and reasonable variable names, but lacks explanatory comments. The solution is concise but inefficient and recomputes f(...) repeatedly instead of using frequency counting or optimizations. Robustness is limited because it will not scale to the input constraints and is not easily extendable.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.2
+Style_Score: 0.5
+Simplicity_Score: 0.3
+Robustness_Score: 0.3
+Reasoning: The provided code is functionally correct but uses an O(N^2) double loop which will time out on large inputs (hence low correctness). Style is minimal but clear: a small docstring and reasonable variable names, but lacks explanatory comments. The solution is concise but inefficient and recomputes f(...) repeatedly instead of using frequency counting or optimizations. Robustness is limited because it will not scale to the input constraints and is not easily extendable.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -548,14 +614,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with scores and reasoning. Let me know if you want the scores adjusted or a more detailed justification."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with scores and reasoning. Let me know if you want the scores adjusted or a more detailed justification."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -940,16 +1014,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: ls -la</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -958,16 +1040,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `ls -la` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -983,17 +1073,64 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "def f(x):\n    \"\"\"Remove all factors of 2 from x.\"\"\"\n    while x % 2 == 0:\n        x //= 2\n    return x\n\ndef solve():\n    n = int(input())\n    a = list(map(int, input().split()))\n\n    total = 0\n    for i in range(n):\n        for j in range(i, n):\n            total += f(a[i] + a[j])\n\n    print(total)\n\nif __name__ == \u0027__main__\u0027:\n    solve()\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>def f(x):
+    """Remove all factors of 2 from x."""
+    while x % 2 == 0:
+        x //= 2
+    return x
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    total = 0
+    for i in range(n):
+        for j in range(i, n):
+            total += f(a[i] + a[j])
+
+    print(total)
+
+if __name__ == '__main__':
+    solve()
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1002,17 +1139,64 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "def f(x):\n    \"\"\"Remove all factors of 2 from x.\"\"\"\n    while x % 2 == 0:\n        x //= 2\n    return x\n\ndef solve():\n    n = int(input())\n    a = list(map(int, input().split()))\n\n    total = 0\n    for i in range(n):\n        for j in range(i, n):\n            total += f(a[i] + a[j])\n\n    print(total)\n\nif __name__ == \u0027__main__\u0027:\n    solve()\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>def f(x):
+    """Remove all factors of 2 from x."""
+    while x % 2 == 0:
+        x //= 2
+    return x
+
+def solve():
+    n = int(input())
+    a = list(map(int, input().split()))
+
+    total = 0
+    for i in range(n):
+        for j in range(i, n):
+            total += f(a[i] + a[j])
+
+    print(total)
+
+if __name__ == '__main__':
+    solve()
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1053,16 +1237,24 @@ for inp, expected in tests:
 
 print('ALL_OK:', all_ok)
 PY</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport subprocess, sys, sys\n\ndef run_input(inp):\n    p = subprocess.Popen([sys.executable, \u0027solution.py\u0027], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\n    out, err = p.communicate(inp)\n    return p.returncode, out, err\n\n# Sample tests\ntests = [\n    (\"2\\n4 8\\n\", \"5\\n\"),\n    (\"3\\n51 44 63\\n\", \"384\\n\"),\n    (\"8\\n577752 258461 183221 889769 278633 577212 392309 326001\\n\", \"20241214\\n\"),\n]\n\nall_ok = True\nfor inp, expected in tests:\n    rc, out, err = run_input(inp)\n    ok = (out == expected)\n    print(\u0027INPUT:\\n\u0027 + inp + \u0027EXPECTED:\\n\u0027 + expected + \u0027GOT:\\n\u0027 + out + (\u0027OK\u0027 if ok else \u0027FAIL\u0027))\n    if err:\n        print(\u0027STDERR:\\n\u0027 + err)\n    all_ok = all_ok and ok\n\nprint(\u0027ALL_OK:\u0027, all_ok)\nPY",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport subprocess, sys, sys\n\ndef run_input(inp):\n    p = subprocess.Popen([sys.executable, \u0027solution.py\u0027], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\n    out, err = p.communicate(inp)\n    return p.returncode, out, err\n\n# Sample tests\ntests = [\n    (\"2\\n4 8\\n\", \"5\\n\"),\n    (\"3\\n51 44 63\\n\", \"384\\n\"),\n    (\"8\\n577752 258461 183221 889769 278633 577212 392309 326001\\n\", \"20241214\\n\"),\n]\n\nall_ok = True\nfor inp, expected in tests:\n    rc, out, err = run_input(inp)\n    ok = (out == expected)\n    print(\u0027INPUT:\\n\u0027 + inp + \u0027EXPECTED:\\n\u0027 + expected + \u0027GOT:\\n\u0027 + out + (\u0027OK\u0027 if ok else \u0027FAIL\u0027))\n    if err:\n        print(\u0027STDERR:\\n\u0027 + err)\n    all_ok = all_ok and ok\n\nprint(\u0027ALL_OK:\u0027, all_ok)\nPY",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1096,16 +1288,24 @@ for inp, expected in tests:
 
 print('ALL_OK:', all_ok)
 PY` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport subprocess, sys, sys\n\ndef run_input(inp):\n    p = subprocess.Popen([sys.executable, \u0027solution.py\u0027], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\n    out, err = p.communicate(inp)\n    return p.returncode, out, err\n\n# Sample tests\ntests = [\n    (\"2\\n4 8\\n\", \"5\\n\"),\n    (\"3\\n51 44 63\\n\", \"384\\n\"),\n    (\"8\\n577752 258461 183221 889769 278633 577212 392309 326001\\n\", \"20241214\\n\"),\n]\n\nall_ok = True\nfor inp, expected in tests:\n    rc, out, err = run_input(inp)\n    ok = (out == expected)\n    print(\u0027INPUT:\\n\u0027 + inp + \u0027EXPECTED:\\n\u0027 + expected + \u0027GOT:\\n\u0027 + out + (\u0027OK\u0027 if ok else \u0027FAIL\u0027))\n    if err:\n        print(\u0027STDERR:\\n\u0027 + err)\n    all_ok = all_ok and ok\n\nprint(\u0027ALL_OK:\u0027, all_ok)\nPY",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nimport subprocess, sys, sys\n\ndef run_input(inp):\n    p = subprocess.Popen([sys.executable, \u0027solution.py\u0027], stdin=subprocess.PIPE, stdout=subprocess.PIPE, stderr=subprocess.PIPE, text=True)\n    out, err = p.communicate(inp)\n    return p.returncode, out, err\n\n# Sample tests\ntests = [\n    (\"2\\n4 8\\n\", \"5\\n\"),\n    (\"3\\n51 44 63\\n\", \"384\\n\"),\n    (\"8\\n577752 258461 183221 889769 278633 577212 392309 326001\\n\", \"20241214\\n\"),\n]\n\nall_ok = True\nfor inp, expected in tests:\n    rc, out, err = run_input(inp)\n    ok = (out == expected)\n    print(\u0027INPUT:\\n\u0027 + inp + \u0027EXPECTED:\\n\u0027 + expected + \u0027GOT:\\n\u0027 + out + (\u0027OK\u0027 if ok else \u0027FAIL\u0027))\n    if err:\n        print(\u0027STDERR:\\n\u0027 + err)\n    all_ok = all_ok and ok\n\nprint(\u0027ALL_OK:\u0027, all_ok)\nPY",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1121,16 +1321,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1139,16 +1347,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1164,16 +1380,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1182,16 +1406,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1207,17 +1439,50 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 16</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.20\nStyle_Score: 0.80\nSimplicity_Score: 0.30\nRobustness_Score: 0.30\nReasoning: I created a test harness and attempted to run unit tests, but the execution environment lacked a Python runtime so I could not execute them here. By inspection the code is functionally correct and will produce the correct outputs for the sample tests, but it uses an O(N^2) double loop and will TLE for large inputs (N up to 2e5), so it will fail most large hidden tests. Style is good\u2014clear function names, a small docstring, and a simple structure\u2014while simplicity and robustness are low because the algorithm is not optimized for the problem constraints and does not scale to the required input sizes.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.20
+Style_Score: 0.80
+Simplicity_Score: 0.30
+Robustness_Score: 0.30
+Reasoning: I created a test harness and attempted to run unit tests, but the execution environment lacked a Python runtime so I could not execute them here. By inspection the code is functionally correct and will produce the correct outputs for the sample tests, but it uses an O(N^2) double loop and will TLE for large inputs (N up to 2e5), so it will fail most large hidden tests. Style is good—clear function names, a small docstring, and a simple structure—while simplicity and robustness are low because the algorithm is not optimized for the problem constraints and does not scale to the required input sizes.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1226,17 +1491,50 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 17</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.20\nStyle_Score: 0.80\nSimplicity_Score: 0.30\nRobustness_Score: 0.30\nReasoning: I created a test harness and attempted to run unit tests, but the execution environment lacked a Python runtime so I could not execute them here. By inspection the code is functionally correct and will produce the correct outputs for the sample tests, but it uses an O(N^2) double loop and will TLE for large inputs (N up to 2e5), so it will fail most large hidden tests. Style is good\u2014clear function names, a small docstring, and a simple structure\u2014while simplicity and robustness are low because the algorithm is not optimized for the problem constraints and does not scale to the required input sizes.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.20
+Style_Score: 0.80
+Simplicity_Score: 0.30
+Robustness_Score: 0.30
+Reasoning: I created a test harness and attempted to run unit tests, but the execution environment lacked a Python runtime so I could not execute them here. By inspection the code is functionally correct and will produce the correct outputs for the sample tests, but it uses an O(N^2) double loop and will TLE for large inputs (N up to 2e5), so it will fail most large hidden tests. Style is good—clear function names, a small docstring, and a simple structure—while simplicity and robustness are low because the algorithm is not optimized for the problem constraints and does not scale to the required input sizes.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1252,16 +1550,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 18</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: cat /workspace/evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1270,16 +1576,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 19</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `cat /workspace/evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1295,14 +1609,22 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 20</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with scores and reasoning. Note: I attempted to run tests but the environment lacked a Python interpreter, so I validated mostly by inspection and complexity analysis. Next steps: if you want, I can write and run an optimized solution (using bitwise grouping and FFT-like convolution) and rerun tests in a proper Python environment."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with scores and reasoning. Note: I attempted to run tests but the environment lacked a Python interpreter, so I validated mostly by inspection and complexity analysis. Next steps: if you want, I can write and run an optimized solution (using bitwise grouping and FFT-like convolution) and rerun tests in a proper Python environment."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1322,10 +1644,57 @@ PY` executed with exit code 0.</div></div>
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.40</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.4  
-Reasoning: The algorithm correctly implements the function `f(x)` and computes the double sum, but it has significant performance issues due to its O(N^2) complexity, which is not feasible for N up to 200,000. This will lead to timeouts for larger inputs. Additionally, it does not handle edge cases efficiently, such as when all elements are at their maximum value. The solution needs optimization to avoid nested loops.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-low">Avg: 0.625</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">0.70</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.70</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.60</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.50</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the function f(x) and calculates the double sum as required, but it has performance issues due to the O(N^2) complexity, which may not handle the upper limits of the constraints efficiently. The code includes minimal comments, which makes it somewhat understandable but lacks comprehensive documentation. While the logic is straightforward, there are redundancies in the nested loops that could be optimized. Edge cases, such as the smallest and largest possible inputs, are not explicitly handled, which affects the robustness of the solution.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.62</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the function f(x) and calculates the double sum as required. However, it has a significant performance issue due to the nested loops, which results in O(N^2) complexity. Given the constraints (N can be up to 200,000), this will lead to time limit exceeded errors for larger inputs. Thus, while the logic is correct, it fails to handle larger cases efficiently.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1363,6 +1732,14 @@ Reasoning: The algorithm correctly implements the function `f(x)` and computes t
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-med text-lg">0.85</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
         </div>
     </header>
@@ -597,17 +597,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.8\nSimplicity_Score: 0.8\nRobustness_Score: 0.8\nReasoning: The solution implements the correct logic: it maps announced numbers to grid coordinates and correctly tracks row, column, and diagonal counts, so it should pass all problem test cases. The code has clear variable names and brief comments but lacks a module/function docstring and more detailed explanations, so style is adequate but not exemplary. The approach is efficient and concise (O(1) per announced number) but includes an unused `marked` grid which is a small redundancy. It is generally maintainable and handles the problem constraints, though the input reading assumes all A_i are on a single line which is a minor fragility.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.8
+Simplicity_Score: 0.8
+Robustness_Score: 0.8
+Reasoning: The solution implements the correct logic: it maps announced numbers to grid coordinates and correctly tracks row, column, and diagonal counts, so it should pass all problem test cases. The code has clear variable names and brief comments but lacks a module/function docstring and more detailed explanations, so style is adequate but not exemplary. The approach is efficient and concise (O(1) per announced number) but includes an unused `marked` grid which is a small redundancy. It is generally maintainable and handles the problem constraints, though the input reading assumes all A_i are on a single line which is a minor fragility.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -616,17 +649,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.8\nSimplicity_Score: 0.8\nRobustness_Score: 0.8\nReasoning: The solution implements the correct logic: it maps announced numbers to grid coordinates and correctly tracks row, column, and diagonal counts, so it should pass all problem test cases. The code has clear variable names and brief comments but lacks a module/function docstring and more detailed explanations, so style is adequate but not exemplary. The approach is efficient and concise (O(1) per announced number) but includes an unused `marked` grid which is a small redundancy. It is generally maintainable and handles the problem constraints, though the input reading assumes all A_i are on a single line which is a minor fragility.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.8
+Simplicity_Score: 0.8
+Robustness_Score: 0.8
+Reasoning: The solution implements the correct logic: it maps announced numbers to grid coordinates and correctly tracks row, column, and diagonal counts, so it should pass all problem test cases. The code has clear variable names and brief comments but lacks a module/function docstring and more detailed explanations, so style is adequate but not exemplary. The approach is efficient and concise (O(1) per announced number) but includes an unused `marked` grid which is a small redundancy. It is generally maintainable and handles the problem constraints, though the input reading assumes all A_i are on a single line which is a minor fragility.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -642,14 +708,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with scores and reasoning. The file is saved at /workspace/evaluation.txt."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with scores and reasoning. The file is saved at /workspace/evaluation.txt."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1081,17 +1155,103 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "def solve():\n    N, T = map(int, input().split())\n    A = list(map(int, input().split()))\n\n    # Create a grid with marked cells\n    marked = [[False] * N for _ in range(N)]\n\n    # Track counts for rows, columns, and diagonals\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1_count = 0  # top-left to bottom-right\n    diag2_count = 0  # top-right to bottom-left\n\n    # Process each announced number\n    for turn in range(1, T + 1):\n        num = A[turn - 1]\n\n        # Convert number to row and column (1-indexed to 0-indexed)\n        # Number is arranged as: 1 2 3 ... N, N+1 N+2 ... 2N, etc.\n        row = (num - 1) // N\n        col = (num - 1) % N\n\n        # Mark the cell\n        marked[row][col] = True\n        row_count[row] += 1\n        col_count[col] += 1\n\n        # Check diagonals\n        if row == col:\n            diag1_count += 1\n        if row + col == N - 1:\n            diag2_count += 1\n\n        # Check if Bingo is achieved\n        # Check row\n        if row_count[row] == N:\n            print(turn)\n            return\n\n        # Check column\n        if col_count[col] == N:\n            print(turn)\n            return\n\n        # Check diagonal 1 (top-left to bottom-right)\n        if diag1_count == N:\n            print(turn)\n            return\n\n        # Check diagonal 2 (top-right to bottom-left)\n        if diag2_count == N:\n            print(turn)\n            return\n\n    # No Bingo achieved\n    print(-1)\n\nsolve()\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # Create a grid with marked cells
+    marked = [[False] * N for _ in range(N)]
+
+    # Track counts for rows, columns, and diagonals
+    row_count = [0] * N
+    col_count = [0] * N
+    diag1_count = 0  # top-left to bottom-right
+    diag2_count = 0  # top-right to bottom-left
+
+    # Process each announced number
+    for turn in range(1, T + 1):
+        num = A[turn - 1]
+
+        # Convert number to row and column (1-indexed to 0-indexed)
+        # Number is arranged as: 1 2 3 ... N, N+1 N+2 ... 2N, etc.
+        row = (num - 1) // N
+        col = (num - 1) % N
+
+        # Mark the cell
+        marked[row][col] = True
+        row_count[row] += 1
+        col_count[col] += 1
+
+        # Check diagonals
+        if row == col:
+            diag1_count += 1
+        if row + col == N - 1:
+            diag2_count += 1
+
+        # Check if Bingo is achieved
+        # Check row
+        if row_count[row] == N:
+            print(turn)
+            return
+
+        # Check column
+        if col_count[col] == N:
+            print(turn)
+            return
+
+        # Check diagonal 1 (top-left to bottom-right)
+        if diag1_count == N:
+            print(turn)
+            return
+
+        # Check diagonal 2 (top-right to bottom-left)
+        if diag2_count == N:
+            print(turn)
+            return
+
+    # No Bingo achieved
+    print(-1)
+
+solve()
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1100,17 +1260,103 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "def solve():\n    N, T = map(int, input().split())\n    A = list(map(int, input().split()))\n\n    # Create a grid with marked cells\n    marked = [[False] * N for _ in range(N)]\n\n    # Track counts for rows, columns, and diagonals\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1_count = 0  # top-left to bottom-right\n    diag2_count = 0  # top-right to bottom-left\n\n    # Process each announced number\n    for turn in range(1, T + 1):\n        num = A[turn - 1]\n\n        # Convert number to row and column (1-indexed to 0-indexed)\n        # Number is arranged as: 1 2 3 ... N, N+1 N+2 ... 2N, etc.\n        row = (num - 1) // N\n        col = (num - 1) % N\n\n        # Mark the cell\n        marked[row][col] = True\n        row_count[row] += 1\n        col_count[col] += 1\n\n        # Check diagonals\n        if row == col:\n            diag1_count += 1\n        if row + col == N - 1:\n            diag2_count += 1\n\n        # Check if Bingo is achieved\n        # Check row\n        if row_count[row] == N:\n            print(turn)\n            return\n\n        # Check column\n        if col_count[col] == N:\n            print(turn)\n            return\n\n        # Check diagonal 1 (top-left to bottom-right)\n        if diag1_count == N:\n            print(turn)\n            return\n\n        # Check diagonal 2 (top-right to bottom-left)\n        if diag2_count == N:\n            print(turn)\n            return\n\n    # No Bingo achieved\n    print(-1)\n\nsolve()\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>def solve():
+    N, T = map(int, input().split())
+    A = list(map(int, input().split()))
+
+    # Create a grid with marked cells
+    marked = [[False] * N for _ in range(N)]
+
+    # Track counts for rows, columns, and diagonals
+    row_count = [0] * N
+    col_count = [0] * N
+    diag1_count = 0  # top-left to bottom-right
+    diag2_count = 0  # top-right to bottom-left
+
+    # Process each announced number
+    for turn in range(1, T + 1):
+        num = A[turn - 1]
+
+        # Convert number to row and column (1-indexed to 0-indexed)
+        # Number is arranged as: 1 2 3 ... N, N+1 N+2 ... 2N, etc.
+        row = (num - 1) // N
+        col = (num - 1) % N
+
+        # Mark the cell
+        marked[row][col] = True
+        row_count[row] += 1
+        col_count[col] += 1
+
+        # Check diagonals
+        if row == col:
+            diag1_count += 1
+        if row + col == N - 1:
+            diag2_count += 1
+
+        # Check if Bingo is achieved
+        # Check row
+        if row_count[row] == N:
+            print(turn)
+            return
+
+        # Check column
+        if col_count[col] == N:
+            print(turn)
+            return
+
+        # Check diagonal 1 (top-left to bottom-right)
+        if diag1_count == N:
+            print(turn)
+            return
+
+        # Check diagonal 2 (top-right to bottom-left)
+        if diag2_count == N:
+            print(turn)
+            return
+
+    # No Bingo achieved
+    print(-1)
+
+solve()
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1126,16 +1372,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python -m pytest -q</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python -m pytest -q",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python -m pytest -q",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1144,16 +1398,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python -m pytest -q` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python -m pytest -q",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python -m pytest -q",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1169,16 +1431,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 10</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 --version</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 --version",
-      "security_risk": "LOW",
-      "timeout": 10
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 --version",
+  "security_risk": "LOW",
+  "timeout": 10
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1187,16 +1457,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 11</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 --version` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 --version",
-      "security_risk": "LOW",
-      "timeout": 10
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 --version",
+  "security_risk": "LOW",
+  "timeout": 10
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1282,15 +1560,23 @@ for _ in range(200):
         break
 else:
     print("All random tests passed!")</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "import random\n\ndef simulate_solution(N, A):\n    marked = [[False] * N for _ in range(N)]\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1 = 0\n    diag2 = 0\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        row_count[r] += 1\n        col_count[c] += 1\n        if r == c:\n            diag1 += 1\n        if r + c == N - 1:\n            diag2 += 1\n        if row_count[r] == N or col_count[c] == N or diag1 == N or diag2 == N:\n            return turn\n    return -1\n\n\ndef brute_force(N, A):\n    marked = [[False] * N for _ in range(N)]\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        # check rows\n        for i in range(N):\n            if all(marked[i][j] for j in range(N)):\n                return turn\n        # check columns\n        for j in range(N):\n            if all(marked[i][j] for i in range(N)):\n                return turn\n        # check diagonals\n        if all(marked[i][i] for i in range(N)):\n            return turn\n        if all(marked[i][N-1-i] for i in range(N)):\n            return turn\n    return -1\n\n# Run sample tests\nsamples = [\n    (3, [5,1,8,9,7], 4),\n    (3, [4,2,9,7,5], -1),\n    (4, [13,9,6,5,2,7,16,14,8,3,10,11], 9)\n]\n\nfor N, A, expected in samples:\n    res1 = simulate_solution(N, A)\n    res2 = brute_force(N, A)\n    print(f\"Sample N={N}, A={A}, simulate={res1}, brute={res2}, expected={expected}\")\n\n# Randomized tests\nrandom.seed(0)\nfor _ in range(200):\n    N = random.randint(2, 10)\n    nums = list(range(1, N*N + 1))\n    random.shuffle(nums)\n    T = random.randint(1, N*N)\n    A = nums[:T]\n    r1 = simulate_solution(N, A)\n    r2 = brute_force(N, A)\n    if r1 != r2:\n        print(\"Mismatch found! N=\", N, \"A=\", A[:20], \"r1=\", r1, \"r2=\", r2)\n        break\nelse:\n    print(\"All random tests passed!\")\n",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "import random\n\ndef simulate_solution(N, A):\n    marked = [[False] * N for _ in range(N)]\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1 = 0\n    diag2 = 0\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        row_count[r] += 1\n        col_count[c] += 1\n        if r == c:\n            diag1 += 1\n        if r + c == N - 1:\n            diag2 += 1\n        if row_count[r] == N or col_count[c] == N or diag1 == N or diag2 == N:\n            return turn\n    return -1\n\n\ndef brute_force(N, A):\n    marked = [[False] * N for _ in range(N)]\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        # check rows\n        for i in range(N):\n            if all(marked[i][j] for j in range(N)):\n                return turn\n        # check columns\n        for j in range(N):\n            if all(marked[i][j] for i in range(N)):\n                return turn\n        # check diagonals\n        if all(marked[i][i] for i in range(N)):\n            return turn\n        if all(marked[i][N-1-i] for i in range(N)):\n            return turn\n    return -1\n\n# Run sample tests\nsamples = [\n    (3, [5,1,8,9,7], 4),\n    (3, [4,2,9,7,5], -1),\n    (4, [13,9,6,5,2,7,16,14,8,3,10,11], 9)\n]\n\nfor N, A, expected in samples:\n    res1 = simulate_solution(N, A)\n    res2 = brute_force(N, A)\n    print(f\"Sample N={N}, A={A}, simulate={res1}, brute={res2}, expected={expected}\")\n\n# Randomized tests\nrandom.seed(0)\nfor _ in range(200):\n    N = random.randint(2, 10)\n    nums = list(range(1, N*N + 1))\n    random.shuffle(nums)\n    T = random.randint(1, N*N)\n    A = nums[:T]\n    r1 = simulate_solution(N, A)\n    r2 = brute_force(N, A)\n    if r1 != r2:\n        print(\"Mismatch found! N=\", N, \"A=\", A[:20], \"r1=\", r1, \"r2=\", r2)\n        break\nelse:\n    print(\"All random tests passed!\")\n",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1299,15 +1585,23 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Code executed in IPython cell.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "import random\n\ndef simulate_solution(N, A):\n    marked = [[False] * N for _ in range(N)]\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1 = 0\n    diag2 = 0\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        row_count[r] += 1\n        col_count[c] += 1\n        if r == c:\n            diag1 += 1\n        if r + c == N - 1:\n            diag2 += 1\n        if row_count[r] == N or col_count[c] == N or diag1 == N or diag2 == N:\n            return turn\n    return -1\n\n\ndef brute_force(N, A):\n    marked = [[False] * N for _ in range(N)]\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        # check rows\n        for i in range(N):\n            if all(marked[i][j] for j in range(N)):\n                return turn\n        # check columns\n        for j in range(N):\n            if all(marked[i][j] for i in range(N)):\n                return turn\n        # check diagonals\n        if all(marked[i][i] for i in range(N)):\n            return turn\n        if all(marked[i][N-1-i] for i in range(N)):\n            return turn\n    return -1\n\n# Run sample tests\nsamples = [\n    (3, [5,1,8,9,7], 4),\n    (3, [4,2,9,7,5], -1),\n    (4, [13,9,6,5,2,7,16,14,8,3,10,11], 9)\n]\n\nfor N, A, expected in samples:\n    res1 = simulate_solution(N, A)\n    res2 = brute_force(N, A)\n    print(f\"Sample N={N}, A={A}, simulate={res1}, brute={res2}, expected={expected}\")\n\n# Randomized tests\nrandom.seed(0)\nfor _ in range(200):\n    N = random.randint(2, 10)\n    nums = list(range(1, N*N + 1))\n    random.shuffle(nums)\n    T = random.randint(1, N*N)\n    A = nums[:T]\n    r1 = simulate_solution(N, A)\n    r2 = brute_force(N, A)\n    if r1 != r2:\n        print(\"Mismatch found! N=\", N, \"A=\", A[:20], \"r1=\", r1, \"r2=\", r2)\n        break\nelse:\n    print(\"All random tests passed!\")\n",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "import random\n\ndef simulate_solution(N, A):\n    marked = [[False] * N for _ in range(N)]\n    row_count = [0] * N\n    col_count = [0] * N\n    diag1 = 0\n    diag2 = 0\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        row_count[r] += 1\n        col_count[c] += 1\n        if r == c:\n            diag1 += 1\n        if r + c == N - 1:\n            diag2 += 1\n        if row_count[r] == N or col_count[c] == N or diag1 == N or diag2 == N:\n            return turn\n    return -1\n\n\ndef brute_force(N, A):\n    marked = [[False] * N for _ in range(N)]\n    for turn, num in enumerate(A, start=1):\n        r = (num - 1) // N\n        c = (num - 1) % N\n        marked[r][c] = True\n        # check rows\n        for i in range(N):\n            if all(marked[i][j] for j in range(N)):\n                return turn\n        # check columns\n        for j in range(N):\n            if all(marked[i][j] for i in range(N)):\n                return turn\n        # check diagonals\n        if all(marked[i][i] for i in range(N)):\n            return turn\n        if all(marked[i][N-1-i] for i in range(N)):\n            return turn\n    return -1\n\n# Run sample tests\nsamples = [\n    (3, [5,1,8,9,7], 4),\n    (3, [4,2,9,7,5], -1),\n    (4, [13,9,6,5,2,7,16,14,8,3,10,11], 9)\n]\n\nfor N, A, expected in samples:\n    res1 = simulate_solution(N, A)\n    res2 = brute_force(N, A)\n    print(f\"Sample N={N}, A={A}, simulate={res1}, brute={res2}, expected={expected}\")\n\n# Randomized tests\nrandom.seed(0)\nfor _ in range(200):\n    N = random.randint(2, 10)\n    nums = list(range(1, N*N + 1))\n    random.shuffle(nums)\n    T = random.randint(1, N*N)\n    A = nums[:T]\n    r1 = simulate_solution(N, A)\n    r2 = brute_force(N, A)\n    if r1 != r2:\n        print(\"Mismatch found! N=\", N, \"A=\", A[:20], \"r1=\", r1, \"r2=\", r2)\n        break\nelse:\n    print(\"All random tests passed!\")\n",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1323,17 +1617,50 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.8\nSimplicity_Score: 0.7\nRobustness_Score: 0.7\nReasoning: I ran the provided sample tests and 200 randomized tests comparing the solution\u0027s counter-based checks against a brute-force verifier; all tests matched, so the logic is functionally correct. The code includes clear, focused comments for key sections but is not extensively documented, so style is good but not perfect. The implementation is time-efficient (O(T)) and concise, but it unnecessarily allocates an N x N marked grid (O(N^2) memory) which is avoidable and may strain memory for N up to 2000. Overall the solution is correct and maintainable, though it could be improved by removing the full grid to reduce memory usage.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.8
+Simplicity_Score: 0.7
+Robustness_Score: 0.7
+Reasoning: I ran the provided sample tests and 200 randomized tests comparing the solution's counter-based checks against a brute-force verifier; all tests matched, so the logic is functionally correct. The code includes clear, focused comments for key sections but is not extensively documented, so style is good but not perfect. The implementation is time-efficient (O(T)) and concise, but it unnecessarily allocates an N x N marked grid (O(N^2) memory) which is avoidable and may strain memory for N up to 2000. Overall the solution is correct and maintainable, though it could be improved by removing the full grid to reduce memory usage.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1342,17 +1669,50 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.8\nSimplicity_Score: 0.7\nRobustness_Score: 0.7\nReasoning: I ran the provided sample tests and 200 randomized tests comparing the solution\u0027s counter-based checks against a brute-force verifier; all tests matched, so the logic is functionally correct. The code includes clear, focused comments for key sections but is not extensively documented, so style is good but not perfect. The implementation is time-efficient (O(T)) and concise, but it unnecessarily allocates an N x N marked grid (O(N^2) memory) which is avoidable and may strain memory for N up to 2000. Overall the solution is correct and maintainable, though it could be improved by removing the full grid to reduce memory usage.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.8
+Simplicity_Score: 0.7
+Robustness_Score: 0.7
+Reasoning: I ran the provided sample tests and 200 randomized tests comparing the solution's counter-based checks against a brute-force verifier; all tests matched, so the logic is functionally correct. The code includes clear, focused comments for key sections but is not extensively documented, so style is good but not perfect. The implementation is time-efficient (O(T)) and concise, but it unnecessarily allocates an N x N marked grid (O(N^2) memory) which is avoidable and may strain memory for N up to 2000. Overall the solution is correct and maintainable, though it could be improved by removing the full grid to reduce memory usage.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1368,16 +1728,24 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 16</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: sed -n '1,120p' evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "sed -n \u00271,120p\u0027 evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "sed -n \u00271,120p\u0027 evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1386,16 +1754,24 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 17</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `sed -n '1,120p' evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "sed -n \u00271,120p\u0027 evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "sed -n \u00271,120p\u0027 evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1411,14 +1787,22 @@ else:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 18</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with scores and reasoning. I ran sample tests and 200 randomized tests using an internal Python environment; all matched the brute-force reference. Next steps: If you want, I can update the solution to remove the N x N marked grid to reduce memory usage and improve simplicity/robustness."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with scores and reasoning. I ran sample tests and 200 randomized tests using an internal Python environment; all matched the brute-force reference. Next steps: If you want, I can update the solution to remove the N x N marked grid to reduce memory usage and improve simplicity/robustness."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1438,10 +1822,57 @@ else:
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
-Reasoning: The solution correctly implements the logic to track marked cells and counts for rows, columns, and diagonals, ensuring that it checks for Bingo conditions after each turn. It efficiently handles the constraints and edge cases, such as the maximum grid size and number of turns, without any logical flaws or bugs. The time complexity is O(T), which is optimal for the given problem constraints.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Avg: 0.85</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">1.00</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.70</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.90</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.80</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to determine when Bingo is achieved, passing all functional requirements and edge cases as outlined in the problem statement. The code has some comments, but they could be more descriptive to enhance understanding, especially for complex logic. The implementation is efficient and concise, with minimal redundancy, though there are slight opportunities for further simplification. The code handles edge cases reasonably well, but could improve maintainability and extendability with better documentation and structure.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Score: 0.85</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to track marked cells and check for Bingo conditions across rows, columns, and diagonals. It handles the input constraints properly and produces the correct output format. All provided test cases, including edge cases, would pass successfully.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1479,6 +1910,14 @@ Reasoning: The solution correctly implements the logic to track marked cells and
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

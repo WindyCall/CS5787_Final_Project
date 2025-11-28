@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-high text-lg">1.00</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-med text-lg">0.88</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-high text-lg">1.00</span></div>
         </div>
     </header>
@@ -561,17 +561,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.8\nSimplicity_Score: 0.6\nRobustness_Score: 0.8\nReasoning: The implementation correctly computes the nearest multiple of 10 with tie-breaking to the larger multiple and returns the updated balance, so it should pass all test cases. Style is adequate with clear variable names and brief inline comments, but the many unnecessary imports and global clutter lower the score. The logic is concise and efficient, but the redundant imports and extra setup (e.g., setrecursionlimit) reduce simplicity. Robustness is good \u2014 edge cases like 0 and 100 are handled correctly \u2014 though maintainability could be improved by removing unused imports.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.8
+Simplicity_Score: 0.6
+Robustness_Score: 0.8
+Reasoning: The implementation correctly computes the nearest multiple of 10 with tie-breaking to the larger multiple and returns the updated balance, so it should pass all test cases. Style is adequate with clear variable names and brief inline comments, but the many unnecessary imports and global clutter lower the score. The logic is concise and efficient, but the redundant imports and extra setup (e.g., setrecursionlimit) reduce simplicity. Robustness is good — edge cases like 0 and 100 are handled correctly — though maintainability could be improved by removing unused imports.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -580,17 +613,50 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.8\nSimplicity_Score: 0.6\nRobustness_Score: 0.8\nReasoning: The implementation correctly computes the nearest multiple of 10 with tie-breaking to the larger multiple and returns the updated balance, so it should pass all test cases. Style is adequate with clear variable names and brief inline comments, but the many unnecessary imports and global clutter lower the score. The logic is concise and efficient, but the redundant imports and extra setup (e.g., setrecursionlimit) reduce simplicity. Robustness is good \u2014 edge cases like 0 and 100 are handled correctly \u2014 though maintainability could be improved by removing unused imports.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.8
+Simplicity_Score: 0.6
+Robustness_Score: 0.8
+Reasoning: The implementation correctly computes the nearest multiple of 10 with tie-breaking to the larger multiple and returns the updated balance, so it should pass all test cases. Style is adequate with clear variable names and brief inline comments, but the many unnecessary imports and global clutter lower the score. The logic is concise and efficient, but the redundant imports and extra setup (e.g., setrecursionlimit) reduce simplicity. Robustness is good — edge cases like 0 and 100 are handled correctly — though maintainability could be improved by removing unused imports.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -606,14 +672,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with the requested scores and reasoning. No further output was produced."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with the requested scores and reasoning. No further output was produced."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1016,16 +1090,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: ls -la</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1034,16 +1116,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `ls -la` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1059,17 +1149,101 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nclass Solution:\n    def accountBalanceAfterPurchase(self, purchaseAmount: int) -\u003e int:\n        # Find the lower multiple of 10\n        lower = (purchaseAmount // 10) * 10\n        # Find the upper multiple of 10\n        upper = lower + 10\n\n        # Calculate distances\n        distance_to_lower = purchaseAmount - lower\n        distance_to_upper = upper - purchaseAmount\n\n        # Choose the rounded amount\n        # If distance_to_upper is smaller or equal, use upper (larger multiple)\n        if distance_to_upper \u003c= distance_to_lower:\n            rounded_amount = upper\n        else:\n            rounded_amount = lower\n\n        # Return remaining balance\n        return 100 - rounded_amount\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        # Find the lower multiple of 10
+        lower = (purchaseAmount // 10) * 10
+        # Find the upper multiple of 10
+        upper = lower + 10
+
+        # Calculate distances
+        distance_to_lower = purchaseAmount - lower
+        distance_to_upper = upper - purchaseAmount
+
+        # Choose the rounded amount
+        # If distance_to_upper is smaller or equal, use upper (larger multiple)
+        if distance_to_upper <= distance_to_lower:
+            rounded_amount = upper
+        else:
+            rounded_amount = lower
+
+        # Return remaining balance
+        return 100 - rounded_amount
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1078,17 +1252,101 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nclass Solution:\n    def accountBalanceAfterPurchase(self, purchaseAmount: int) -\u003e int:\n        # Find the lower multiple of 10\n        lower = (purchaseAmount // 10) * 10\n        # Find the upper multiple of 10\n        upper = lower + 10\n\n        # Calculate distances\n        distance_to_lower = purchaseAmount - lower\n        distance_to_upper = upper - purchaseAmount\n\n        # Choose the rounded amount\n        # If distance_to_upper is smaller or equal, use upper (larger multiple)\n        if distance_to_upper \u003c= distance_to_lower:\n            rounded_amount = upper\n        else:\n            rounded_amount = lower\n\n        # Return remaining balance\n        return 100 - rounded_amount\n",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def accountBalanceAfterPurchase(self, purchaseAmount: int) -> int:
+        # Find the lower multiple of 10
+        lower = (purchaseAmount // 10) * 10
+        # Find the upper multiple of 10
+        upper = lower + 10
+
+        # Calculate distances
+        distance_to_lower = purchaseAmount - lower
+        distance_to_upper = upper - purchaseAmount
+
+        # Choose the rounded amount
+        # If distance_to_upper is smaller or equal, use upper (larger multiple)
+        if distance_to_upper <= distance_to_lower:
+            rounded_amount = upper
+        else:
+            rounded_amount = lower
+
+        # Return remaining balance
+        return 100 - rounded_amount
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1134,16 +1392,24 @@ def run_tests():
 if __name__ == '__main__':
     run_tests()
 PY</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_tests():\n    s = Solution()\n    tests = [\n        (9, 90),\n        (15, 80),\n        (0, 100),\n        (100, 0),\n        (5, 90),  # 5 rounds to 10 -\u003e 90\n        (4, 100), # 4 rounds to 0 -\u003e 100\n        (10, 90),\n        (20, 80),\n        (14, 90), # 14 -\u003e nearest 10 is 10 -\u003e balance 90\n        (16, 80), # 16 -\u003e nearest 20 -\u003e 80\n        (50, 50),\n        (95, 0),  # 95 -\u003e nearest is 100 -\u003e balance 0\n    ]\n    passed = 0\n    for i, (inp, expected) in enumerate(tests):\n        out = s.accountBalanceAfterPurchase(inp)\n        ok = out == expected\n        print(f\"Test {i+1}: purchaseAmount={inp} -\u003e expected={expected}, got={out} -\u003e {\u0027PASS\u0027 if ok else \u0027FAIL\u0027}\")\n        if ok:\n            passed += 1\n    print(f\"{passed}/{len(tests)} tests passed\")\n\nif __name__ == \u0027__main__\u0027:\n    run_tests()\nPY",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_tests():\n    s = Solution()\n    tests = [\n        (9, 90),\n        (15, 80),\n        (0, 100),\n        (100, 0),\n        (5, 90),  # 5 rounds to 10 -\u003e 90\n        (4, 100), # 4 rounds to 0 -\u003e 100\n        (10, 90),\n        (20, 80),\n        (14, 90), # 14 -\u003e nearest 10 is 10 -\u003e balance 90\n        (16, 80), # 16 -\u003e nearest 20 -\u003e 80\n        (50, 50),\n        (95, 0),  # 95 -\u003e nearest is 100 -\u003e balance 0\n    ]\n    passed = 0\n    for i, (inp, expected) in enumerate(tests):\n        out = s.accountBalanceAfterPurchase(inp)\n        ok = out == expected\n        print(f\"Test {i+1}: purchaseAmount={inp} -\u003e expected={expected}, got={out} -\u003e {\u0027PASS\u0027 if ok else \u0027FAIL\u0027}\")\n        if ok:\n            passed += 1\n    print(f\"{passed}/{len(tests)} tests passed\")\n\nif __name__ == \u0027__main__\u0027:\n    run_tests()\nPY",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1182,16 +1448,24 @@ def run_tests():
 if __name__ == '__main__':
     run_tests()
 PY` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_tests():\n    s = Solution()\n    tests = [\n        (9, 90),\n        (15, 80),\n        (0, 100),\n        (100, 0),\n        (5, 90),  # 5 rounds to 10 -\u003e 90\n        (4, 100), # 4 rounds to 0 -\u003e 100\n        (10, 90),\n        (20, 80),\n        (14, 90), # 14 -\u003e nearest 10 is 10 -\u003e balance 90\n        (16, 80), # 16 -\u003e nearest 20 -\u003e 80\n        (50, 50),\n        (95, 0),  # 95 -\u003e nearest is 100 -\u003e balance 0\n    ]\n    passed = 0\n    for i, (inp, expected) in enumerate(tests):\n        out = s.accountBalanceAfterPurchase(inp)\n        ok = out == expected\n        print(f\"Test {i+1}: purchaseAmount={inp} -\u003e expected={expected}, got={out} -\u003e {\u0027PASS\u0027 if ok else \u0027FAIL\u0027}\")\n        if ok:\n            passed += 1\n    print(f\"{passed}/{len(tests)} tests passed\")\n\nif __name__ == \u0027__main__\u0027:\n    run_tests()\nPY",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ndef run_tests():\n    s = Solution()\n    tests = [\n        (9, 90),\n        (15, 80),\n        (0, 100),\n        (100, 0),\n        (5, 90),  # 5 rounds to 10 -\u003e 90\n        (4, 100), # 4 rounds to 0 -\u003e 100\n        (10, 90),\n        (20, 80),\n        (14, 90), # 14 -\u003e nearest 10 is 10 -\u003e balance 90\n        (16, 80), # 16 -\u003e nearest 20 -\u003e 80\n        (50, 50),\n        (95, 0),  # 95 -\u003e nearest is 100 -\u003e balance 0\n    ]\n    passed = 0\n    for i, (inp, expected) in enumerate(tests):\n        out = s.accountBalanceAfterPurchase(inp)\n        ok = out == expected\n        print(f\"Test {i+1}: purchaseAmount={inp} -\u003e expected={expected}, got={out} -\u003e {\u0027PASS\u0027 if ok else \u0027FAIL\u0027}\")\n        if ok:\n            passed += 1\n    print(f\"{passed}/{len(tests)} tests passed\")\n\nif __name__ == \u0027__main__\u0027:\n    run_tests()\nPY",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1207,16 +1481,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1225,16 +1507,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1250,16 +1540,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1268,16 +1566,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1293,17 +1599,49 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 16</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.5\nSimplicity_Score: 0.7\nRobustness_Score: 0.8\nReasoning: I created unit tests (including sample cases purchaseAmount=9 -\u003e 90 and 15 -\u003e 80 and additional cases 0-\u003e100, 100-\u003e0, 5-\u003e90, 4-\u003e100, 95-\u003e0) but could not execute them in this environment because the Python runtime was not available; I therefore validated the implementation by inspecting the code and manually reasoning through these cases and all values in the constraint range. The algorithm correctly computes lower and upper multiples of 10, uses the tie-breaking rule to choose the larger multiple, and returns 100 - rounded_amount, so it is functionally correct for all inputs 0..100. Style is penalized for many unnecessary and duplicate wildcard imports and module clutter though the function contains clear step comments. Simplicity is good because the solution is O(1) and minimal in logic, but the file-level verbosity reduces conciseness; robustness is high since edge cases (ties, boundaries 0 and 100) are handled, though maintainability would improve by removing unused imports and simplifying the file.",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.5
+Simplicity_Score: 0.7
+Robustness_Score: 0.8
+Reasoning: I created unit tests (including sample cases purchaseAmount=9 -> 90 and 15 -> 80 and additional cases 0->100, 100->0, 5->90, 4->100, 95->0) but could not execute them in this environment because the Python runtime was not available; I therefore validated the implementation by inspecting the code and manually reasoning through these cases and all values in the constraint range. The algorithm correctly computes lower and upper multiples of 10, uses the tie-breaking rule to choose the larger multiple, and returns 100 - rounded_amount, so it is functionally correct for all inputs 0..100. Style is penalized for many unnecessary and duplicate wildcard imports and module clutter though the function contains clear step comments. Simplicity is good because the solution is O(1) and minimal in logic, but the file-level verbosity reduces conciseness; robustness is high since edge cases (ties, boundaries 0 and 100) are handled, though maintainability would improve by removing unused imports and simplifying the file.</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1312,17 +1650,49 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 17</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 1.0\nStyle_Score: 0.5\nSimplicity_Score: 0.7\nRobustness_Score: 0.8\nReasoning: I created unit tests (including sample cases purchaseAmount=9 -\u003e 90 and 15 -\u003e 80 and additional cases 0-\u003e100, 100-\u003e0, 5-\u003e90, 4-\u003e100, 95-\u003e0) but could not execute them in this environment because the Python runtime was not available; I therefore validated the implementation by inspecting the code and manually reasoning through these cases and all values in the constraint range. The algorithm correctly computes lower and upper multiples of 10, uses the tie-breaking rule to choose the larger multiple, and returns 100 - rounded_amount, so it is functionally correct for all inputs 0..100. Style is penalized for many unnecessary and duplicate wildcard imports and module clutter though the function contains clear step comments. Simplicity is good because the solution is O(1) and minimal in logic, but the file-level verbosity reduces conciseness; robustness is high since edge cases (ties, boundaries 0 and 100) are handled, though maintainability would improve by removing unused imports and simplifying the file.",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 1.0
+Style_Score: 0.5
+Simplicity_Score: 0.7
+Robustness_Score: 0.8
+Reasoning: I created unit tests (including sample cases purchaseAmount=9 -> 90 and 15 -> 80 and additional cases 0->100, 100->0, 5->90, 4->100, 95->0) but could not execute them in this environment because the Python runtime was not available; I therefore validated the implementation by inspecting the code and manually reasoning through these cases and all values in the constraint range. The algorithm correctly computes lower and upper multiples of 10, uses the tie-breaking rule to choose the larger multiple, and returns 100 - rounded_amount, so it is functionally correct for all inputs 0..100. Style is penalized for many unnecessary and duplicate wildcard imports and module clutter though the function contains clear step comments. Simplicity is good because the solution is O(1) and minimal in logic, but the file-level verbosity reduces conciseness; robustness is high since edge cases (ties, boundaries 0 and 100) are handled, though maintainability would improve by removing unused imports and simplifying the file.</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1338,16 +1708,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 18</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: cat /workspace/evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1356,16 +1734,24 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 19</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `cat /workspace/evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1381,14 +1767,22 @@ PY` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 20</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created solution.py, wrote unit tests in check_solution.py (couldn\u0027t execute due to missing Python runtime), and saved evaluation.txt with scores and reasoning. Next steps: if you want, I can clean up the solution by removing unnecessary imports and re-run tests when Python becomes available."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created solution.py, wrote unit tests in check_solution.py (couldn\u0027t execute due to missing Python runtime), and saved evaluation.txt with scores and reasoning. Next steps: if you want, I can clean up the solution by removing unnecessary imports and re-run tests when Python becomes available."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1408,10 +1802,57 @@ PY` executed with exit code 0.</div></div>
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-high">Score: 1.00</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 1.0  
-Reasoning: The algorithm correctly calculates the nearest multiple of 10 to the given purchase amount and handles the rounding logic as specified in the problem statement. It efficiently determines whether to round up or down based on the distances to the nearest multiples, and it correctly returns the updated account balance. All edge cases, including the boundaries of the input constraints, are properly managed.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Avg: 0.875</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">1.00</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.70</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.90</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.90</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to round the purchase amount to the nearest multiple of 10 and calculates the remaining balance accurately, passing all edge cases defined in the problem. The code includes some comments, but they could be more comprehensive to enhance understanding. The implementation is concise, with minimal redundancy, although the use of multiple distance variables could be simplified. The code handles edge cases well and is maintainable, but could benefit from additional documentation for clarity.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Score: 0.88</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly calculates the nearest multiple of 10 for any given purchase amount, adhering to the problem's requirements. It handles all edge cases, including when the purchase amount is 0 or 100, and correctly returns the updated account balance after the rounded purchase. All specified test cases will pass as the logic is sound and comprehensive.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1449,6 +1890,14 @@ Reasoning: The algorithm correctly calculates the nearest multiple of 10 to the 
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-low text-lg">0.50</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.68</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
         </div>
     </header>
@@ -710,17 +710,50 @@ IMPORTANT: YOU SHOULD NEVER ASK FOR HUMAN RESPONSE.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.2\nStyle_Score: 0.7\nSimplicity_Score: 0.3\nRobustness_Score: 0.2\nReasoning: The algorithm\u0027s logic for checking if two couples can be made adjacent is correct (the BFS over the four positions explores all distributions), but the overall solution is brute-force O(N^2) over couples and will time out on large inputs so it would fail many judge test cases. Style is reasonable: function decomposition, a helpful docstring and inline comments in the helper, and clear variable names. The implementation is not simple or concise \u2014 the BFS and double loop are unnecessary because the adjacency condition can be checked directly from the four positions \u2014 resulting in redundant work. Robustness is low because the approach does not scale to the input limits and has no safeguards or optimizations for large N.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.2
+Style_Score: 0.7
+Simplicity_Score: 0.3
+Robustness_Score: 0.2
+Reasoning: The algorithm's logic for checking if two couples can be made adjacent is correct (the BFS over the four positions explores all distributions), but the overall solution is brute-force O(N^2) over couples and will time out on large inputs so it would fail many judge test cases. Style is reasonable: function decomposition, a helpful docstring and inline comments in the helper, and clear variable names. The implementation is not simple or concise — the BFS and double loop are unnecessary because the adjacency condition can be checked directly from the four positions — resulting in redundant work. Robustness is low because the approach does not scale to the input limits and has no safeguards or optimizations for large N.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -729,17 +762,50 @@ IMPORTANT: YOU SHOULD NEVER ASK FOR HUMAN RESPONSE.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.2\nStyle_Score: 0.7\nSimplicity_Score: 0.3\nRobustness_Score: 0.2\nReasoning: The algorithm\u0027s logic for checking if two couples can be made adjacent is correct (the BFS over the four positions explores all distributions), but the overall solution is brute-force O(N^2) over couples and will time out on large inputs so it would fail many judge test cases. Style is reasonable: function decomposition, a helpful docstring and inline comments in the helper, and clear variable names. The implementation is not simple or concise \u2014 the BFS and double loop are unnecessary because the adjacency condition can be checked directly from the four positions \u2014 resulting in redundant work. Robustness is low because the approach does not scale to the input limits and has no safeguards or optimizations for large N.\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.2
+Style_Score: 0.7
+Simplicity_Score: 0.3
+Robustness_Score: 0.2
+Reasoning: The algorithm's logic for checking if two couples can be made adjacent is correct (the BFS over the four positions explores all distributions), but the overall solution is brute-force O(N^2) over couples and will time out on large inputs so it would fail many judge test cases. Style is reasonable: function decomposition, a helpful docstring and inline comments in the helper, and clear variable names. The implementation is not simple or concise — the BFS and double loop are unnecessary because the adjacency condition can be checked directly from the four positions — resulting in redundant work. Robustness is low because the approach does not scale to the input limits and has no safeguards or optimizations for large N.
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -755,14 +821,22 @@ IMPORTANT: YOU SHOULD NEVER ASK FOR HUMAN RESPONSE.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "I have created evaluation.txt with the requested scores and reasoning. Task complete."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "I have created evaluation.txt with the requested scores and reasoning. Task complete."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1212,17 +1286,222 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from collections import deque\nimport random\nfrom itertools import permutations, combinations\nimport sys\n\n# Original solution functions\n\ndef solve(n, a):\n    # Find positions of each number\n    positions = {}\n    for i in range(len(a)):\n        if a[i] not in positions:\n            positions[a[i]] = []\n        positions[a[i]].append(i)\n\n    count = 0\n\n    # Check all pairs (a, b) where 1 \u003c= a \u003c b \u003c= n\n    for couple_a in range(1, n + 1):\n        for couple_b in range(couple_a + 1, n + 1):\n            pos_a = positions[couple_a]\n            pos_b = positions[couple_b]\n\n            # Check if both couples are not adjacent\n            if abs(pos_a[0] - pos_a[1]) == 1 or abs(pos_b[0] - pos_b[1]) == 1:\n                continue\n\n            # Check if we can make both couples adjacent\n            # by swapping elements of couple_a and couple_b\n            if can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):\n                count += 1\n\n    return count\n\n\ndef can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):\n    \"\"\"\n    Check if we can make both couples adjacent through swaps.\n    We can only swap elements that belong to couple_a or couple_b.\n    \"\"\"\n\n    # We\u0027ll track the positions of couple_a and couple_b as we make swaps\n    # Initial positions\n    positions_a = list(pos_a)\n    positions_b = list(pos_b)\n\n    visited = set()\n    initial_state = (tuple(sorted(positions_a)), tuple(sorted(positions_b)))\n    queue = deque([initial_state])\n    visited.add(initial_state)\n\n    while queue:\n        pos_a_sorted, pos_b_sorted = queue.popleft()\n        pos_a = list(pos_a_sorted)\n        pos_b = list(pos_b_sorted)\n\n        # Check if both couples are adjacent\n        if abs(pos_a[0] - pos_a[1]) == 1 and abs(pos_b[0] - pos_b[1]) == 1:\n            return True\n\n        # Try all possible swaps of positions between couple_a and couple_b\n        # A swap exchanges the values at two positions\n        # We can swap any position of couple_a with any position of couple_b\n\n        for i in range(2):  # Two positions for couple_a\n            for j in range(2):  # Two positions for couple_b\n                # Swap pos_a[i] with pos_b[j]\n                new_pos_a = pos_a[:]\n                new_pos_b = pos_b[:]\n\n                new_pos_a[i], new_pos_b[j] = new_pos_b[j], new_pos_a[i]\n\n                new_state = (tuple(sorted(new_pos_a)), tuple(sorted(new_pos_b)))\n\n                if new_state not in visited:\n                    visited.add(new_state)\n                    queue.append(new_state)\n\n    return False\n\n# Brute-force correct solver for verification\nfrom itertools import combinations as comb\n\ndef brute_count(n,a):\n    pos = {}\n    for i,x in enumerate(a):\n        pos.setdefault(x,[]).append(i)\n    ans=0\n    for x,y in comb(range(1,n+1),2):\n        px=pos[x]; py=pos[y]\n        if abs(px[0]-px[1])==1 or abs(py[0]-py[1])==1:\n            continue\n        union = sorted(px+py)\n        found=False\n        # choose two indices for x among union positions\n        for ix in comb(range(4),2):\n            ax = [union[ix[0]], union[ix[1]]]\n            bx = [p for idx,p in enumerate(union) if idx not in ix]\n            if abs(ax[0]-ax[1])==1 and abs(bx[0]-bx[1])==1:\n                found=True\n                break\n        if found: ans+=1\n    return ans\n\n# Tests\n\ndef test_samples():\n    cases = [\n        (3, [1,2,3,3,1,2], 1),\n        (4, [1,1,2,2,3,3,4,4], 0),\n        (5, [1,2,3,4,5,1,2,3,4,5], 4),\n    ]\n    ok=True\n    for n,a,expected in cases:\n        r=solve(n,a)\n        if r!=expected:\n            print(\"Sample failed\",n,a,r,expected)\n            ok=False\n    if ok: print(\"Sample tests passed\")\n    return ok\n\n\ndef test_enumerate_small():\n    # enumerate all arrays for N=2 and N=3\n    ok=True\n    for n in [2,3]:\n        vals=[]\n        for i in range(1,n+1):\n            vals += [i,i]\n        # generate unique permutations with duplicates\n        for perm in set(permutations(vals)):\n            a=list(perm)\n            r1=solve(n,a)\n            r2=brute_count(n,a)\n            if r1!=r2:\n                print(\"Mismatch n\",n,\"a\",a,\"solve\",r1,\"brute\",r2)\n                ok=False\n                return False\n    if ok: print(\"Enumeration small N passed\")\n    return ok\n\n\ndef test_random():\n    ok=True\n    for trial in range(200):\n        n=random.randint(1,6)\n        vals=[]\n        for i in range(1,n+1):\n            vals += [i,i]\n        random.shuffle(vals)\n        a=vals\n        r1=solve(n,a)\n        r2=brute_count(n,a)\n        if r1!=r2:\n            print(\"Random mismatch n\",n,\"a\",a,\"solve\",r1,\"brute\",r2)\n            ok=False\n            break\n    if ok: print(\"Random tests passed\")\n    return ok\n\n\ndef main():\n    total=0\n    passed=0\n    print(\"Running sample tests\")\n    total+=1\n    if test_samples(): passed+=1\n    print(\"Running enumeration small\")\n    total+=1\n    if test_enumerate_small(): passed+=1\n    print(\"Running random\")\n    total+=1\n    if test_random(): passed+=1\n    print(\"Summary: passed\",passed,\"out of\",total,\"test groups\")\n\nif __name__==\u0027__main__\u0027:\n    main()\n",
-      "path": "/workspace/test_solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/test_solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from collections import deque
+import random
+from itertools import permutations, combinations
+import sys
+
+# Original solution functions
+
+def solve(n, a):
+    # Find positions of each number
+    positions = {}
+    for i in range(len(a)):
+        if a[i] not in positions:
+            positions[a[i]] = []
+        positions[a[i]].append(i)
+
+    count = 0
+
+    # Check all pairs (a, b) where 1 <= a < b <= n
+    for couple_a in range(1, n + 1):
+        for couple_b in range(couple_a + 1, n + 1):
+            pos_a = positions[couple_a]
+            pos_b = positions[couple_b]
+
+            # Check if both couples are not adjacent
+            if abs(pos_a[0] - pos_a[1]) == 1 or abs(pos_b[0] - pos_b[1]) == 1:
+                continue
+
+            # Check if we can make both couples adjacent
+            # by swapping elements of couple_a and couple_b
+            if can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):
+                count += 1
+
+    return count
+
+
+def can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):
+    """
+    Check if we can make both couples adjacent through swaps.
+    We can only swap elements that belong to couple_a or couple_b.
+    """
+
+    # We'll track the positions of couple_a and couple_b as we make swaps
+    # Initial positions
+    positions_a = list(pos_a)
+    positions_b = list(pos_b)
+
+    visited = set()
+    initial_state = (tuple(sorted(positions_a)), tuple(sorted(positions_b)))
+    queue = deque([initial_state])
+    visited.add(initial_state)
+
+    while queue:
+        pos_a_sorted, pos_b_sorted = queue.popleft()
+        pos_a = list(pos_a_sorted)
+        pos_b = list(pos_b_sorted)
+
+        # Check if both couples are adjacent
+        if abs(pos_a[0] - pos_a[1]) == 1 and abs(pos_b[0] - pos_b[1]) == 1:
+            return True
+
+        # Try all possible swaps of positions between couple_a and couple_b
+        # A swap exchanges the values at two positions
+        # We can swap any position of couple_a with any position of couple_b
+
+        for i in range(2):  # Two positions for couple_a
+            for j in range(2):  # Two positions for couple_b
+                # Swap pos_a[i] with pos_b[j]
+                new_pos_a = pos_a[:]
+                new_pos_b = pos_b[:]
+
+                new_pos_a[i], new_pos_b[j] = new_pos_b[j], new_pos_a[i]
+
+                new_state = (tuple(sorted(new_pos_a)), tuple(sorted(new_pos_b)))
+
+                if new_state not in visited:
+                    visited.add(new_state)
+                    queue.append(new_state)
+
+    return False
+
+# Brute-force correct solver for verification
+from itertools import combinations as comb
+
+def brute_count(n,a):
+    pos = {}
+    for i,x in enumerate(a):
+        pos.setdefault(x,[]).append(i)
+    ans=0
+    for x,y in comb(range(1,n+1),2):
+        px=pos[x]; py=pos[y]
+        if abs(px[0]-px[1])==1 or abs(py[0]-py[1])==1:
+            continue
+        union = sorted(px+py)
+        found=False
+        # choose two indices for x among union positions
+        for ix in comb(range(4),2):
+            ax = [union[ix[0]], union[ix[1]]]
+            bx = [p for idx,p in enumerate(union) if idx not in ix]
+            if abs(ax[0]-ax[1])==1 and abs(bx[0]-bx[1])==1:
+                found=True
+                break
+        if found: ans+=1
+    return ans
+
+# Tests
+
+def test_samples():
+    cases = [
+        (3, [1,2,3,3,1,2], 1),
+        (4, [1,1,2,2,3,3,4,4], 0),
+        (5, [1,2,3,4,5,1,2,3,4,5], 4),
+    ]
+    ok=True
+    for n,a,expected in cases:
+        r=solve(n,a)
+        if r!=expected:
+            print("Sample failed",n,a,r,expected)
+            ok=False
+    if ok: print("Sample tests passed")
+    return ok
+
+
+def test_enumerate_small():
+    # enumerate all arrays for N=2 and N=3
+    ok=True
+    for n in [2,3]:
+        vals=[]
+        for i in range(1,n+1):
+            vals += [i,i]
+        # generate unique permutations with duplicates
+        for perm in set(permutations(vals)):
+            a=list(perm)
+            r1=solve(n,a)
+            r2=brute_count(n,a)
+            if r1!=r2:
+                print("Mismatch n",n,"a",a,"solve",r1,"brute",r2)
+                ok=False
+                return False
+    if ok: print("Enumeration small N passed")
+    return ok
+
+
+def test_random():
+    ok=True
+    for trial in range(200):
+        n=random.randint(1,6)
+        vals=[]
+        for i in range(1,n+1):
+            vals += [i,i]
+        random.shuffle(vals)
+        a=vals
+        r1=solve(n,a)
+        r2=brute_count(n,a)
+        if r1!=r2:
+            print("Random mismatch n",n,"a",a,"solve",r1,"brute",r2)
+            ok=False
+            break
+    if ok: print("Random tests passed")
+    return ok
+
+
+def main():
+    total=0
+    passed=0
+    print("Running sample tests")
+    total+=1
+    if test_samples(): passed+=1
+    print("Running enumeration small")
+    total+=1
+    if test_enumerate_small(): passed+=1
+    print("Running random")
+    total+=1
+    if test_random(): passed+=1
+    print("Summary: passed",passed,"out of",total,"test groups")
+
+if __name__=='__main__':
+    main()
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1231,17 +1510,222 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/test_solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from collections import deque\nimport random\nfrom itertools import permutations, combinations\nimport sys\n\n# Original solution functions\n\ndef solve(n, a):\n    # Find positions of each number\n    positions = {}\n    for i in range(len(a)):\n        if a[i] not in positions:\n            positions[a[i]] = []\n        positions[a[i]].append(i)\n\n    count = 0\n\n    # Check all pairs (a, b) where 1 \u003c= a \u003c b \u003c= n\n    for couple_a in range(1, n + 1):\n        for couple_b in range(couple_a + 1, n + 1):\n            pos_a = positions[couple_a]\n            pos_b = positions[couple_b]\n\n            # Check if both couples are not adjacent\n            if abs(pos_a[0] - pos_a[1]) == 1 or abs(pos_b[0] - pos_b[1]) == 1:\n                continue\n\n            # Check if we can make both couples adjacent\n            # by swapping elements of couple_a and couple_b\n            if can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):\n                count += 1\n\n    return count\n\n\ndef can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):\n    \"\"\"\n    Check if we can make both couples adjacent through swaps.\n    We can only swap elements that belong to couple_a or couple_b.\n    \"\"\"\n\n    # We\u0027ll track the positions of couple_a and couple_b as we make swaps\n    # Initial positions\n    positions_a = list(pos_a)\n    positions_b = list(pos_b)\n\n    visited = set()\n    initial_state = (tuple(sorted(positions_a)), tuple(sorted(positions_b)))\n    queue = deque([initial_state])\n    visited.add(initial_state)\n\n    while queue:\n        pos_a_sorted, pos_b_sorted = queue.popleft()\n        pos_a = list(pos_a_sorted)\n        pos_b = list(pos_b_sorted)\n\n        # Check if both couples are adjacent\n        if abs(pos_a[0] - pos_a[1]) == 1 and abs(pos_b[0] - pos_b[1]) == 1:\n            return True\n\n        # Try all possible swaps of positions between couple_a and couple_b\n        # A swap exchanges the values at two positions\n        # We can swap any position of couple_a with any position of couple_b\n\n        for i in range(2):  # Two positions for couple_a\n            for j in range(2):  # Two positions for couple_b\n                # Swap pos_a[i] with pos_b[j]\n                new_pos_a = pos_a[:]\n                new_pos_b = pos_b[:]\n\n                new_pos_a[i], new_pos_b[j] = new_pos_b[j], new_pos_a[i]\n\n                new_state = (tuple(sorted(new_pos_a)), tuple(sorted(new_pos_b)))\n\n                if new_state not in visited:\n                    visited.add(new_state)\n                    queue.append(new_state)\n\n    return False\n\n# Brute-force correct solver for verification\nfrom itertools import combinations as comb\n\ndef brute_count(n,a):\n    pos = {}\n    for i,x in enumerate(a):\n        pos.setdefault(x,[]).append(i)\n    ans=0\n    for x,y in comb(range(1,n+1),2):\n        px=pos[x]; py=pos[y]\n        if abs(px[0]-px[1])==1 or abs(py[0]-py[1])==1:\n            continue\n        union = sorted(px+py)\n        found=False\n        # choose two indices for x among union positions\n        for ix in comb(range(4),2):\n            ax = [union[ix[0]], union[ix[1]]]\n            bx = [p for idx,p in enumerate(union) if idx not in ix]\n            if abs(ax[0]-ax[1])==1 and abs(bx[0]-bx[1])==1:\n                found=True\n                break\n        if found: ans+=1\n    return ans\n\n# Tests\n\ndef test_samples():\n    cases = [\n        (3, [1,2,3,3,1,2], 1),\n        (4, [1,1,2,2,3,3,4,4], 0),\n        (5, [1,2,3,4,5,1,2,3,4,5], 4),\n    ]\n    ok=True\n    for n,a,expected in cases:\n        r=solve(n,a)\n        if r!=expected:\n            print(\"Sample failed\",n,a,r,expected)\n            ok=False\n    if ok: print(\"Sample tests passed\")\n    return ok\n\n\ndef test_enumerate_small():\n    # enumerate all arrays for N=2 and N=3\n    ok=True\n    for n in [2,3]:\n        vals=[]\n        for i in range(1,n+1):\n            vals += [i,i]\n        # generate unique permutations with duplicates\n        for perm in set(permutations(vals)):\n            a=list(perm)\n            r1=solve(n,a)\n            r2=brute_count(n,a)\n            if r1!=r2:\n                print(\"Mismatch n\",n,\"a\",a,\"solve\",r1,\"brute\",r2)\n                ok=False\n                return False\n    if ok: print(\"Enumeration small N passed\")\n    return ok\n\n\ndef test_random():\n    ok=True\n    for trial in range(200):\n        n=random.randint(1,6)\n        vals=[]\n        for i in range(1,n+1):\n            vals += [i,i]\n        random.shuffle(vals)\n        a=vals\n        r1=solve(n,a)\n        r2=brute_count(n,a)\n        if r1!=r2:\n            print(\"Random mismatch n\",n,\"a\",a,\"solve\",r1,\"brute\",r2)\n            ok=False\n            break\n    if ok: print(\"Random tests passed\")\n    return ok\n\n\ndef main():\n    total=0\n    passed=0\n    print(\"Running sample tests\")\n    total+=1\n    if test_samples(): passed+=1\n    print(\"Running enumeration small\")\n    total+=1\n    if test_enumerate_small(): passed+=1\n    print(\"Running random\")\n    total+=1\n    if test_random(): passed+=1\n    print(\"Summary: passed\",passed,\"out of\",total,\"test groups\")\n\nif __name__==\u0027__main__\u0027:\n    main()\n",
-      "path": "/workspace/test_solution.py",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/test_solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from collections import deque
+import random
+from itertools import permutations, combinations
+import sys
+
+# Original solution functions
+
+def solve(n, a):
+    # Find positions of each number
+    positions = {}
+    for i in range(len(a)):
+        if a[i] not in positions:
+            positions[a[i]] = []
+        positions[a[i]].append(i)
+
+    count = 0
+
+    # Check all pairs (a, b) where 1 <= a < b <= n
+    for couple_a in range(1, n + 1):
+        for couple_b in range(couple_a + 1, n + 1):
+            pos_a = positions[couple_a]
+            pos_b = positions[couple_b]
+
+            # Check if both couples are not adjacent
+            if abs(pos_a[0] - pos_a[1]) == 1 or abs(pos_b[0] - pos_b[1]) == 1:
+                continue
+
+            # Check if we can make both couples adjacent
+            # by swapping elements of couple_a and couple_b
+            if can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):
+                count += 1
+
+    return count
+
+
+def can_make_adjacent(a, couple_a, couple_b, pos_a, pos_b):
+    """
+    Check if we can make both couples adjacent through swaps.
+    We can only swap elements that belong to couple_a or couple_b.
+    """
+
+    # We'll track the positions of couple_a and couple_b as we make swaps
+    # Initial positions
+    positions_a = list(pos_a)
+    positions_b = list(pos_b)
+
+    visited = set()
+    initial_state = (tuple(sorted(positions_a)), tuple(sorted(positions_b)))
+    queue = deque([initial_state])
+    visited.add(initial_state)
+
+    while queue:
+        pos_a_sorted, pos_b_sorted = queue.popleft()
+        pos_a = list(pos_a_sorted)
+        pos_b = list(pos_b_sorted)
+
+        # Check if both couples are adjacent
+        if abs(pos_a[0] - pos_a[1]) == 1 and abs(pos_b[0] - pos_b[1]) == 1:
+            return True
+
+        # Try all possible swaps of positions between couple_a and couple_b
+        # A swap exchanges the values at two positions
+        # We can swap any position of couple_a with any position of couple_b
+
+        for i in range(2):  # Two positions for couple_a
+            for j in range(2):  # Two positions for couple_b
+                # Swap pos_a[i] with pos_b[j]
+                new_pos_a = pos_a[:]
+                new_pos_b = pos_b[:]
+
+                new_pos_a[i], new_pos_b[j] = new_pos_b[j], new_pos_a[i]
+
+                new_state = (tuple(sorted(new_pos_a)), tuple(sorted(new_pos_b)))
+
+                if new_state not in visited:
+                    visited.add(new_state)
+                    queue.append(new_state)
+
+    return False
+
+# Brute-force correct solver for verification
+from itertools import combinations as comb
+
+def brute_count(n,a):
+    pos = {}
+    for i,x in enumerate(a):
+        pos.setdefault(x,[]).append(i)
+    ans=0
+    for x,y in comb(range(1,n+1),2):
+        px=pos[x]; py=pos[y]
+        if abs(px[0]-px[1])==1 or abs(py[0]-py[1])==1:
+            continue
+        union = sorted(px+py)
+        found=False
+        # choose two indices for x among union positions
+        for ix in comb(range(4),2):
+            ax = [union[ix[0]], union[ix[1]]]
+            bx = [p for idx,p in enumerate(union) if idx not in ix]
+            if abs(ax[0]-ax[1])==1 and abs(bx[0]-bx[1])==1:
+                found=True
+                break
+        if found: ans+=1
+    return ans
+
+# Tests
+
+def test_samples():
+    cases = [
+        (3, [1,2,3,3,1,2], 1),
+        (4, [1,1,2,2,3,3,4,4], 0),
+        (5, [1,2,3,4,5,1,2,3,4,5], 4),
+    ]
+    ok=True
+    for n,a,expected in cases:
+        r=solve(n,a)
+        if r!=expected:
+            print("Sample failed",n,a,r,expected)
+            ok=False
+    if ok: print("Sample tests passed")
+    return ok
+
+
+def test_enumerate_small():
+    # enumerate all arrays for N=2 and N=3
+    ok=True
+    for n in [2,3]:
+        vals=[]
+        for i in range(1,n+1):
+            vals += [i,i]
+        # generate unique permutations with duplicates
+        for perm in set(permutations(vals)):
+            a=list(perm)
+            r1=solve(n,a)
+            r2=brute_count(n,a)
+            if r1!=r2:
+                print("Mismatch n",n,"a",a,"solve",r1,"brute",r2)
+                ok=False
+                return False
+    if ok: print("Enumeration small N passed")
+    return ok
+
+
+def test_random():
+    ok=True
+    for trial in range(200):
+        n=random.randint(1,6)
+        vals=[]
+        for i in range(1,n+1):
+            vals += [i,i]
+        random.shuffle(vals)
+        a=vals
+        r1=solve(n,a)
+        r2=brute_count(n,a)
+        if r1!=r2:
+            print("Random mismatch n",n,"a",a,"solve",r1,"brute",r2)
+            ok=False
+            break
+    if ok: print("Random tests passed")
+    return ok
+
+
+def main():
+    total=0
+    passed=0
+    print("Running sample tests")
+    total+=1
+    if test_samples(): passed+=1
+    print("Running enumeration small")
+    total+=1
+    if test_enumerate_small(): passed+=1
+    print("Running random")
+    total+=1
+    if test_random(): passed+=1
+    print("Summary: passed",passed,"out of",total,"test groups")
+
+if __name__=='__main__':
+    main()
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1257,16 +1741,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 /workspace/test_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 /workspace/test_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 /workspace/test_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1275,16 +1767,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 /workspace/test_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 /workspace/test_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 /workspace/test_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1301,15 +1801,23 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running Python code interactively: import runpy
 runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "import runpy\nrunpy.run_path(\u0027/workspace/test_solution.py\u0027, run_name=\u0027__main__\u0027)",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "import runpy\nrunpy.run_path(\u0027/workspace/test_solution.py\u0027, run_name=\u0027__main__\u0027)",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1318,15 +1826,23 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 11</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Code executed in IPython cell.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "import runpy\nrunpy.run_path(\u0027/workspace/test_solution.py\u0027, run_name=\u0027__main__\u0027)",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "import runpy\nrunpy.run_path(\u0027/workspace/test_solution.py\u0027, run_name=\u0027__main__\u0027)",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1342,17 +1858,49 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.6\nStyle_Score: 0.6\nSimplicity_Score: 0.3\nRobustness_Score: 0.4\nReasoning: I executed unit tests (the provided samples, exhaustive enumeration for N=2,3, and 200 random tests up to N=6) and the implementation produced correct outputs in all of them, so the pairwise swapping logic is functionally correct for checked cases. However, the solution is quadratic over couples (O(N^2) pairs) and performs a BFS per pair, so it will time out on the problem\u0027s constraints (sum N up to 2e5), which prevents it from passing full-scale testcases. The code is readable with some comments and clear variable names (hence a moderate style score), but it is written in a naive and inefficient way and lacks scalability or optimization, reducing its simplicity and robustness scores.",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.6
+Style_Score: 0.6
+Simplicity_Score: 0.3
+Robustness_Score: 0.4
+Reasoning: I executed unit tests (the provided samples, exhaustive enumeration for N=2,3, and 200 random tests up to N=6) and the implementation produced correct outputs in all of them, so the pairwise swapping logic is functionally correct for checked cases. However, the solution is quadratic over couples (O(N^2) pairs) and performs a BFS per pair, so it will time out on the problem's constraints (sum N up to 2e5), which prevents it from passing full-scale testcases. The code is readable with some comments and clear variable names (hence a moderate style score), but it is written in a naive and inefficient way and lacks scalability or optimization, reducing its simplicity and robustness scores.</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1361,17 +1909,49 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.6\nStyle_Score: 0.6\nSimplicity_Score: 0.3\nRobustness_Score: 0.4\nReasoning: I executed unit tests (the provided samples, exhaustive enumeration for N=2,3, and 200 random tests up to N=6) and the implementation produced correct outputs in all of them, so the pairwise swapping logic is functionally correct for checked cases. However, the solution is quadratic over couples (O(N^2) pairs) and performs a BFS per pair, so it will time out on the problem\u0027s constraints (sum N up to 2e5), which prevents it from passing full-scale testcases. The code is readable with some comments and clear variable names (hence a moderate style score), but it is written in a naive and inefficient way and lacks scalability or optimization, reducing its simplicity and robustness scores.",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.6
+Style_Score: 0.6
+Simplicity_Score: 0.3
+Robustness_Score: 0.4
+Reasoning: I executed unit tests (the provided samples, exhaustive enumeration for N=2,3, and 200 random tests up to N=6) and the implementation produced correct outputs in all of them, so the pairwise swapping logic is functionally correct for checked cases. However, the solution is quadratic over couples (O(N^2) pairs) and performs a BFS per pair, so it will time out on the problem's constraints (sum N up to 2e5), which prevents it from passing full-scale testcases. The code is readable with some comments and clear variable names (hence a moderate style score), but it is written in a naive and inefficient way and lacks scalability or optimization, reducing its simplicity and robustness scores.</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1387,16 +1967,24 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: cat /workspace/evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1405,16 +1993,24 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `cat /workspace/evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1430,14 +2026,22 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 16</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt at /workspace with scores and reasoning. I ran sample, exhaustive small (N=2,3), and random tests; they all matched the brute-force verifier for tested sizes. However, the provided solution is naive and will not scale to the problem constraints due to O(N^2) pair checks and BFS per pair. The evaluation file contains the detailed scores and a brief justification."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt at /workspace with scores and reasoning. I ran sample, exhaustive small (N=2,3), and random tests; they all matched the brute-force verifier for tested sizes. However, the provided solution is naive and will not scale to the problem constraints due to O(N^2) pair checks and BFS per pair. The evaluation file contains the detailed scores and a brief justification."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1457,10 +2061,57 @@ runpy.run_path('/workspace/test_solution.py', run_name='__main__')</div></div>
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.60</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.6  
-Reasoning: The algorithm correctly identifies pairs of couples and checks adjacency conditions, but the approach using a breadth-first search (BFS) for swaps may lead to inefficiencies and potential infinite loops due to the way states are managed. Additionally, edge cases such as when couples are already adjacent or when there are only two couples might not be handled optimally. The overall complexity could exceed acceptable limits given the constraints, especially with the BFS approach.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-low">Avg: 0.675</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">0.80</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.70</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.60</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.60</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution appears to be mostly correct, as it implements the logic to check for adjacent pairs and swaps effectively, but it may fail on certain edge cases, particularly with larger inputs or specific arrangements. The comments are adequate but could be more comprehensive, especially in explaining the more complex logic in the `can_make_adjacent` function. The code is somewhat concise, but the use of a queue for state management introduces unnecessary complexity, which could be simplified. Edge cases are not thoroughly addressed, particularly regarding the limits of input sizes and configurations, which could affect maintainability and robustness.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.68</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly identifies pairs of couples that can potentially be made adjacent through swaps, but it fails to account for all necessary conditions, particularly in the adjacency checks and the swap logic. The breadth-first search (BFS) approach used in `can_make_adjacent` may not effectively cover all scenarios, leading to incorrect results for certain edge cases, such as when couples are separated by more than one seat or when their positions are not conducive to swapping. This results in significant gaps in correctness.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1498,6 +2149,14 @@ Reasoning: The algorithm correctly identifies pairs of couples and checks adjace
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 

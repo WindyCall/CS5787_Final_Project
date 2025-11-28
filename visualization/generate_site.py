@@ -54,6 +54,7 @@ def build_agent_run_index(root: Path):
 
 AGENT_MULTI_INDEX = build_agent_run_index(AGENT_MULTI_ROOT)
 AGENT_UNIT_PROMPT_INDEX = build_agent_run_index(AGENT_UNIT_PROMPT_ROOT)
+AGENT_CORRECTNESS_INDEX = build_agent_run_index(AGENT_CORRECTNESS_ROOT)
 
 def load_detail_index(path: Path):
     if not path.exists():
@@ -73,6 +74,40 @@ def load_detail_index(path: Path):
         return {}
 
 DETAIL_LOOKUP = load_detail_index(JSON_DETAILS_FILE)
+
+def load_llm_judge_results(json_path: Path):
+    """Load LLM judge results from JSON file and index by task_id (case-insensitive)"""
+    if not json_path.exists():
+        print(f"⚠️ LLM judge results file {json_path} does not exist.")
+        return {}
+    try:
+        with json_path.open('r', encoding='utf-8') as f:
+            data = json.load(f)
+        results = data.get('results', [])
+        index = {}
+        for result in results:
+            task_id = result.get('task_id', '')
+            if task_id:
+                # Use lowercase for case-insensitive lookup
+                # Store reasoning, scores, and all aspect scores for multi-aspect
+                # Strip backticks from reasoning
+                reasoning = result.get('reasoning', '').rstrip('`').rstrip('\n').rstrip('`')
+                index[task_id.lower()] = {
+                    'reasoning': reasoning,
+                    'score': result.get('correctness_score', None),
+                    'correctness_score': result.get('correctness_score', None),
+                    'style_score': result.get('style_score', None),
+                    'simplicity_score': result.get('simplicity_score', None),
+                    'robustness_score': result.get('robustness_score', None),
+                    'average_score': result.get('average_score', None)
+                }
+        return index
+    except Exception as exc:
+        print(f"⚠️ Unable to parse LLM judge results: {exc}")
+        return {}
+
+LLM_CORRECTNESS_RESULTS = load_llm_judge_results(BASE_DIR / "outputs" / "results" / "correctness" / "correctness_llm_judge_results.json")
+LLM_MULTI_ASPECT_RESULTS = load_llm_judge_results(BASE_DIR / "outputs" / "results" / "multi_aspect" / "multi_aspect_llm_judge_results.json")
 
 def parse_logs(log_path: Path):
     if not log_path or not log_path.exists():
@@ -461,40 +496,201 @@ DETAIL_TEMPLATE = """
         <div class="resize-handle" id="sidebar-resizer" title="Drag to resize"></div>
         <main class="main">
             <div class="tab-nav">
-                <button onclick="switchTab('agent-multi')" class="tab-btn active" id="btn-agent-multi"><span>🕹️</span> Agent Multi-Aspect</button>
-                <button onclick="switchTab('agent-correctness')" class="tab-btn" id="btn-agent-correctness"><span>✅</span> Agent Correctness</button>
-                <button onclick="switchTab('agent-prompt')" class="tab-btn" id="btn-agent-prompt"><span>🔁</span> Agent → Unit Tests</button>
+                <button onclick="switchTab('agent')" class="tab-btn active" id="btn-agent"><span>🤖</span> Agent Judge</button>
                 <button onclick="switchTab('llm')" class="tab-btn" id="btn-llm"><span>🧠</span> LLM Judge</button>
                 <button onclick="switchTab('unit')" class="tab-btn" id="btn-unit"><span>⚡</span> Unit Tests</button>
             </div>
-            <div id="tab-agent-multi" class="tab-content active">
+            <div id="tab-agent" class="tab-content active">
                 <div class="max-w-4xl mx-auto">
                     <div class="bg-white p-6 rounded-lg border-l-4 border-purple-500 shadow-sm mb-8">
                         <div class="flex justify-between items-start mb-2"><h2 class="font-bold text-lg text-slate-800">Agent Verdict</h2><span class="text-xs bg-purple-50 text-purple-700 px-2 py-1 rounded border border-purple-100">Model: {{ models.agent }}</span></div>
                         <p class="text-slate-700 leading-relaxed">{{ reasoning.agent }}</p>
                     </div>
-                    <div class="flex items-center justify-between mb-4"><h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3>{% if not has_trajectory %}<span class="text-xs bg-amber-50 text-amber-700 border border-amber-200 px-3 py-1 rounded">⚠️ Demo: No logs available for this ID</span>{% endif %}</div>
-                    {% if has_trajectory %}
-                        {% for step in trajectory %}
-                        <div class="trajectory-step">
-                            <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP {{ loop.index }}</span>{% if step.action %}<span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">{{ step.action.name }}</span>{% endif %}</div>
-                            <div class="p-4">
-                                {% if step.thought %}<div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Thought</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">{{ step.thought }}</div></div>{% endif %}
-                                {% if step.action %}<div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Action Input</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>{{ step.action.input }}</code></pre></div>{% endif %}
-                                {% if step.observation %}<div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{{ step.observation }}</pre></div>{% endif %}
-                            </div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">Execution Trajectory</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="trajectory-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchTrajectory(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                                <option value="unit">Unit Tests</option>
+                            </select>
                         </div>
-                        {% endfor %}
-                    {% else %}
-                         <div class="p-12 text-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50"><p class="text-slate-500 font-medium">No trajectory logs available for this task.</p><p class="text-slate-400 text-sm mt-2">(In this demo, only task <a href="task_2808__j8qegjl__ChgukeA.html" class="text-blue-600 underline hover:text-blue-800">2808...</a> has a real log file attached.)</p></div>
-                    {% endif %}
+                    </div>
+                    <div id="trajectory-multi" class="trajectory-container">
+                        {% if has_agent_multi_logs %}
+                            {% for step in agent_multi_trajectory %}
+                            <div class="trajectory-step">
+                                <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP {{ loop.index }}</span>{% if step.speaker %}<span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">{{ step.speaker }}</span>{% endif %}</div>
+                                <div class="p-4">
+                                    {% if step.message %}<div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">{{ step.message }}</div></div>{% endif %}
+                                    {% if step.tool_calls %}
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        {% for tool_call in step.tool_calls %}
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">{{ tool_call.name }}</div>
+                                                {% if tool_call.arguments %}
+                                                    {% if tool_call.arguments.file_text %}
+                                                        {% for key, value in tool_call.arguments.items() %}
+                                                            {% if key != 'file_text' %}
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">{{ key }}:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">{{ value }}</span>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>{{ tool_call.arguments.file_text }}</code></pre>
+                                                    {% else %}
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{{ tool_call.arguments | tojson(indent=2) }}</code></pre>
+                                                    {% endif %}
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    {% if step.observation %}<div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{{ step.observation }}</pre></div>{% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="p-12 text-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50"><p class="text-slate-500 font-medium">No multi-aspect trajectory logs available for this task.</p></div>
+                        {% endif %}
+                    </div>
+                    <div id="trajectory-correctness" class="trajectory-container hidden">
+                        {% if has_agent_correctness_logs %}
+                            {% for step in agent_correctness_trajectory %}
+                            <div class="trajectory-step">
+                                <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP {{ loop.index }}</span>{% if step.speaker %}<span class="bg-green-100 text-green-700 text-xs px-2 py-1 rounded font-bold font-mono">{{ step.speaker }}</span>{% endif %}</div>
+                                <div class="p-4">
+                                    {% if step.message %}<div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">{{ step.message }}</div></div>{% endif %}
+                                    {% if step.tool_calls %}
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        {% for tool_call in step.tool_calls %}
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-green-600 text-xs mb-2">{{ tool_call.name }}</div>
+                                                {% if tool_call.arguments %}
+                                                    {% if tool_call.arguments.file_text %}
+                                                        {% for key, value in tool_call.arguments.items() %}
+                                                            {% if key != 'file_text' %}
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">{{ key }}:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">{{ value }}</span>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>{{ tool_call.arguments.file_text }}</code></pre>
+                                                    {% else %}
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{{ tool_call.arguments | tojson(indent=2) }}</code></pre>
+                                                    {% endif %}
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    {% if step.observation %}<div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{{ step.observation }}</pre></div>{% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="p-12 text-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50"><p class="text-slate-500 font-medium">Correctness trajectory coming soon...</p></div>
+                        {% endif %}
+                    </div>
+                    <div id="trajectory-unit" class="trajectory-container hidden">
+                        {% if has_agent_prompt_logs %}
+                            {% for step in agent_prompt_trajectory %}
+                            <div class="trajectory-step">
+                                <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP {{ loop.index }}</span>{% if step.speaker %}<span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">{{ step.speaker }}</span>{% endif %}</div>
+                                <div class="p-4">
+                                    {% if step.message %}<div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">{{ step.message }}</div></div>{% endif %}
+                                    {% if step.tool_calls %}
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        {% for tool_call in step.tool_calls %}
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">{{ tool_call.name }}</div>
+                                                {% if tool_call.arguments %}
+                                                    {% if tool_call.arguments.file_text %}
+                                                        {% for key, value in tool_call.arguments.items() %}
+                                                            {% if key != 'file_text' %}
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">{{ key }}:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">{{ value }}</span>
+                                                                </div>
+                                                            {% endif %}
+                                                        {% endfor %}
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>{{ tool_call.arguments.file_text }}</code></pre>
+                                                    {% else %}
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{{ tool_call.arguments | tojson(indent=2) }}</code></pre>
+                                                    {% endif %}
+                                                {% endif %}
+                                            </div>
+                                        {% endfor %}
+                                        </div>
+                                    {% endif %}
+                                    {% if step.observation %}<div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{{ step.observation }}</pre></div>{% endif %}
+                                </div>
+                            </div>
+                            {% endfor %}
+                        {% else %}
+                            <div class="p-12 text-center border-2 border-dashed border-slate-300 rounded-lg bg-slate-50"><p class="text-slate-500 font-medium">No unit test trajectory logs available for this task.</p></div>
+                        {% endif %}
+                    </div>
                 </div>
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: {{ models.llm }}</p></div><div class="ml-auto"><span class="text-lg font-bold {{ score_color_llm }}">Score: {{ scores.llm }}</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">{{ reasoning.llm }}</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold {{ score_color_llm }}">Avg: {{ llm_multi_aspect_scores.average if llm_multi_aspect_scores.average is not none else scores.llm }}</span></div>
+                            </div>
+                            {% if llm_multi_aspect_scores.correctness is not none %}
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">{{ "%.2f"|format(llm_multi_aspect_scores.correctness) if llm_multi_aspect_scores.correctness is not none else "-" }}</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">{{ "%.2f"|format(llm_multi_aspect_scores.style) if llm_multi_aspect_scores.style is not none else "-" }}</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">{{ "%.2f"|format(llm_multi_aspect_scores.simplicity) if llm_multi_aspect_scores.simplicity is not none else "-" }}</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">{{ "%.2f"|format(llm_multi_aspect_scores.robustness) if llm_multi_aspect_scores.robustness is not none else "-" }}</div>
+                                    </div>
+                                </div>
+                            </div>
+                            {% endif %}
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">{{ llm_multi_reasoning }}</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold {{ score_color_llm }}">Score: {{ scores.llm }}</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">{{ llm_correctness_reasoning }}</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -524,6 +720,22 @@ DETAIL_TEMPLATE = """
             document.getElementById('btn-' + tabId).classList.add('active');
             if (window.MathJax && window.MathJax.typesetPromise) {
                 MathJax.typesetPromise();
+            }
+        }
+
+        function switchTrajectory(trajectoryType) {
+            document.querySelectorAll('.trajectory-container').forEach(el => el.classList.add('hidden'));
+            const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
+            if (targetTrajectory) {
+                targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 
@@ -680,8 +892,36 @@ for _, row in df.iterrows():
     safe_id = task_id.replace('/', '_').replace('\\', '_')
     agent_multi_log = find_agent_log_file(task_id, AGENT_MULTI_INDEX, AGENT_MULTI_ROOT)
     agent_prompt_log = find_agent_log_file(task_id, AGENT_UNIT_PROMPT_INDEX, AGENT_UNIT_PROMPT_ROOT)
+    agent_correctness_log = find_agent_log_file(task_id, AGENT_CORRECTNESS_INDEX, AGENT_CORRECTNESS_ROOT)
     agent_multi_trajectory = parse_logs(agent_multi_log)
     agent_prompt_trajectory = parse_logs(agent_prompt_log)
+    agent_correctness_trajectory = parse_logs(agent_correctness_log)
+
+    # Get LLM judge reasoning and scores from JSON files
+    # The JSON files use task_id without the suffix (e.g., "1873_d__ewd5mxi")
+    # while CSV uses task_id with suffix (e.g., "1873_d__ewd5mxi__x9Nv7BA")
+    # We need to strip the last part after the last "__" and use lowercase for matching
+    task_id_parts = task_id.rsplit('__', 1)
+    task_id_base = (task_id_parts[0] if len(task_id_parts) > 1 else task_id).lower()
+
+    llm_multi_data = LLM_MULTI_ASPECT_RESULTS.get(task_id_base, {})
+    llm_correctness_data = LLM_CORRECTNESS_RESULTS.get(task_id_base, {})
+
+    llm_multi_reasoning = llm_multi_data.get('reasoning', '') if llm_multi_data else ''
+    llm_correctness_reasoning = llm_correctness_data.get('reasoning', '') if llm_correctness_data else ''
+
+    # Get LLM score from multi-aspect results (use average_score for display)
+    llm_score_from_json = llm_multi_data.get('average_score', None) if llm_multi_data else None
+
+    # Get individual aspect scores for multi-aspect
+    llm_multi_aspect_scores = {
+        'correctness': llm_multi_data.get('correctness_score', None) if llm_multi_data else None,
+        'style': llm_multi_data.get('style_score', None) if llm_multi_data else None,
+        'simplicity': llm_multi_data.get('simplicity_score', None) if llm_multi_data else None,
+        'robustness': llm_multi_data.get('robustness_score', None) if llm_multi_data else None,
+        'average': llm_multi_data.get('average_score', None) if llm_multi_data else None
+    }
+
     detail_entry = DETAIL_LOOKUP.get(task_id)
 
     def pick_score_detail(detail_key, csv_key):
@@ -691,7 +931,8 @@ for _, row in df.iterrows():
         return normalize_score(candidate)
 
     unit_score = pick_score_detail('unit_test_score', 'Unit test Scores')
-    llm_score = pick_score_detail('llm_judge_score', 'LLM Judgment Score')
+    # Use LLM score from JSON file instead of CSV
+    llm_score = normalize_score(llm_score_from_json) if llm_score_from_json is not None else pick_score_detail('llm_judge_score', 'LLM Judgment Score')
     agent_score = pick_score_detail('agent_judge_score', 'Agent Judgement Score')
 
     problem_desc = None
@@ -731,9 +972,13 @@ for _, row in df.iterrows():
         },
         agent_multi_trajectory=agent_multi_trajectory,
         agent_prompt_trajectory=agent_prompt_trajectory,
+        agent_correctness_trajectory=agent_correctness_trajectory,
         has_agent_multi_logs=bool(agent_multi_trajectory),
         has_agent_prompt_logs=bool(agent_prompt_trajectory),
-        agent_correctness_status="Pending"
+        has_agent_correctness_logs=bool(agent_correctness_trajectory),
+        llm_multi_reasoning=llm_multi_reasoning,
+        llm_correctness_reasoning=llm_correctness_reasoning,
+        llm_multi_aspect_scores=llm_multi_aspect_scores
     )
     
     detail_path = OUTPUT_DIR / f"task_{safe_id}.html"

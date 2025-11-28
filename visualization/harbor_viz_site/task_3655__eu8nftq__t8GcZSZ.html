@@ -57,7 +57,7 @@
         </div>
         <div class="flex gap-6 text-sm">
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Unit Test</span><span class="font-bold text-low text-lg">0.67</span></div>
-            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-low text-lg">0.60</span></div>
+            <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">LLM Judge</span><span class="font-bold text-med text-lg">0.70</span></div>
             <div class="flex flex-col items-end"><span class="text-slate-400 text-xs uppercase tracking-wider">Agent Judge</span><span class="font-bold text-med text-lg">0.80</span></div>
         </div>
     </header>
@@ -695,17 +695,49 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.2\nStyle_Score: 0.2\nSimplicity_Score: 0.2\nRobustness_Score: 0.2\nReasoning: The solution has a fundamental algorithmic bug: the priority queue is populated as (current_number, cost) so the heap orders by the numeric value rather than path cost, and nodes are marked visited upon discovery which can block better-cost paths; because of this the algorithm will frequently fail to produce the optimal cost and thus is largely incorrect. Style is poor due to excessive and redundant imports and almost no explanatory comments or docstrings. The implementation is also not simple or concise \u2014 it repeats imports, uses unnecessary constructs, and misuses standard algorithms (Dijkstra) leading to inefficient and error-prone code. Robustness is low because edge cases (proper Dijkstra ordering, revisiting nodes with better costs, handling of leading zeros and full termination) are mishandled, making the code fragile and hard to maintain or extend.",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.2
+Style_Score: 0.2
+Simplicity_Score: 0.2
+Robustness_Score: 0.2
+Reasoning: The solution has a fundamental algorithmic bug: the priority queue is populated as (current_number, cost) so the heap orders by the numeric value rather than path cost, and nodes are marked visited upon discovery which can block better-cost paths; because of this the algorithm will frequently fail to produce the optimal cost and thus is largely incorrect. Style is poor due to excessive and redundant imports and almost no explanatory comments or docstrings. The implementation is also not simple or concise — it repeats imports, uses unnecessary constructs, and misuses standard algorithms (Dijkstra) leading to inefficient and error-prone code. Robustness is low because edge cases (proper Dijkstra ordering, revisiting nodes with better costs, handling of leading zeros and full termination) are mishandled, making the code fragile and hard to maintain or extend.</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -714,17 +746,49 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.2\nStyle_Score: 0.2\nSimplicity_Score: 0.2\nRobustness_Score: 0.2\nReasoning: The solution has a fundamental algorithmic bug: the priority queue is populated as (current_number, cost) so the heap orders by the numeric value rather than path cost, and nodes are marked visited upon discovery which can block better-cost paths; because of this the algorithm will frequently fail to produce the optimal cost and thus is largely incorrect. Style is poor due to excessive and redundant imports and almost no explanatory comments or docstrings. The implementation is also not simple or concise \u2014 it repeats imports, uses unnecessary constructs, and misuses standard algorithms (Dijkstra) leading to inefficient and error-prone code. Robustness is low because edge cases (proper Dijkstra ordering, revisiting nodes with better costs, handling of leading zeros and full termination) are mishandled, making the code fragile and hard to maintain or extend.",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.2
+Style_Score: 0.2
+Simplicity_Score: 0.2
+Robustness_Score: 0.2
+Reasoning: The solution has a fundamental algorithmic bug: the priority queue is populated as (current_number, cost) so the heap orders by the numeric value rather than path cost, and nodes are marked visited upon discovery which can block better-cost paths; because of this the algorithm will frequently fail to produce the optimal cost and thus is largely incorrect. Style is poor due to excessive and redundant imports and almost no explanatory comments or docstrings. The implementation is also not simple or concise — it repeats imports, uses unnecessary constructs, and misuses standard algorithms (Dijkstra) leading to inefficient and error-prone code. Robustness is low because edge cases (proper Dijkstra ordering, revisiting nodes with better costs, handling of leading zeros and full termination) are mishandled, making the code fragile and hard to maintain or extend.</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -740,14 +804,22 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-blue-100 text-blue-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with the requested scores and reasoning. All done."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-blue-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with the requested scores and reasoning. All done."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1220,16 +1292,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 6</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: ls -la</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1238,16 +1318,24 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 7</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `ls -la` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "ls -la",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "ls -la",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1263,16 +1351,151 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 8</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nclass Solution:\n    def minOperations(self, n: int, m: int) -\u003e int:\n        def is_prime(num):\n            if num \u003c 2:\n                return False\n            if num == 2:\n                return True\n            if num % 2 == 0:\n                return False\n            for i in range(3, int(num**0.5) + 1, 2):\n                if num % i == 0:\n                    return False\n            return True\n\n        # Check if m is prime - if so, impossible\n        if is_prime(m):\n            return -1\n\n        # Check if n is prime initially\n        if is_prime(n):\n            return -1\n\n        # If n == m, cost is just n itself\n        if n == m:\n            return n\n\n        n_str = str(n)\n        m_str = str(m)\n        num_digits = len(n_str)\n\n        # Use Dijkstra to find minimum cost path from n to m\n        # where we can only modify one digit at a time\n        import heapq\n\n        # State: (current_number, cost_so_far)\n        heap = [(n, n)]  # Initialize with n\u0027s value as starting cost\n        visited = {n}\n\n        while heap:\n            current_num, current_cost = heapq.heappop(heap)\n\n            if current_num == m:\n                return current_cost\n\n            current_str = str(current_num)\n\n            # Pad with leading zeros if needed to maintain digit count\n            if len(current_str) \u003c num_digits:\n                current_str = current_str.zfill(num_digits)\n\n            # Try modifying each digit\n            for i in range(num_digits):\n                digit = int(current_str[i])\n\n                # Try increasing\n                if digit \u003c 9:\n                    next_digit = digit + 1\n                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]\n                    next_num = int(next_str)\n\n                    # Can\u0027t have fewer digits than original (no leading zeros allowed)\n                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:\n                        visited.add(next_num)\n                        heapq.heappush(heap, (next_num, current_cost + next_num))\n\n                # Try decreasing\n                if digit \u003e 0:\n                    next_digit = digit - 1\n                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]\n                    next_num = int(next_str)\n\n                    # Can\u0027t have fewer digits than original (no leading zeros allowed)\n                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:\n                        visited.add(next_num)\n                        heapq.heappush(heap, (next_num, current_cost + next_num))\n\n        return -1\n",
-      "path": "/workspace/solution.py"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def minOperations(self, n: int, m: int) -> int:
+        def is_prime(num):
+            if num < 2:
+                return False
+            if num == 2:
+                return True
+            if num % 2 == 0:
+                return False
+            for i in range(3, int(num**0.5) + 1, 2):
+                if num % i == 0:
+                    return False
+            return True
+
+        # Check if m is prime - if so, impossible
+        if is_prime(m):
+            return -1
+
+        # Check if n is prime initially
+        if is_prime(n):
+            return -1
+
+        # If n == m, cost is just n itself
+        if n == m:
+            return n
+
+        n_str = str(n)
+        m_str = str(m)
+        num_digits = len(n_str)
+
+        # Use Dijkstra to find minimum cost path from n to m
+        # where we can only modify one digit at a time
+        import heapq
+
+        # State: (current_number, cost_so_far)
+        heap = [(n, n)]  # Initialize with n's value as starting cost
+        visited = {n}
+
+        while heap:
+            current_num, current_cost = heapq.heappop(heap)
+
+            if current_num == m:
+                return current_cost
+
+            current_str = str(current_num)
+
+            # Pad with leading zeros if needed to maintain digit count
+            if len(current_str) < num_digits:
+                current_str = current_str.zfill(num_digits)
+
+            # Try modifying each digit
+            for i in range(num_digits):
+                digit = int(current_str[i])
+
+                # Try increasing
+                if digit < 9:
+                    next_digit = digit + 1
+                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]
+                    next_num = int(next_str)
+
+                    # Can't have fewer digits than original (no leading zeros allowed)
+                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:
+                        visited.add(next_num)
+                        heapq.heappush(heap, (next_num, current_cost + next_num))
+
+                # Try decreasing
+                if digit > 0:
+                    next_digit = digit - 1
+                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]
+                    next_num = int(next_str)
+
+                    # Can't have fewer digits than original (no leading zeros allowed)
+                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:
+                        visited.add(next_num)
+                        heapq.heappush(heap, (next_num, current_cost + next_num))
+
+        return -1
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1281,16 +1504,151 @@ Do not provide any other output. Only create the evaluation.txt file.</div></div
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 9</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "from string import *\nfrom re import *\nfrom datetime import *\nfrom collections import *\nfrom heapq import *\nfrom bisect import *\nfrom copy import *\nfrom math import *\nfrom random import *\nfrom statistics import *\nfrom itertools import *\nfrom functools import *\nfrom operator import *\nfrom io import *\nfrom sys import *\nfrom json import *\nfrom builtins import *\nfrom typing import List, Dict, Set, Tuple, Optional, Union, Any\nimport string\nimport re\nimport datetime\nimport collections\nimport heapq\nimport bisect\nimport copy\nimport math\nimport random\nimport statistics\nimport itertools\nimport functools\nimport operator\nimport io\nimport sys\nimport json\nsys.setrecursionlimit(50000)\n\nclass Solution:\n    def minOperations(self, n: int, m: int) -\u003e int:\n        def is_prime(num):\n            if num \u003c 2:\n                return False\n            if num == 2:\n                return True\n            if num % 2 == 0:\n                return False\n            for i in range(3, int(num**0.5) + 1, 2):\n                if num % i == 0:\n                    return False\n            return True\n\n        # Check if m is prime - if so, impossible\n        if is_prime(m):\n            return -1\n\n        # Check if n is prime initially\n        if is_prime(n):\n            return -1\n\n        # If n == m, cost is just n itself\n        if n == m:\n            return n\n\n        n_str = str(n)\n        m_str = str(m)\n        num_digits = len(n_str)\n\n        # Use Dijkstra to find minimum cost path from n to m\n        # where we can only modify one digit at a time\n        import heapq\n\n        # State: (current_number, cost_so_far)\n        heap = [(n, n)]  # Initialize with n\u0027s value as starting cost\n        visited = {n}\n\n        while heap:\n            current_num, current_cost = heapq.heappop(heap)\n\n            if current_num == m:\n                return current_cost\n\n            current_str = str(current_num)\n\n            # Pad with leading zeros if needed to maintain digit count\n            if len(current_str) \u003c num_digits:\n                current_str = current_str.zfill(num_digits)\n\n            # Try modifying each digit\n            for i in range(num_digits):\n                digit = int(current_str[i])\n\n                # Try increasing\n                if digit \u003c 9:\n                    next_digit = digit + 1\n                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]\n                    next_num = int(next_str)\n\n                    # Can\u0027t have fewer digits than original (no leading zeros allowed)\n                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:\n                        visited.add(next_num)\n                        heapq.heappush(heap, (next_num, current_cost + next_num))\n\n                # Try decreasing\n                if digit \u003e 0:\n                    next_digit = digit - 1\n                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]\n                    next_num = int(next_str)\n\n                    # Can\u0027t have fewer digits than original (no leading zeros allowed)\n                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:\n                        visited.add(next_num)\n                        heapq.heappush(heap, (next_num, current_cost + next_num))\n\n        return -1\n",
-      "path": "/workspace/solution.py"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/solution.py</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>from string import *
+from re import *
+from datetime import *
+from collections import *
+from heapq import *
+from bisect import *
+from copy import *
+from math import *
+from random import *
+from statistics import *
+from itertools import *
+from functools import *
+from operator import *
+from io import *
+from sys import *
+from json import *
+from builtins import *
+from typing import List, Dict, Set, Tuple, Optional, Union, Any
+import string
+import re
+import datetime
+import collections
+import heapq
+import bisect
+import copy
+import math
+import random
+import statistics
+import itertools
+import functools
+import operator
+import io
+import sys
+import json
+sys.setrecursionlimit(50000)
+
+class Solution:
+    def minOperations(self, n: int, m: int) -> int:
+        def is_prime(num):
+            if num < 2:
+                return False
+            if num == 2:
+                return True
+            if num % 2 == 0:
+                return False
+            for i in range(3, int(num**0.5) + 1, 2):
+                if num % i == 0:
+                    return False
+            return True
+
+        # Check if m is prime - if so, impossible
+        if is_prime(m):
+            return -1
+
+        # Check if n is prime initially
+        if is_prime(n):
+            return -1
+
+        # If n == m, cost is just n itself
+        if n == m:
+            return n
+
+        n_str = str(n)
+        m_str = str(m)
+        num_digits = len(n_str)
+
+        # Use Dijkstra to find minimum cost path from n to m
+        # where we can only modify one digit at a time
+        import heapq
+
+        # State: (current_number, cost_so_far)
+        heap = [(n, n)]  # Initialize with n's value as starting cost
+        visited = {n}
+
+        while heap:
+            current_num, current_cost = heapq.heappop(heap)
+
+            if current_num == m:
+                return current_cost
+
+            current_str = str(current_num)
+
+            # Pad with leading zeros if needed to maintain digit count
+            if len(current_str) < num_digits:
+                current_str = current_str.zfill(num_digits)
+
+            # Try modifying each digit
+            for i in range(num_digits):
+                digit = int(current_str[i])
+
+                # Try increasing
+                if digit < 9:
+                    next_digit = digit + 1
+                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]
+                    next_num = int(next_str)
+
+                    # Can't have fewer digits than original (no leading zeros allowed)
+                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:
+                        visited.add(next_num)
+                        heapq.heappush(heap, (next_num, current_cost + next_num))
+
+                # Try decreasing
+                if digit > 0:
+                    next_digit = digit - 1
+                    next_str = current_str[:i] + str(next_digit) + current_str[i+1:]
+                    next_num = int(next_str)
+
+                    # Can't have fewer digits than original (no leading zeros allowed)
+                    if len(str(next_num)) == num_digits and not is_prime(next_num) and next_num not in visited:
+                        visited.add(next_num)
+                        heapq.heappush(heap, (next_num, current_cost + next_num))
+
+        return -1
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1321,16 +1679,24 @@ for n,m,expected in cases:
 PY
 
 python check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ncases = [\n    (10, 12, 85),\n    (4, 8, -1),\n    (6, 2, -1),\n]\n\nsol = Solution()\nfor n,m,expected in cases:\n    out = sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")\nPY\n\npython check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ncases = [\n    (10, 12, 85),\n    (4, 8, -1),\n    (6, 2, -1),\n]\n\nsol = Solution()\nfor n,m,expected in cases:\n    out = sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")\nPY\n\npython check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1354,16 +1720,24 @@ for n,m,expected in cases:
 PY
 
 python check_solution.py` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ncases = [\n    (10, 12, 85),\n    (4, 8, -1),\n    (6, 2, -1),\n]\n\nsol = Solution()\nfor n,m,expected in cases:\n    out = sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")\nPY\n\npython check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat \u003e check_solution.py \u003c\u003c \u0027PY\u0027\nfrom solution import Solution\n\ncases = [\n    (10, 12, 85),\n    (4, 8, -1),\n    (6, 2, -1),\n]\n\nsol = Solution()\nfor n,m,expected in cases:\n    out = sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")\nPY\n\npython check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1379,16 +1753,24 @@ python check_solution.py` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 12</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1397,16 +1779,24 @@ python check_solution.py` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 13</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1422,16 +1812,24 @@ python check_solution.py` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 14</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: python3 check_solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1440,16 +1838,24 @@ python check_solution.py` executed with exit code 0.</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 15</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `python3 check_solution.py` executed with exit code 127.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "python3 check_solution.py",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "python3 check_solution.py",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1472,15 +1878,23 @@ cases=[(10,12,85),(4,8,-1),(6,2,-1)]
 for n,m,expected in cases:
     out=sol.minOperations(n,m)
     print(n,m,out,expected,"PASS" if out==expected else "FAIL")</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "from importlib import reload\nimport solution\nreload(solution)\nsol=solution.Solution()\ncases=[(10,12,85),(4,8,-1),(6,2,-1)]\nfor n,m,expected in cases:\n    out=sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "from importlib import reload\nimport solution\nreload(solution)\nsol=solution.Solution()\ncases=[(10,12,85),(4,8,-1),(6,2,-1)]\nfor n,m,expected in cases:\n    out=sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1489,15 +1903,23 @@ for n,m,expected in cases:
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 17</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Code executed in IPython cell.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "from importlib import reload\nimport solution\nreload(solution)\nsol=solution.Solution()\ncases=[(10,12,85),(4,8,-1),(6,2,-1)]\nfor n,m,expected in cases:\n    out=sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "from importlib import reload\nimport solution\nreload(solution)\nsol=solution.Solution()\ncases=[(10,12,85),(4,8,-1),(6,2,-1)]\nfor n,m,expected in cases:\n    out=sol.minOperations(n,m)\n    print(n,m,out,expected,\"PASS\" if out==expected else \"FAIL\")",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1598,15 +2020,23 @@ for digits in range(1,4):
                 fails.append((n,m,correct,prov_out))
 
 len(fails), fails[:10]</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "# Let\u0027s import the provided solution and implement a correct solver to compare outputs.\nimport importlib\nimport solution as provided\nimportlib.reload(provided)\n\n# Implement correct Dijkstra solver\nimport heapq\nfrom math import isqrt\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    # if n and m have different digit lengths, it\u0027s invalid per problem constraints\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    # Dijkstra where cost to move u-\u003ev is v\n    dist = {n: n}\n    pq=[(n,n)] # (cost,node)\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if len(ns.lstrip(\u00270\u0027))!=num_digits:\n                        # if ns all zeros then length of int(ns) will be 1 not equal to num_digits\n                        # easier: check if ns[0]==\u00270\u0027: skip\n                        if ns[0]==\u00270\u0027:\n                            continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# Let\u0027s compare provided solution vs correct for multiple test cases\nprov = provided.Solution()\n\nfails = []\n# test all pairs with 1 to 9999 where same digits; but that\u0027s heavy. Let\u0027s test for digit lengths 1 to 4 but smaller ranges\nfor digits in range(1,4):\n    start = 10**(digits-1) if digits\u003e1 else 0\n    end = 10**digits - 1\n    # sample some numbers\n    nums = list(range(start, end+1))\n    # to keep runtime reasonable, sample\n    import random\n    samples = random.sample(nums, min(50, len(nums)))\n    for n in samples:\n        for m in random.sample(nums, min(50, len(nums))):\n            # ensure same digit length\n            if len(str(n))!=len(str(m)): continue\n            correct = correct_min_ops(n,m)\n            prov_out = prov.minOperations(n,m)\n            if correct != prov_out:\n                fails.append((n,m,correct,prov_out))\n\nlen(fails), fails[:10]",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "# Let\u0027s import the provided solution and implement a correct solver to compare outputs.\nimport importlib\nimport solution as provided\nimportlib.reload(provided)\n\n# Implement correct Dijkstra solver\nimport heapq\nfrom math import isqrt\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    # if n and m have different digit lengths, it\u0027s invalid per problem constraints\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    # Dijkstra where cost to move u-\u003ev is v\n    dist = {n: n}\n    pq=[(n,n)] # (cost,node)\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if len(ns.lstrip(\u00270\u0027))!=num_digits:\n                        # if ns all zeros then length of int(ns) will be 1 not equal to num_digits\n                        # easier: check if ns[0]==\u00270\u0027: skip\n                        if ns[0]==\u00270\u0027:\n                            continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# Let\u0027s compare provided solution vs correct for multiple test cases\nprov = provided.Solution()\n\nfails = []\n# test all pairs with 1 to 9999 where same digits; but that\u0027s heavy. Let\u0027s test for digit lengths 1 to 4 but smaller ranges\nfor digits in range(1,4):\n    start = 10**(digits-1) if digits\u003e1 else 0\n    end = 10**digits - 1\n    # sample some numbers\n    nums = list(range(start, end+1))\n    # to keep runtime reasonable, sample\n    import random\n    samples = random.sample(nums, min(50, len(nums)))\n    for n in samples:\n        for m in random.sample(nums, min(50, len(nums))):\n            # ensure same digit length\n            if len(str(n))!=len(str(m)): continue\n            correct = correct_min_ops(n,m)\n            prov_out = prov.minOperations(n,m)\n            if correct != prov_out:\n                fails.append((n,m,correct,prov_out))\n\nlen(fails), fails[:10]",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1615,15 +2045,23 @@ len(fails), fails[:10]</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 19</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Code executed in IPython cell.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "# Let\u0027s import the provided solution and implement a correct solver to compare outputs.\nimport importlib\nimport solution as provided\nimportlib.reload(provided)\n\n# Implement correct Dijkstra solver\nimport heapq\nfrom math import isqrt\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    # if n and m have different digit lengths, it\u0027s invalid per problem constraints\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    # Dijkstra where cost to move u-\u003ev is v\n    dist = {n: n}\n    pq=[(n,n)] # (cost,node)\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if len(ns.lstrip(\u00270\u0027))!=num_digits:\n                        # if ns all zeros then length of int(ns) will be 1 not equal to num_digits\n                        # easier: check if ns[0]==\u00270\u0027: skip\n                        if ns[0]==\u00270\u0027:\n                            continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# Let\u0027s compare provided solution vs correct for multiple test cases\nprov = provided.Solution()\n\nfails = []\n# test all pairs with 1 to 9999 where same digits; but that\u0027s heavy. Let\u0027s test for digit lengths 1 to 4 but smaller ranges\nfor digits in range(1,4):\n    start = 10**(digits-1) if digits\u003e1 else 0\n    end = 10**digits - 1\n    # sample some numbers\n    nums = list(range(start, end+1))\n    # to keep runtime reasonable, sample\n    import random\n    samples = random.sample(nums, min(50, len(nums)))\n    for n in samples:\n        for m in random.sample(nums, min(50, len(nums))):\n            # ensure same digit length\n            if len(str(n))!=len(str(m)): continue\n            correct = correct_min_ops(n,m)\n            prov_out = prov.minOperations(n,m)\n            if correct != prov_out:\n                fails.append((n,m,correct,prov_out))\n\nlen(fails), fails[:10]",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "# Let\u0027s import the provided solution and implement a correct solver to compare outputs.\nimport importlib\nimport solution as provided\nimportlib.reload(provided)\n\n# Implement correct Dijkstra solver\nimport heapq\nfrom math import isqrt\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    # if n and m have different digit lengths, it\u0027s invalid per problem constraints\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    # Dijkstra where cost to move u-\u003ev is v\n    dist = {n: n}\n    pq=[(n,n)] # (cost,node)\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if len(ns.lstrip(\u00270\u0027))!=num_digits:\n                        # if ns all zeros then length of int(ns) will be 1 not equal to num_digits\n                        # easier: check if ns[0]==\u00270\u0027: skip\n                        if ns[0]==\u00270\u0027:\n                            continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# Let\u0027s compare provided solution vs correct for multiple test cases\nprov = provided.Solution()\n\nfails = []\n# test all pairs with 1 to 9999 where same digits; but that\u0027s heavy. Let\u0027s test for digit lengths 1 to 4 but smaller ranges\nfor digits in range(1,4):\n    start = 10**(digits-1) if digits\u003e1 else 0\n    end = 10**digits - 1\n    # sample some numbers\n    nums = list(range(start, end+1))\n    # to keep runtime reasonable, sample\n    import random\n    samples = random.sample(nums, min(50, len(nums)))\n    for n in samples:\n        for m in random.sample(nums, min(50, len(nums))):\n            # ensure same digit length\n            if len(str(n))!=len(str(m)): continue\n            correct = correct_min_ops(n,m)\n            prov_out = prov.minOperations(n,m)\n            if correct != prov_out:\n                fails.append((n,m,correct,prov_out))\n\nlen(fails), fails[:10]",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1639,20 +2077,28 @@ len(fails), fails[:10]</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 20</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Reading file: /workspace/solution.py</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "view",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW",
-      "view_range": [
-        1,
-        -1
-      ]
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "view",
+  "path": "/workspace/solution.py",
+  "security_risk": "LOW",
+  "view_range": [
+    1,
+    -1
+  ]
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1661,20 +2107,28 @@ len(fails), fails[:10]</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 21</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I read the file /workspace/solution.py.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "view",
-      "path": "/workspace/solution.py",
-      "security_risk": "LOW",
-      "view_range": [
-        1,
-        -1
-      ]
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "view",
+  "path": "/workspace/solution.py",
+  "security_risk": "LOW",
+  "view_range": [
+    1,
+    -1
+  ]
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1764,15 +2218,23 @@ for _ in range(N):
         passed+=1
 
 passed, N, passed/N</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "import importlib, solution as provided\nimportlib.reload(provided)\nfrom math import isqrt\nimport heapq, random\n\n# correct solver\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    dist = {n: n}\n    pq=[(n,n)]\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if ns[0]==\u00270\u0027:\n                        continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# run random tests\nrandom.seed(0)\nprov = provided.Solution()\n\nN=1000\npassed=0\nfor _ in range(N):\n    # pick digit length 1..4\n    d = random.randint(1,4)\n    low = 10**(d-1) if d\u003e1 else 1\n    high = 10**d - 1\n    n = random.randint(low, high)\n    m = random.randint(low, high)\n    correct = correct_min_ops(n,m)\n    prov_out = prov.minOperations(n,m)\n    if correct==prov_out:\n        passed+=1\n\npassed, N, passed/N\n",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "import importlib, solution as provided\nimportlib.reload(provided)\nfrom math import isqrt\nimport heapq, random\n\n# correct solver\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    dist = {n: n}\n    pq=[(n,n)]\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if ns[0]==\u00270\u0027:\n                        continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# run random tests\nrandom.seed(0)\nprov = provided.Solution()\n\nN=1000\npassed=0\nfor _ in range(N):\n    # pick digit length 1..4\n    d = random.randint(1,4)\n    low = 10**(d-1) if d\u003e1 else 1\n    high = 10**d - 1\n    n = random.randint(low, high)\n    m = random.randint(low, high)\n    correct = correct_min_ops(n,m)\n    prov_out = prov.minOperations(n,m)\n    if correct==prov_out:\n        passed+=1\n\npassed, N, passed/N\n",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1781,15 +2243,23 @@ passed, N, passed/N</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 23</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Code executed in IPython cell.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "code": "import importlib, solution as provided\nimportlib.reload(provided)\nfrom math import isqrt\nimport heapq, random\n\n# correct solver\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    dist = {n: n}\n    pq=[(n,n)]\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if ns[0]==\u00270\u0027:\n                        continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# run random tests\nrandom.seed(0)\nprov = provided.Solution()\n\nN=1000\npassed=0\nfor _ in range(N):\n    # pick digit length 1..4\n    d = random.randint(1,4)\n    low = 10**(d-1) if d\u003e1 else 1\n    high = 10**d - 1\n    n = random.randint(low, high)\n    m = random.randint(low, high)\n    correct = correct_min_ops(n,m)\n    prov_out = prov.minOperations(n,m)\n    if correct==prov_out:\n        passed+=1\n\npassed, N, passed/N\n",
-      "security_risk": "LOW"
-    },
-    "name": "execute_ipython_cell"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_ipython_cell</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "code": "import importlib, solution as provided\nimportlib.reload(provided)\nfrom math import isqrt\nimport heapq, random\n\n# correct solver\n\ndef is_prime(num):\n    if num \u003c 2:\n        return False\n    if num == 2:\n        return True\n    if num % 2 == 0:\n        return False\n    r = int(num**0.5)\n    for i in range(3, r+1, 2):\n        if num % i == 0:\n            return False\n    return True\n\n\ndef correct_min_ops(n,m):\n    sN=str(n); sM=str(m)\n    if len(sN)!=len(sM):\n        return -1\n    if is_prime(n) or is_prime(m):\n        return -1\n    if n==m:\n        return n\n    num_digits=len(sN)\n    dist = {n: n}\n    pq=[(n,n)]\n    while pq:\n        cost,u = heapq.heappop(pq)\n        if cost!=dist.get(u, None):\n            continue\n        if u==m:\n            return cost\n        s = str(u).zfill(num_digits)\n        for i in range(num_digits):\n            d = int(s[i])\n            for nd in (d+1, d-1):\n                if 0\u003c=nd\u003c=9:\n                    ns = s[:i]+str(nd)+s[i+1:]\n                    # leading zeros not allowed\n                    if ns[0]==\u00270\u0027:\n                        continue\n                    v = int(ns)\n                    if is_prime(v):\n                        continue\n                    new_cost = cost + v\n                    if v not in dist or new_cost \u003c dist[v]:\n                        dist[v] = new_cost\n                        heapq.heappush(pq, (new_cost, v))\n    return -1\n\n# run random tests\nrandom.seed(0)\nprov = provided.Solution()\n\nN=1000\npassed=0\nfor _ in range(N):\n    # pick digit length 1..4\n    d = random.randint(1,4)\n    low = 10**(d-1) if d\u003e1 else 1\n    high = 10**d - 1\n    n = random.randint(low, high)\n    m = random.randint(low, high)\n    correct = correct_min_ops(n,m)\n    prov_out = prov.minOperations(n,m)\n    if correct==prov_out:\n        passed+=1\n\npassed, N, passed/N\n",
+  "security_risk": "LOW"
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1805,17 +2275,50 @@ passed, N, passed/N</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 24</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.6\nStyle_Score: 0.4\nSimplicity_Score: 0.4\nRobustness_Score: 0.3\nReasoning: The implementation passes the three provided sample tests but only passed ~61.5% of a 1000-case random same-length-digit test I ran (615/1000), so correctness is limited and scored 0.6. Style is poor due to numerous wildcard/redundant imports and minimal comments, making the code hard to read and maintain (0.4). Simplicity suffers because the Dijkstra attempt misuses heap tuple ordering and uses a visited set that prevents discovering better-cost paths, plus naive primality checks and unnecessary bloat (0.4). Robustness is weak: the solution mishandles leading-zero and single-digit cases, fails several edge cases shown in random testing, and would be difficult to extend or fix (0.3).\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.6
+Style_Score: 0.4
+Simplicity_Score: 0.4
+Robustness_Score: 0.3
+Reasoning: The implementation passes the three provided sample tests but only passed ~61.5% of a 1000-case random same-length-digit test I ran (615/1000), so correctness is limited and scored 0.6. Style is poor due to numerous wildcard/redundant imports and minimal comments, making the code hard to read and maintain (0.4). Simplicity suffers because the Dijkstra attempt misuses heap tuple ordering and uses a visited set that prevents discovering better-cost paths, plus naive primality checks and unnecessary bloat (0.4). Robustness is weak: the solution mishandles leading-zero and single-digit cases, fails several edge cases shown in random testing, and would be difficult to extend or fix (0.3).
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1824,17 +2327,50 @@ passed, N, passed/N</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 25</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">I edited the file /workspace/evaluation.txt.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "create",
-      "file_text": "Correctness_Score: 0.6\nStyle_Score: 0.4\nSimplicity_Score: 0.4\nRobustness_Score: 0.3\nReasoning: The implementation passes the three provided sample tests but only passed ~61.5% of a 1000-case random same-length-digit test I ran (615/1000), so correctness is limited and scored 0.6. Style is poor due to numerous wildcard/redundant imports and minimal comments, making the code hard to read and maintain (0.4). Simplicity suffers because the Dijkstra attempt misuses heap tuple ordering and uses a visited set that prevents discovering better-cost paths, plus naive primality checks and unnecessary bloat (0.4). Robustness is weak: the solution mishandles leading-zero and single-digit cases, fails several edge cases shown in random testing, and would be difficult to extend or fix (0.3).\n",
-      "path": "/workspace/evaluation.txt",
-      "security_risk": "LOW"
-    },
-    "name": "str_replace_editor"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">str_replace_editor</div>
+                                                
+                                                    
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">command:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">create</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">path:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">/workspace/evaluation.txt</span>
+                                                                </div>
+                                                            
+                                                        
+                                                            
+                                                        
+                                                            
+                                                                <div class="mb-2">
+                                                                    <span class="text-[9px] font-bold text-slate-400 uppercase">security_risk:</span>
+                                                                    <span class="text-xs text-slate-600 ml-1">LOW</span>
+                                                                </div>
+                                                            
+                                                        
+                                                        <div class="mb-2"><span class="text-[9px] font-bold text-slate-400 uppercase">File Text:</span></div>
+                                                        <pre class="bg-white border border-slate-200 rounded p-3 text-xs font-mono overflow-x-auto max-h-96 overflow-y-auto"><code>Correctness_Score: 0.6
+Style_Score: 0.4
+Simplicity_Score: 0.4
+Robustness_Score: 0.3
+Reasoning: The implementation passes the three provided sample tests but only passed ~61.5% of a 1000-case random same-length-digit test I ran (615/1000), so correctness is limited and scored 0.6. Style is poor due to numerous wildcard/redundant imports and minimal comments, making the code hard to read and maintain (0.4). Simplicity suffers because the Dijkstra attempt misuses heap tuple ordering and uses a visited set that prevents discovering better-cost paths, plus naive primality checks and unnecessary bloat (0.4). Robustness is weak: the solution mishandles leading-zero and single-digit cases, fails several edge cases shown in random testing, and would be difficult to extend or fix (0.3).
+</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1850,16 +2386,24 @@ passed, N, passed/N</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 26</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Running command: cat /workspace/evaluation.txt</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1868,16 +2412,24 @@ passed, N, passed/N</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 27</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">Command `cat /workspace/evaluation.txt` executed with exit code 0.</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "command": "cat /workspace/evaluation.txt",
-      "security_risk": "LOW",
-      "timeout": 120000
-    },
-    "name": "execute_bash"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">execute_bash</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "command": "cat /workspace/evaluation.txt",
+  "security_risk": "LOW",
+  "timeout": 120000
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     <div><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Observation</span><pre class="bg-slate-100 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 max-h-48 overflow-y-auto whitespace-pre-wrap">{
   "results": [
     {
@@ -1893,14 +2445,22 @@ passed, N, passed/N</div></div>
                                 <div class="step-header"><span class="font-bold text-xs text-slate-500">STEP 28</span><span class="bg-amber-100 text-amber-700 text-xs px-2 py-1 rounded font-bold font-mono">agent</span></div>
                                 <div class="p-4">
                                     <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Message</span><div class="text-sm text-slate-700 leading-relaxed whitespace-pre-wrap font-sans border-l-2 border-slate-200 pl-3">All done! What's next on the agenda?</div></div>
-                                    <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span><pre class="bg-slate-50 border border-slate-200 rounded p-3 text-xs font-mono text-slate-600 overflow-x-auto"><code>[
-  {
-    "arguments": {
-      "message": "Created evaluation.txt with scores and reasoning. I ran sample tests and a 1000-case randomized test comparing the provided solution to a correct Dijkstra implementation; results and reasoning are in the file. Next steps: I can further refine the correctness assessment or produce a proposed fix if you want."
-    },
-    "name": "finish"
-  }
-]</code></pre></div>
+                                    
+                                        <div class="mb-4"><span class="text-[10px] font-bold text-slate-400 uppercase block mb-1">Tool Calls</span>
+                                        
+                                            <div class="mb-3 bg-slate-50 border border-slate-200 rounded p-3">
+                                                <div class="font-semibold text-amber-600 text-xs mb-2">finish</div>
+                                                
+                                                    
+                                                        <pre class="text-xs font-mono text-slate-600 overflow-x-auto"><code>{
+  "message": "Created evaluation.txt with scores and reasoning. I ran sample tests and a 1000-case randomized test comparing the provided solution to a correct Dijkstra implementation; results and reasoning are in the file. Next steps: I can further refine the correctness assessment or produce a proposed fix if you want."
+}</code></pre>
+                                                    
+                                                
+                                            </div>
+                                        
+                                        </div>
+                                    
                                     
                                 </div>
                             </div>
@@ -1920,10 +2480,57 @@ passed, N, passed/N</div></div>
             </div>
             <div id="tab-llm" class="tab-content">
                 <div class="max-w-3xl mx-auto">
-                    <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
-                        <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4"><span class="text-2xl">🧠</span><div><h2 class="font-bold text-xl text-slate-800">LLM Judge Assessment</h2><p class="text-sm text-slate-500">Model: gpt-4o-mini</p></div><div class="ml-auto"><span class="text-lg font-bold text-low">Score: 0.60</span></div></div>
-                        <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">Score: 0.6  
-Reasoning: The solution attempts to implement a Dijkstra-like algorithm to find the minimum cost to transform `n` into `m`, but it has several issues. It does not handle the case where intermediate values of `n` must not be prime correctly, and the cost calculation may not be optimal due to the way it accumulates costs. Additionally, the code is incomplete and lacks handling for certain edge cases, such as when `n` and `m` are the same or when the transformation is impossible.</p></div>
+                    <div class="flex items-center justify-between mb-4">
+                        <h3 class="font-bold text-slate-700 text-sm uppercase tracking-wider">LLM Judge Assessment</h3>
+                        <div class="flex gap-3 items-center">
+                            <select id="llm-selector" class="px-3 py-1 border border-slate-300 rounded text-sm font-medium text-slate-700 bg-white hover:bg-slate-50 cursor-pointer" onchange="switchLLMJudge(this.value)">
+                                <option value="multi">Multi-Aspect</option>
+                                <option value="correctness">Correctness</option>
+                            </select>
+                        </div>
+                    </div>
+                    <div id="llm-multi" class="llm-container">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-blue-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Multi-Aspect Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Avg: 0.7</span></div>
+                            </div>
+                            
+                            <div class="mb-6 p-4 bg-slate-50 rounded-lg border border-slate-200">
+                                <h3 class="text-sm font-bold text-slate-600 uppercase mb-3">Aspect Scores</h3>
+                                <div class="grid grid-cols-2 md:grid-cols-4 gap-4">
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Correctness</div>
+                                        <div class="text-xl font-bold text-blue-600">0.80</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Style</div>
+                                        <div class="text-xl font-bold text-purple-600">0.70</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Simplicity</div>
+                                        <div class="text-xl font-bold text-green-600">0.60</div>
+                                    </div>
+                                    <div class="text-center">
+                                        <div class="text-xs text-slate-500 mb-1">Robustness</div>
+                                        <div class="text-xl font-bold text-orange-600">0.70</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to transform `n` into `m` while ensuring that `n` remains non-prime throughout the operations. However, it may fail on certain edge cases, such as when `n` and `m` are very close but require multiple transformations that could lead to a prime number. The code includes some comments, but they could be more comprehensive to enhance understanding. The overall structure is somewhat complex, with potential redundancies in the way it handles digit transformations, which could be simplified for clarity. It does handle some edge cases but could be improved for maintainability and extendability.</p></div>
+                        </div>
+                    </div>
+                    <div id="llm-correctness" class="llm-container hidden">
+                        <div class="bg-white p-8 rounded-lg border-l-4 border-green-500 shadow-sm">
+                            <div class="flex items-center gap-3 mb-6 border-b border-gray-100 pb-4">
+                                <span class="text-2xl">🧠</span>
+                                <div><h2 class="font-bold text-xl text-slate-800">Correctness Assessment</h2></div>
+                                <div class="ml-auto"><span class="text-lg font-bold text-med">Score: 0.70</span></div>
+                            </div>
+                            <div class="prose prose-slate max-w-none"><p class="text-lg leading-relaxed text-slate-700 whitespace-pre-wrap">The solution correctly implements the logic to transform `n` into `m` while ensuring that `n` remains non-prime throughout the operations. However, it may fail in edge cases where the transformation requires multiple steps that could lead to a prime number being formed, especially if `n` and `m` are close to each other or if `n` is already a prime number. Additionally, the handling of costs and the priority queue may not account for all possible paths effectively, leading to potential incorrect outputs in certain scenarios.</p></div>
+                        </div>
                     </div>
                 </div>
             </div>
@@ -1961,6 +2568,14 @@ Reasoning: The solution attempts to implement a Dijkstra-like algorithm to find 
             const targetTrajectory = document.getElementById('trajectory-' + trajectoryType);
             if (targetTrajectory) {
                 targetTrajectory.classList.remove('hidden');
+            }
+        }
+
+        function switchLLMJudge(judgeType) {
+            document.querySelectorAll('.llm-container').forEach(el => el.classList.add('hidden'));
+            const targetLLM = document.getElementById('llm-' + judgeType);
+            if (targetLLM) {
+                targetLLM.classList.remove('hidden');
             }
         }
 
